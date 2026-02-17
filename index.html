@@ -4,27 +4,113 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nuanced Theology</title>
-  <meta name="description" content="A developing project exploring theology with clarity, charity, and careful sourcing." />
-  <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px;background:#0b1220;color:#e5e7eb}
-    .card{max-width:760px;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:32px;background:rgba(255,255,255,.03)}
-    h1{margin:0 0 10px;font-size:42px;letter-spacing:-.02em}
-    p{margin:12px 0;font-size:18px;line-height:1.6;color:rgba(229,231,235,.78)}
-    .fine{margin-top:20px;font-size:14px;color:rgba(229,231,235,.6)}
-  </style>
+  <meta name="description" content="A small, developing project for careful readers—clarity, charity, and honest sourcing across Christian traditions." />
+
+  <!-- Tailwind CDN (no build needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Nice font (optional, but helps a lot) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-  <main class="card">
-    <h1>Nuanced Theology</h1>
-    <p>
-      A small, developing project for careful readers—aiming for clarity, charity,
-      and honest sourcing across Christian traditions.
-    </p>
-    <p>
-      For now, this is a simple landing page. More coming later.
-    </p>
-    <div class="fine">© <span id="y"></span> Nuanced Theology</div>
+
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+  <!-- Background glow -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-cyan-500/10 blur-3xl"></div>
+  </div>
+
+  <main class="mx-auto flex min-h-screen max-w-5xl items-center px-6 py-16">
+    <div class="w-full">
+      <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+        <!-- Left -->
+        <section class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
+            Live • Under construction
+          </div>
+
+          <h1 class="mt-5 text-4xl font-bold tracking-tight md:text-6xl">
+            Nuanced Theology
+          </h1>
+
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">
+            A small, developing project for careful readers—aiming for clarity, charity,
+            and honest sourcing across Christian traditions.
+          </p>
+
+          <p class="mt-4 text-slate-400">
+            For now, this is a simple landing page. More coming later.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200">Scripture</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200">Early Fathers</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200">Confessions</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200">Catechism</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200">Transparent citations</span>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href="https://github.com/chrisbakersoftwaredev/nuancedtheology"
+               class="inline-flex items-center justify-center rounded-xl bg-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-400">
+              View on GitHub
+            </a>
+
+            <a href="#"
+               class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 hover:bg-white/10">
+              Contact (soon)
+            </a>
+          </div>
+
+          <p class="mt-8 text-xs text-slate-500">
+            © <span id="y"></span> Nuanced Theology • Built slowly, on purpose.
+          </p>
+        </section>
+
+        <!-- Right card -->
+        <aside class="w-full md:w-[22rem]">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <h2 class="text-sm font-semibold text-slate-100">What to expect</h2>
+            <ul class="mt-4 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3">
+                <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-indigo-400"></span>
+                Side-by-side summaries (with citations)
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-indigo-400"></span>
+                Clear definitions (no word games)
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-indigo-400"></span>
+                Tools for exploring doctrines over time
+              </li>
+            </ul>
+
+            <div class="mt-6 rounded-xl border border-white/10 bg-slate-950/40 p-4 text-xs text-slate-400">
+              Status: <span class="text-slate-200">Landing page live</span><br/>
+              Next: <span class="text-slate-200">Add favicon + social preview</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </main>
-  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
