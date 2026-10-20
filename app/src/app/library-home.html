@@ -1,0 +1,22 @@
+<section class="library-welcome">
+  <p class="eyebrow">A Catholic learning library</p>
+  <h1>Understand your faith.<br><em>Share what you learn.</em></h1>
+  <p class="welcome-intro">A welcoming place to explore Catholic belief and practice. Read a simple explanation, follow its sources, and bring a lesson home to your family.</p>
+  <p class="welcome-note">For first questions, new beginnings, and a lifetime of growing in faith.</p>
+</section>
+<section class="library-discovery" aria-labelledby="browse-heading">
+  <div class="section-top"><div><p class="eyebrow">Learn at your own pace</p><h2 id="browse-heading">Find your place to begin</h2></div><p>Free to read and print.<br>No account needed.</p></div>
+  <label class="search-label" for="article-search">Search the library</label>
+  <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="article-search" type="search" placeholder="Try “cross”, “prayer”, or “Baptism”" [value]="query()" (input)="query.set($any($event.target).value)"></div>
+  @if(query().trim()) {
+    <div class="collection-meta"><h3>Search results</h3><span role="status">{{results().length}} {{results().length === 1 ? 'lesson' : 'lessons'}}</span></div>
+    @if(results().length) {<nt-article-cards [entries]="results()"/>} @else {<div class="empty"><h3>No matching lessons yet</h3><p>Try “cross”, “Trinity”, or “prayer”. Our library is starting small and growing with care.</p><button class="button secondary" (click)="query.set('')">Clear search</button></div>}
+  } @else {
+    @for(area of library.areas(); track area.id) {
+      <article class="library-area-card"><div><p class="eyebrow">Start with Catholic worship</p><h3><a [routerLink]="area.path">{{area.title}}</a></h3><p>{{area.introduction}}</p></div><div class="area-topics">@for(topic of library.topics(); track topic.id) {@if(topic.areaId === area.id) {<a [routerLink]="topic.path"><span>{{topic.title}}</span><span>{{library.inTopic(topic.id).length}} lesson →</span></a>}}</div></article>
+    }
+    <div class="section-top start-reading"><h2>Start reading</h2><p>{{library.articles().length}} complete lesson, with room to grow.</p></div>
+    <nt-article-cards [entries]="library.articles()"/>
+  }
+</section>
+<section id="mission" class="mission"><p class="eyebrow">The resource we wish we’d had</p><h2>Clear enough to begin.<br>Faithful enough to trust.</h2><p>nuancedTheology exists to make the Catholic faith understandable and accessible to individuals and families—whether they’re encountering it for the first time, preparing to enter the Church, or seeking to grow in a faith they’ve practiced their entire lives.</p><p>We offer warm, simple explanations grounded in Scripture and the Church’s teaching, with room for deeper learning. Nuance does not require complexity. It requires precision.</p><p class="muted">Our first lesson is ready for your feedback. Content is awaiting theological review; no ecclesiastical approval is claimed.</p></section>
