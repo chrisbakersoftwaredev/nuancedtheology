@@ -1,5 +1,7 @@
 # Editorial and verification notes
 
+For the October 19 batch of ten new Mass articles and ten introductory Faith articles, see [Twenty introductory lessons](TWENTY-LESSON-BATCH.md). It includes the article inventory, source references, review priorities, and verification limits. All articles remain awaiting theological review.
+
 First article: Why do Catholics make the Sign of the Cross?
 Version: 1. Date: October 18, 2026. Status: awaiting theological review.
 
