@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet, Routes
 import { Meta, Title, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { Article, Section } from './content';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ContentLibrary } from './library';
+import { ContentLibrary, collectionRoutes } from './library';
 import { LibraryHome as Home, LibraryNav } from './library-components';
 import { CollectionPage } from './collection-page';
 
@@ -24,7 +24,7 @@ export class ArticlePage {
 }
 @Component({imports:[RouterLink],template:`<section class="not-found"><p class="eyebrow">A small detour</p><h1>This page isn’t here.</h1><p>Let’s get you back to a good question.</p><a routerLink="/" class="button">Explore the answers →</a></section>`})
 export class NotFound {}
-const routes: Routes=[{path:'know-the-mass',component:CollectionPage,data:{area:'mass'}},{path:'know-the-mass/introductory-rites',component:CollectionPage,data:{topic:'introductory-rites'}},{path:'family-lessons',component:CollectionPage,data:{collection:'family'}},{path:'',component:Home,title:'nuancedTheology | Catholic faith, made understandable'},{path:'articles/:slug/family-lesson',component:ArticlePage,data:{lesson:true}},{path:'articles/:slug',component:ArticlePage},{path:'**',component:NotFound,title:'Page not found | nuancedTheology'}];
+const routes: Routes=[...collectionRoutes.map(route=>({...route,component:CollectionPage})),{path:'family-lessons',component:CollectionPage,data:{collection:'family'}},{path:'',component:Home,title:'nuancedTheology | Catholic faith, made understandable'},{path:'articles/:slug/family-lesson',component:ArticlePage,data:{lesson:true}},{path:'articles/:slug',component:ArticlePage},{path:'**',component:NotFound,title:'Page not found | nuancedTheology'}];
 @Component({selector:'app-root',imports:[RouterLink,RouterOutlet,LibraryNav],templateUrl:'./app-shell.html'})
 export class App {
  private readonly router=inject(Router);
