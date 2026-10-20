@@ -3,11 +3,11 @@ import { mergeApplicationConfig } from '@angular/core';
 import { provideServerRendering, withRoutes, RenderMode, ServerRoute, PrerenderFallback } from '@angular/ssr';
 import { App, config } from './app/app';
 import { articles } from './app/content';
+import { collectionRoutes } from './app/library';
 const params = async () => articles.map(article => ({ slug: article.slug }));
 const serverRoutes: ServerRoute[] = [
  { path: '', renderMode: RenderMode.Prerender },
- { path: 'know-the-mass', renderMode: RenderMode.Prerender },
- { path: 'know-the-mass/introductory-rites', renderMode: RenderMode.Prerender },
+ ...collectionRoutes.map((route): ServerRoute => ({path: route.path, renderMode: RenderMode.Prerender})),
  { path: 'family-lessons', renderMode: RenderMode.Prerender },
  { path: 'articles/:slug/family-lesson', renderMode: RenderMode.Prerender, getPrerenderParams: params, fallback: PrerenderFallback.Client },
  { path: 'articles/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: params, fallback: PrerenderFallback.Client },
