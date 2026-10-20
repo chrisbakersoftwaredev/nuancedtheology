@@ -2,48 +2,80 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const ts = require('typescript');
+// Check the actual authored records, rather than a second content manifest.
+require.extensions['.ts'] = (module, filename) => module._compile(ts.transpileModule(
+  fs.readFileSync(filename, 'utf8'), {compilerOptions: {module: ts.ModuleKind.CommonJS}}
+).outputText, filename);
+const { articles } = require('../src/app/content.ts');
 const root = path.resolve(__dirname, '../dist/nuanced-theology/browser');
 const read = route => fs.readFileSync(path.join(root, route, 'index.html'), 'utf8');
-const pages = [
-  ['', 'Understand your faith.'],
-  ['know-the-mass', 'Know the Mass'],
-  ['know-the-mass/introductory-rites', 'Introductory Rites'],
-  ['family-lessons', 'Family Lessons'],
-  ['articles/sign-of-the-cross', 'Why do Catholics make the Sign of the Cross?'],
-  ['articles/sign-of-the-cross/family-lesson', 'Why do Catholics make the Sign of the Cross?']
-];
-for (const [route, title] of pages) {
-  test(`prerendered /${route} has unique main heading and useful metadata`, () => {
-    const html = read(route);
-    assert.equal((html.match(/<h1(?:\s[^>]*)?>/g) || []).length, 1);
-    assert.ok(html.includes(title));
-    assert.match(html, /<meta name="description" content="[^\"]+"/);
-    assert.ok(/<title>[^<]*nuancedTheology[^<]*<\/title>/.test(html), "page title");
-    assert.ok(!html.includes('href="/family-lessons"'), 'family lessons are accessed from lesson buttons');
-    assert.ok(html.includes('href="/know-the-mass/introductory-rites"'));
-    for (const unpublished of ['/know-the-faith', '/apologetics', '/ocia', '/reflections']) {
-      assert.ok(!html.includes(`href="${unpublished}"`), `unpublished navigation: ${unpublished}`);
+const text = html => html.replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"');
+const collections = new Map([
+  ['introductory-rites','know-the-mass/introductory-rites'],
+  ['entering-church','know-the-mass/entering-church'],
+  ['liturgy-of-the-word','know-the-mass/liturgy-of-the-word'],
+  ['liturgy-of-the-eucharist','know-the-mass/liturgy-of-the-eucharist'],
+  ['concluding-rites','know-the-mass/concluding-rites'],
+  ['liturgical-signs','know-the-mass/liturgical-signs'],
+  ['the-creed','know-the-faith/the-creed']
+]);
+test('ten new Mass and ten Faith lessons sit alongside the original', () => {
+  assert.equal(articles.length, 21);
+  assert.equal(articles.filter(a => a.topicId === 'the-creed').length, 10);
+  assert.equal(articles.filter(a => a.topicId !== 'the-creed').length, 11);
+  assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
+});
+for (const article of articles) {
+  test(`${article.slug}: complete, cited, discoverable article and shared printable`, () => {
+    assert.match(article.slug, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    assert.ok(collections.has(article.topicId));
+    assert.ok(article.sections.length >= 3);
+    assert.ok(article.sections.flatMap(s => s.paragraphs).join(' ').split(/\s+/).length >= 200);
+    assert.equal(article.lesson.questions.length, 3);
+    for (const key of ['remember','practice','prayer','parentGuidance']) assert.ok(article.lesson[key]?.trim());
+    const sourceIds = new Set(article.sources.map(s => s.id));
+    assert.equal(sourceIds.size, article.sources.length);
+    for (const section of [...article.sections, ...(article.level2 ?? []), ...(article.level3 ?? [])]) {
+      assert.ok(section.sourceIds.length, section.title);
+      for (const id of section.sourceIds) assert.ok(sourceIds.has(id), id);
+    }
+    for (const id of [...article.lesson.parentSourceIds, ...article.deeperResources.map(r => r.sourceId)]) assert.ok(sourceIds.has(id), id);
+    for (const source of article.sources) assert.equal(new URL(source.url).protocol, 'https:');
+    const route = `articles/${article.slug}`;
+    const page = read(route), printable = read(`${route}/family-lesson`);
+    for (const html of [page, printable]) {
+      assert.equal((html.match(/<h1(?:\s[^>]*)?>/g) || []).length, 1);
+      assert.ok(text(html).includes(article.title));
+      assert.match(html, /<meta name="description" content="[^\"]+"/);
+      assert.match(html, /<title>[^<]*nuancedTheology[^<]*<\/title>/);
+      assert.ok(html.includes('Awaiting theological review'));
+      assert.ok(!html.includes('href="/family-lessons"'), 'no separate family navigation');
+    }
+    for (const section of article.sections) for (const paragraph of section.paragraphs) {
+      assert.ok(text(page).includes(paragraph), `article paragraph: ${section.title}`);
+      assert.ok(text(printable).includes(paragraph), `shared printable paragraph: ${section.title}`);
+    }
+    const anchors = new Set(Array.from(page.matchAll(/id="(source-[^"]+)"/g), m => m[1]));
+    for (const match of page.matchAll(/href="[^"]*#(source-[^"]+)"/g)) assert.ok(anchors.has(match[1]), match[1]);
+    for (const section of ['Let’s Learn','Let’s Talk','Let’s Remember','Let’s Practice','Let’s Pray','For Parents']) assert.ok(printable.includes(section));
+    assert.equal((printable.match(/<li><h3>/g)||[]).length, 3);
+    assert.ok(printable.includes('No ecclesiastical approval is claimed.'));
+    for (const collection of [collections.get(article.topicId), article.topicId === 'the-creed' ? 'know-the-faith' : 'know-the-mass', 'family-lessons']) {
+      const listing = read(collection);
+      assert.ok(listing.includes(`href="/${route}"`), collection);
+      assert.ok(listing.includes(`href="/${route}/family-lesson"`), collection);
     }
   });
 }
-test('collections link to the same canonical article and printable', () => {
-  for (const route of ['', 'know-the-mass', 'know-the-mass/introductory-rites', 'family-lessons']) {
+test('collections prerender and expose only published navigation', () => {
+  for (const route of ['', 'know-the-mass', 'know-the-faith', 'family-lessons', ...collections.values()]) {
     const html = read(route);
-    assert.ok(html.includes('href="/articles/sign-of-the-cross"'));
-    assert.ok(html.includes('href="/articles/sign-of-the-cross/family-lesson"'));
+    assert.equal((html.match(/<h1(?:\s[^>]*)?>/g)||[]).length, 1);
+    assert.ok(html.includes('href="/know-the-faith"'));
+    for (const unpublished of ['/apologetics','/ocia','/reflections']) assert.ok(!html.includes(`href="${unpublished}"`));
   }
 });
-test('article and printable retain the shared explanation and parent guidance', () => {
-  const article = read('articles/sign-of-the-cross');
-  const lesson = read('articles/sign-of-the-cross/family-lesson');
-  for (const phrase of ['Have you ever watched someone', 'A reminder that you matter', 'We do not have to earn God’s love.']) {
-    assert.ok(article.includes(phrase)); assert.ok(lesson.includes(phrase));
-  }
-  assert.ok(lesson.includes('Jesus, through whom the whole world was made, died for you and rose from the dead.'));
-  for (const section of ['Let’s Learn', 'Let’s Talk', 'Let’s Remember', 'Let’s Practice', 'Let’s Pray', 'For Parents']) assert.ok(lesson.includes(section));
-  assert.equal((lesson.match(/<li><h3>/g)||[]).length,3);
-  const ids = new Set(Array.from(article.matchAll(/id="(source-[^"]+)"/g),match=>match[1]));
-  for (const match of article.matchAll(/href="\/articles\/sign-of-the-cross#(source-[^"]+)"/g)) assert.ok(ids.has(match[1]),match[1]);
-  assert.ok(article.includes('Awaiting theological review'));
-  assert.ok(lesson.includes('No ecclesiastical approval is claimed.'));
+test('original parent guidance is preserved', () => {
+  assert.ok(read('articles/sign-of-the-cross/family-lesson').includes('Jesus, through whom the whole world was made, died for you and rose from the dead.'));
 });
