@@ -36,8 +36,8 @@ export class LibraryNav {
           <h3><a [routerLink]="['/articles',article.slug]">{{article.title}}</a></h3>
           <p>{{article.summary}}</p>
           <div class="card-bottom">
-            <a class="text-link" [routerLink]="['/articles',article.slug]">Read the lesson →</a>
-            <a class="button secondary lesson-card-link" [routerLink]="['/articles',article.slug,'family-lesson']">Print Family Lesson →</a>
+            <a class="text-link" [routerLink]="['/articles',article.slug]">Read this article →</a>
+            <a class="button secondary lesson-card-link" [routerLink]="['/articles',article.slug,'family-lesson']">Learn as a family →</a>
           </div>
         </article>
       }

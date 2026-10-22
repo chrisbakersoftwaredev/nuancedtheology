@@ -15,7 +15,7 @@ Visit http://127.0.0.1:4200/ in Edge or Chrome. For a production build:
 
     npm run build
 
-The static website is emitted to `app/dist/nuanced-theology/browser/`. The 53 published routes are prerendered. `.github/workflows/deploy.yml` builds and tests pull requests and deploys merged main-branch changes to GitHub Pages at https://nuancedtheology.com/. It publishes the browser output and a client-side 404 fallback.
+The static website is emitted to `app/dist/nuanced-theology/browser/`. Published articles, family lessons, and collections are prerendered. `.github/workflows/deploy.yml` builds and tests pull requests and deploys merged main-branch changes to GitHub Pages at https://nuancedtheology.com/. It publishes the browser output and a client-side 404 fallback.
 
 ## First lesson
 
@@ -36,7 +36,7 @@ Project, dependency cache, and build output are on D:. `.npm-cache`, `node_modul
 
 ## Learning library update
 
-The current organization is documented in docs/LIBRARY-MVP.md and the complete updated brief in docs/PROJECT-VISION.md. The homepage presents a learning library with a desktop sidebar and mobile drawer. There are 11 Know the Mass articles, including the original Sign of the Cross, and 10 introductory Know the Faith articles under The Creed. Each card and article has its own Print Family Lesson button. The older family directory URL is retained without a separate navigation section.
+The current organization is documented in docs/LIBRARY-MVP.md and the complete updated brief in docs/PROJECT-VISION.md. The homepage presents a learning library with a desktop sidebar and mobile drawer. There are 11 Know the Mass articles, including the original Sign of the Cross, and 11 Know the Faith articles under God’s Plan of Salvation, including a one-paragraph overview. Know the Faith appears first in navigation and on the homepage. Each card offers Read this article and Learn as a family; the family view retains its Print Family Lesson button. The older family directory URL is retained without a separate navigation section.
 
 Content access is centralized in app/src/app/library.ts. Register meaningful areas/topics there and use topicId in article content. The populated collection registry supplies both browser routes and server prerender entries. Only populated groups appear in navigation. Keep future OCIA sequences as article references, and personal reflections separate from instructional articles.
 
