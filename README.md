@@ -36,6 +36,8 @@ Project, dependency cache, and build output are on D:. `.npm-cache`, `node_modul
 
 ## Learning library update
 
+The guided learning order and planned gaps are documented in [CURRICULUM.md](docs/CURRICULUM.md). Register each published article once in `app/src/app/curriculum.ts`; this drives listing order, numbering, Start Learning, and Next in both article and family views. Planned lessons have no live links. The Church/Pentecost bridge and the Communion Rite are explicitly marked as unfinished.
+
 The current organization is documented in docs/LIBRARY-MVP.md and the complete updated brief in docs/PROJECT-VISION.md. The homepage presents a learning library with a desktop sidebar and mobile drawer. There are 11 Know the Mass articles, including the original Sign of the Cross, and 11 Know the Faith articles under God’s Plan of Salvation, including a one-paragraph overview. Know the Faith appears first in navigation and on the homepage. Each card offers Read this article and Learn as a family; the family view retains its Print Family Lesson button. The older family directory URL is retained without a separate navigation section.
 
 Content access is centralized in app/src/app/library.ts. Register meaningful areas/topics there and use topicId in article content. The populated collection registry supplies both browser routes and server prerender entries. Only populated groups appear in navigation. Keep future OCIA sequences as article references, and personal reflections separate from instructional articles.

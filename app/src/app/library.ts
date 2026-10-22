@@ -1,5 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { Article, articles } from './content';
+import { orderArticles } from './curriculum';
 
 export interface LibraryArea {
   id: string;
@@ -62,8 +63,9 @@ export const collectionRoutes = [
 @Injectable({ providedIn: 'root' })
 export class ContentLibrary {
   private readonly records = signal<readonly Article[]>(articles);
-  readonly articles = this.records.asReadonly();
-  readonly topics = computed(() => topics.filter(topic => this.articles().some(a => a.topicId === topic.id)));
+  readonly articles = computed(() => orderArticles(this.records()));
+  readonly topics = computed(() => topics.filter(topic => this.articles().some(a => a.topicId === topic.id))
+    .sort((a, b) => this.articles().findIndex(article => article.topicId === a.id) - this.articles().findIndex(article => article.topicId === b.id)));
   readonly areas = computed(() => areas.filter(area => this.topics().some(t => t.areaId === area.id)));
 
   find(slug: string) { return this.articles().find(article => article.slug === slug); }
