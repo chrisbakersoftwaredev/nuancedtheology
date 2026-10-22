@@ -17,13 +17,15 @@ export interface LibraryTopic {
 }
 
 // Register topics as useful articles are published. Empty areas stay out of navigation.
-export const areas: readonly LibraryArea[] = [{
+const massArea: LibraryArea = {
   id: 'mass', title: 'Know the Mass', path: '/know-the-mass',
   introduction: 'Discover the meaning behind the words, gestures, and prayers of Catholic worship. Begin with one practice, and learn at your own pace.'
-}, {
+};
+const faithArea: LibraryArea = {
   id: 'faith', title: 'Know the Faith', path: '/know-the-faith',
   introduction: 'Follow the story of God’s saving love, from creation and the covenants to Jesus and the new life he offers us.'
-}];
+};
+export const areas: readonly LibraryArea[] = [faithArea, massArea];
 export const topics: readonly LibraryTopic[] = [{
   id: 'introductory-rites', areaId: 'mass', title: 'Introductory Rites',
   path: '/know-the-mass/introductory-rites',
@@ -44,8 +46,8 @@ export const topics: readonly LibraryTopic[] = [{
   id: 'liturgical-signs', areaId: 'mass', title: 'Signs of Worship', path: '/know-the-mass/liturgical-signs',
   introduction: 'Explore the altar, vestments, and colors that help express the Church’s worship.'
 }, {
-  id: 'the-creed', areaId: 'faith', title: 'The Creed', path: '/know-the-faith/the-creed',
-  introduction: 'Begin with these ten lessons in order: creation, Noah, Abraham, Moses, David, the New Covenant, the prophets, Jesus’ life, his death and Resurrection, and our life in him. This is an introduction to salvation history, not a complete account of every covenant or every article of the Creed.'
+  id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
+  introduction: 'Start with the whole story in one short paragraph, then explore creation, the covenants, the prophets, Jesus’ life, his death and Resurrection, and our life in him. Read in order or begin with a question that interests you.'
 }];
 
 export const collectionRoutes = [

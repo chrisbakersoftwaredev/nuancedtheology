@@ -1,13 +1,14 @@
 /
-/know-the-mass
 /know-the-faith
+/know-the-mass
+/know-the-faith/the-creed
 /know-the-mass/introductory-rites
 /know-the-mass/entering-church
 /know-the-mass/liturgical-signs
 /know-the-mass/liturgy-of-the-word
 /know-the-mass/liturgy-of-the-eucharist
 /know-the-mass/concluding-rites
-/know-the-faith/the-creed
+/know-the-faith/gods-plan-of-salvation
 /family-lessons
 /articles/sign-of-the-cross
 /articles/sign-of-the-cross/family-lesson
@@ -31,6 +32,8 @@
 /articles/eucharist-real-presence/family-lesson
 /articles/dismissal
 /articles/dismissal/family-lesson
+/articles/gods-plan-of-salvation-overview
+/articles/gods-plan-of-salvation-overview/family-lesson
 /articles/creation-and-gods-friendship
 /articles/creation-and-gods-friendship/family-lesson
 /articles/covenant-with-noah

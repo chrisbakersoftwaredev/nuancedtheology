@@ -1,5 +1,11 @@
 # Editorial and verification notes
 
+## October 21, 2026: salvation overview and collection naming
+
+Renamed the introductory Faith collection to God’s Plan of Salvation. Added a one-paragraph overview, followed by the existing ten detailed articles, with the same explanation in its family lesson. The overview draws on Catechism 54–64, Luke 22:19–20, 1 Corinthians 15:3–4, and Ephesians 2:4–10; the Vatican and USCCB sources were checked. It remains awaiting theological review. The old Creed collection address redirects to the renamed collection.
+
+Know the Faith now precedes Know the Mass on the homepage and in navigation. Article cards say Read this article; links into family lessons say Learn as a family. The actual Print Family Lesson button in the family toolbar still invokes printing.
+
 For the October 19 batch of ten new Mass articles and ten introductory Faith articles, see [Twenty introductory lessons](TWENTY-LESSON-BATCH.md). It includes the article inventory, source references, review priorities, and verification limits. All articles remain awaiting theological review.
 
 First article: Why do Catholics make the Sign of the Cross?
