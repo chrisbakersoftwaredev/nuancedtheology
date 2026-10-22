@@ -1,11 +1,25 @@
 <div class="collection-page">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a routerLink="/">Library</a><span aria-hidden="true">/</span>@if(topic && area) {<a [routerLink]="area.path">{{area.title}}</a><span aria-hidden="true">/</span>}<span aria-current="page">{{title}}</span></nav>
   <header class="collection-header"><p class="eyebrow">{{familyMode ? 'For your table, at your pace' : 'Explore & understand'}}</p><h1>{{title}}</h1><p class="lede">{{introduction}}</p></header>
+  @if(!familyMode && first(); as firstLesson) {<div class="curriculum-start"><a class="button" [routerLink]="['/articles',firstLesson.slug]">Start Learning</a><p>Follow the published lessons in order, or choose an article below.</p></div>}
+  @if(showPlan && curriculum; as sequence) {
+    <section class="curriculum-plan" aria-labelledby="curriculum-heading">
+      <h2 id="curriculum-heading">Your learning journey</h2>
+      <p>Numbered lessons are available now. Planned lessons show the gaps we still need to fill; they are not links.</p>
+      @for(phase of sequence.phases; track phase.title) {
+        <div class="curriculum-phase"><h3>{{phase.title}}</h3><ol class="curriculum-outline">
+          @for(slug of phase.published; track slug) {@if(library.find(slug); as article) {<li><span class="curriculum-step">{{lessonNumber(slug)}}.</span><a [routerLink]="['/articles',slug]">{{article.title}}</a></li>}}
+          @for(planned of phase.planned; track planned.title) {<li class="curriculum-planned"><span class="planned-label">Planned</span><span>{{planned.title}}<small>{{planned.note}}</small></span></li>}
+        </ol></div>
+      }
+      @if(sequence.gap) {<p class="curriculum-gap">{{sequence.gap}}</p>}
+    </section>
+  }
   @if(familyMode) {<aside class="family-directory-note"><h2>Could you teach it tonight?</h2><p>Every lesson includes the explanation, three discussion questions with parent guidance, a memory sentence, a practice, a prayer, and source references. Open a lesson, then choose <strong>Print Family Lesson</strong> to print or save as PDF. No preparation or account needed.</p></aside>}
   @if(!topic && !familyMode) {<div class="topic-links" aria-label="Topics in this collection">@for(item of visibleTopics(); track item.id) {<a [routerLink]="item.path">{{item.title}} <span aria-hidden="true">→</span></a>}</div>}
   <h2 class="collection-lessons-heading">{{familyMode ? "Choose a family lesson" : "Lessons in this collection"}}</h2>
   <label class="search-label" for="collection-search">{{familyMode ? 'Find a family lesson' : 'Search this collection'}}</label>
   <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="collection-search" type="search" placeholder="Search by topic or keyword" [value]="query()" (input)="query.set($any($event.target).value)"></div>
   <div class="collection-meta"><span>{{topic?.title ?? (familyMode ? 'Print and learn together' : area?.title)}}</span><span role="status">{{results().length}} {{results().length === 1 ? 'lesson' : 'lessons'}}</span></div>
-  @if(results().length) {<nt-article-cards [entries]="results()"/>} @else {<div class="empty"><h2>No matching lessons yet</h2><p>Try another word or clear the search to browse this collection.</p><button class="button secondary" (click)="query.set('')">Clear search</button></div>}
+  @if(results().length) {<nt-article-cards [entries]="results()" [numbered]="!familyMode"/>} @else {<div class="empty"><h2>No matching lessons yet</h2><p>Try another word or clear the search to browse this collection.</p><button class="button secondary" (click)="query.set('')">Clear search</button></div>}
 </div>

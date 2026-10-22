@@ -8,6 +8,7 @@ require.extensions['.ts'] = (module, filename) => module._compile(ts.transpileMo
   fs.readFileSync(filename, 'utf8'), {compilerOptions: {module: ts.ModuleKind.CommonJS}}
 ).outputText, filename);
 const { articles } = require('../src/app/content.ts');
+const { curricula, publishedSlugs, curriculumPosition, nextLesson, orderArticles } = require('../src/app/curriculum.ts');
 const root = path.resolve(__dirname, '../dist/nuanced-theology/browser');
 const read = route => fs.readFileSync(path.join(root, route, 'index.html'), 'utf8');
 const text = html => html.replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"');
@@ -101,4 +102,68 @@ test('old Creed collection link redirects to God’s Plan of Salvation', () => {
   const legacy = read('know-the-faith/the-creed');
   assert.ok(legacy.includes('http-equiv="refresh"'));
   assert.ok(legacy.includes('/know-the-faith/gods-plan-of-salvation'));
+});
+
+test('curriculum explicitly covers every published article exactly once', () => {
+  const sequence = curricula.flatMap(publishedSlugs);
+  assert.equal(new Set(sequence).size, sequence.length);
+  assert.deepEqual([...sequence].sort(), articles.map(a => a.slug).sort());
+  assert.deepEqual(orderArticles([...articles].reverse()).map(a => a.slug), sequence);
+  assert.ok(sequence.indexOf('promises-pointing-to-jesus') < sequence.indexOf('life-of-jesus'));
+  assert.ok(sequence.indexOf('life-of-jesus') < sequence.indexOf('new-covenant-in-jesus'));
+  assert.ok(sequence.indexOf('holy-water') < sequence.indexOf('sign-of-the-cross'));
+  assert.ok(sequence.indexOf('sign-of-the-cross') < sequence.indexOf('standing-for-the-gospel'));
+  assert.ok(sequence.indexOf('standing-for-the-gospel') < sequence.indexOf('eucharist-real-presence'));
+  assert.equal(sequence.at(-1), 'dismissal');
+});
+
+for (const article of articles) {
+  test(`${article.slug}: correct position, Next destination, placement and print exclusion`, () => {
+    const position = curriculumPosition(article.slug);
+    assert.ok(position);
+    const next = nextLesson(article.slug);
+    for (const family of [false, true]) {
+      const html = read(`articles/${article.slug}${family ? '/family-lesson' : ''}`);
+      const navStart = html.search(/<nav\b[^>]*class="curriculum-next screen-only"/);
+      assert.ok(navStart !== -1);
+      const navigation = html.slice(navStart, html.indexOf('</nav>', navStart));
+      assert.ok(text(html).includes(`Lesson ${position.number} of ${position.total} — ${position.sequence.title}`));
+      assert.ok(navStart > html.indexOf(family ? 'No ecclesiastical approval is claimed.' : 'References support the explanation;'));
+      if (next) {
+        assert.ok(articles.some(a => a.slug === next.slug));
+        assert.ok(navigation.includes(`href="/articles/${next.slug}${family ? '/family-lesson' : ''}"`));
+        assert.ok(navigation.includes('>Next →</a>'));
+        assert.ok(navigation.includes('aria-describedby="next-lesson-title"'));
+      } else {
+        assert.equal(article.slug, 'dismissal');
+        assert.ok(navigation.includes('end of the published journey'));
+        assert.ok(!navigation.includes('>Next →</a>'));
+      }
+    }
+  });
+}
+
+test('collections expose Start Learning, ordered numbering, and unlinked content gaps', () => {
+  for (const sequence of curricula) {
+    const html = read(sequence.path.slice(1));
+    const first = publishedSlugs(sequence)[0];
+    assert.ok(html.includes(`href="/articles/${first}"`));
+    assert.match(html, /<a[^>]*>Start Learning<\/a>/);
+    const outline = html.slice(html.indexOf('class="curriculum-plan"'), html.indexOf('class="collection-lessons-heading"'));
+    let last = -1;
+    for (const slug of publishedSlugs(sequence)) {
+      const index = outline.indexOf(`href="/articles/${slug}"`);
+      assert.ok(index > last, slug);
+      last = index;
+    }
+    const plannedRows = [...outline.matchAll(/<li class="curriculum-planned">([\s\S]*?)<\/li>/g)];
+    assert.ok(plannedRows.length > 0);
+    for (const row of plannedRows) assert.ok(!row[1].includes('href='));
+  }
+  const endFaith = read('articles/new-life-in-christ');
+  assert.ok(endFaith.includes('Church and Pentecost lessons are still planned'));
+  assert.ok(endFaith.includes('href="/articles/holy-water"'));
+  const endEucharist = read('articles/eucharist-real-presence');
+  assert.ok(endEucharist.includes('Still planned before this next stage:'));
+  assert.ok(endEucharist.includes('The Lord’s Prayer, peace, and Lamb of God'));
 });

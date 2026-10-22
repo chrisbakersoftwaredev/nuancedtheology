@@ -2,6 +2,7 @@ import { Component, inject, input, output, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Article } from './content';
 import { ContentLibrary } from './library';
+import { curriculumPosition } from './curriculum';
 
 @Component({
   selector: 'nt-library-nav', imports: [RouterLink, RouterLinkActive],
@@ -32,6 +33,7 @@ export class LibraryNav {
     <div class="article-grid">
       @for(article of entries(); track article.slug) {
         <article class="article-card">
+          @if(numbered()) {<p class="curriculum-card-number">Lesson {{position(article.slug)?.number}}</p>}
           <p class="eyebrow">{{library.topic(article.topicId)?.title}} · {{article.readMinutes}} min</p>
           <h3><a [routerLink]="['/articles',article.slug]">{{article.title}}</a></h3>
           <p>{{article.summary}}</p>
@@ -47,6 +49,8 @@ export class LibraryNav {
 export class ArticleCards {
   readonly library = inject(ContentLibrary);
   readonly entries = input.required<readonly Article[]>();
+  readonly numbered = input(false);
+  readonly position = curriculumPosition;
 
 }
 
