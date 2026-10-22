@@ -26,7 +26,7 @@ Open the family lesson in a regular browser and choose Print Family Lesson. Sele
 
 ## Add content
 
-The canonical collection in `app/src/app/content.ts` combines the original lesson with `mass-articles.ts` and `faith-articles.ts`. New lessons use the typed `lesson-builder.ts` helper for shared metadata and the printable structure; explanations and family prompts are authored per topic. The list, search, article page, family lesson, and prerender parameters all use this collection. Optional Level 2 and 3 original sections are supported without displaying empty tabs. Keep citations attached to the relevant sections.
+The canonical collection in `app/src/app/content.ts` combines the original lesson with `mass-articles.ts`, `faith-articles.ts`, `faith-foundations.ts`, and `mass-foundations.ts`. New lessons use the typed `lesson-builder.ts` helper for shared metadata and the printable structure; explanations and family prompts are authored per topic. The list, search, article page, family lesson, and prerender parameters all use this collection. Optional Level 2 and 3 original sections are supported without displaying empty tabs. Keep citations attached to the relevant sections.
 
 Review source relevance, links, age appropriateness, and actual printing for each article. Set revision details honestly. Current content is awaiting theological review and has no claimed ecclesiastical approval.
 

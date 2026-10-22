@@ -41,6 +41,9 @@ export const topics: readonly LibraryTopic[] = [{
   id: 'liturgy-of-the-eucharist', areaId: 'mass', title: 'Liturgy of the Eucharist', path: '/know-the-mass/liturgy-of-the-eucharist',
   introduction: 'Begin to understand Christ’s gift of himself in the Eucharist.'
 }, {
+  id: 'communion-rite', areaId: 'mass', title: 'Communion Rite', path: '/know-the-mass/communion-rite',
+  introduction: 'Pray for unity, prepare to receive Christ, and give thanks for his gift in Holy Communion.'
+}, {
   id: 'concluding-rites', areaId: 'mass', title: 'Concluding Rites', path: '/know-the-mass/concluding-rites',
   introduction: 'Mass sends us into daily life to praise God by loving and serving our neighbors.'
 }, {
