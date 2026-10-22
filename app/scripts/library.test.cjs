@@ -17,14 +17,15 @@ const collections = new Map([
   ['entering-church','know-the-mass/entering-church'],
   ['liturgy-of-the-word','know-the-mass/liturgy-of-the-word'],
   ['liturgy-of-the-eucharist','know-the-mass/liturgy-of-the-eucharist'],
+  ['communion-rite','know-the-mass/communion-rite'],
   ['concluding-rites','know-the-mass/concluding-rites'],
   ['liturgical-signs','know-the-mass/liturgical-signs'],
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
 ]);
-test('ten Mass and ten Faith articles plus the original and salvation overview', () => {
-  assert.equal(articles.length, 22);
-  assert.equal(articles.filter(a => a.topicId === 'gods-plan-of-salvation').length, 11);
-  assert.equal(articles.filter(a => a.topicId !== 'gods-plan-of-salvation').length, 11);
+test('complete Faith and Mass curricula', () => {
+  assert.equal(articles.length, 37);
+  assert.equal(articles.filter(a => a.topicId === 'gods-plan-of-salvation').length, 16);
+  assert.equal(articles.filter(a => a.topicId !== 'gods-plan-of-salvation').length, 21);
   assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 });
 for (const article of articles) {
@@ -69,10 +70,9 @@ for (const article of articles) {
     assert.match(printable, /<button[^>]*>Print Family Lesson /);
     for (const collection of [collections.get(article.topicId), article.topicId === 'gods-plan-of-salvation' ? 'know-the-faith' : 'know-the-mass', 'family-lessons']) {
       const listing = read(collection);
-      assert.ok(listing.includes(`href="/${route}"`), collection);
-      assert.ok(listing.includes(`href="/${route}/family-lesson"`), collection);
-      assert.ok(listing.includes('Read this article →'));
-      assert.ok(listing.includes('Learn as a family →'));
+      assert.ok(listing.includes(`href="/${route}${collection === 'family-lessons' ? '/family-lesson' : ''}"`), collection);
+      assert.ok(!listing.includes('id="collection-search"'));
+      assert.ok(!listing.includes('Lessons in this collection'));
       assert.ok(!listing.includes('Read the lesson →'));
       assert.ok(!listing.includes('Print Family Lesson →'));
     }
@@ -143,27 +143,27 @@ for (const article of articles) {
   });
 }
 
-test('collections expose Start Learning, ordered numbering, and unlinked content gaps', () => {
+test('complete outlines retain order and connect Faith to Mass', () => {
   for (const sequence of curricula) {
     const html = read(sequence.path.slice(1));
-    const first = publishedSlugs(sequence)[0];
-    assert.ok(html.includes(`href="/articles/${first}"`));
     assert.match(html, /<a[^>]*>Start Learning<\/a>/);
-    const outline = html.slice(html.indexOf('class="curriculum-plan"'), html.indexOf('class="collection-lessons-heading"'));
+    const outline = html.slice(html.indexOf('class="curriculum-plan"'));
     let last = -1;
     for (const slug of publishedSlugs(sequence)) {
       const index = outline.indexOf(`href="/articles/${slug}"`);
       assert.ok(index > last, slug);
       last = index;
     }
-    const plannedRows = [...outline.matchAll(/<li class="curriculum-planned">([\s\S]*?)<\/li>/g)];
-    assert.ok(plannedRows.length > 0);
-    for (const row of plannedRows) assert.ok(!row[1].includes('href='));
+    assert.equal(sequence.phases.flatMap(phase => phase.planned).length, 0);
+    assert.ok(!html.includes('id="collection-search"'));
   }
-  const endFaith = read('articles/new-life-in-christ');
-  assert.ok(endFaith.includes('Church and Pentecost lessons are still planned'));
-  assert.ok(endFaith.includes('href="/articles/holy-water"'));
-  const endEucharist = read('articles/eucharist-real-presence');
-  assert.ok(endEucharist.includes('Still planned before this next stage:'));
-  assert.ok(endEucharist.includes('The Lord’s Prayer, peace, and Lamb of God'));
+  assert.ok(read('articles/church-body-of-christ').includes('href="/articles/preparing-for-mass"'));
+  assert.ok(read('articles/eucharist-real-presence').includes('href="/articles/prayer-peace-and-lamb-of-god"'));
+});
+test('homepage warns about construction and lack of Church approval', () => {
+  const home = read('');
+  assert.ok(home.includes('Under construction'));
+  assert.ok(home.includes('None of the articles has been approved by any authority of the Catholic Church.'));
+  assert.ok(home.indexOf('construction-notice') < home.indexOf('<h1'));
+  assert.match(home, /type="search"/);
 });

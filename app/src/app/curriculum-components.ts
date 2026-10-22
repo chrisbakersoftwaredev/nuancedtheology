@@ -5,7 +5,7 @@ import { curriculumPosition, nextLesson } from './curriculum';
 
 @Component({selector: 'nt-curriculum-position', template: `
   @if(position(); as p) {
-    <p class="curriculum-position screen-only">Lesson {{p.number}} of {{p.total}} — {{p.sequence.title}}<span>Published lessons · more planned</span></p>
+    <p class="curriculum-position screen-only">Lesson {{p.number}} of {{p.total}} — {{p.sequence.title}}<span>Read, reflect, and learn together</span></p>
   }
 `})
 export class CurriculumPosition {
@@ -27,7 +27,7 @@ export class CurriculumPosition {
         <a class="button" [routerLink]="family() ? ['/articles',destination.slug,'family-lesson'] : ['/articles',destination.slug]" aria-describedby="next-lesson-title">Next →</a>
       } @else {
         <h2>You’ve reached the end of the published journey</h2>
-        <p>There is more to learn: the curriculum plan lists lessons still to come, including the Communion Rite. You can revisit any article or share a family lesson.</p>
+        <p>You have completed this introductory journey. Keep growing in faith by revisiting an article, learning as a family, and bringing what you have learned into daily life.</p>
         <a class="button secondary" [routerLink]="p.sequence.path">Explore the collection →</a>
       }
     </nav>

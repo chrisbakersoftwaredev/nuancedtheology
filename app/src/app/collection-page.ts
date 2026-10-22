@@ -1,12 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { ArticleCards } from './library-components';
 import { ContentLibrary } from './library';
 import { curricula, publishedSlugs } from './curriculum';
 
 @Component({
-  imports: [RouterLink, ArticleCards], templateUrl: './collection-page.html'
+  imports: [RouterLink], templateUrl: './collection-page.html'
 })
 export class CollectionPage {
   readonly library = inject(ContentLibrary);
@@ -18,12 +17,10 @@ export class CollectionPage {
   readonly introduction = this.familyMode
     ? 'Ready-to-print lessons for a conversation at home. You can be learning too: read aloud, explore three questions, practice, and pray together.'
     : this.topic?.introduction ?? this.area?.introduction ?? '';
-  readonly query = signal('');
   readonly entries = () => this.familyMode ? this.library.articles() : this.topic ? this.library.inTopic(this.topic.id) : this.area ? this.library.inArea(this.area.id) : [];
-  readonly results = () => this.library.search(this.query(), this.entries());
   readonly visibleTopics = () => this.library.topics().filter(t => t.areaId === this.area?.id);
   readonly curriculum = curricula.find(sequence => sequence.areaId === this.area?.id);
-  readonly showPlan = !!this.curriculum && (!this.topic || this.area?.id === 'faith') && !this.familyMode;
+  readonly sequences = () => (this.familyMode ? curricula : this.curriculum ? [this.curriculum] : []).map(sequence => ({...sequence, phases: sequence.phases.map(phase => ({...phase, published: phase.published.filter(slug => this.entries().some(article => article.slug === slug))})).filter(phase => phase.published.length)}));
   readonly first = () => this.entries()[0];
   readonly lessonNumber = (slug: string) => this.curriculum ? publishedSlugs(this.curriculum).indexOf(slug) + 1 : 0;
   constructor() {

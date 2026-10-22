@@ -1,82 +1,19 @@
 # Guided curriculum
 
-October 21, 2026. Incremental navigation update; existing article prose, sources, family explanations, and URLs are unchanged.
+Updated October 21, 2026. The introductory curriculum now contains 37 articles and matching family lessons: 16 Faith and 21 Mass. All formerly planned entries are developed. Article review status remains Awaiting theological review.
 
-## Single source of order
+`app/src/app/curriculum.ts` defines teaching order, phases, position indicators, Start Learning, and Next links. Faith concludes with the Church and continues into preparation for Mass. The Communion Rite now has its own topic and two articles. Preparation and liturgical signs are background lessons rather than additional rites.
 
-`app/src/app/curriculum.ts` defines curricula, phases, published article slugs, and planned lessons. The library sorts article listings from this registry; position indicators, numbered collection cards, collection outlines, Start Learning, and Next all use it. Neither file order nor publication date defines the journey. Future Know the Faith collections can register their own sequence without becoming part of God’s Plan of Salvation.
+Collection and topic pages show ordered outlines without duplicate article cards or search controls. The retained family directory links directly to family lessons. Search stays on the homepage, which now prominently states that the website is under construction and no articles have Church approval.
 
-Only published articles receive numbers or links. The position text explicitly counts published lessons. Planned items have titles and notes, without routes. Adding a lesson requires registering its slug in the appropriate phase and removing its corresponding planned item once developed.
+## New source review
 
-## Published order
+Five Faith articles cover the Fall, Incarnation, Christ establishing the Church, Pentecost, and the Church as Christ’s Body with sacramental life. Sources include Genesis 3, John 1, Matthew 16 and 28, Acts 2, 1 Corinthians 12, and Catechism paragraphs 396–412, 456–469, 731–737, and 781–798.
 
-God’s Plan of Salvation:
+Ten Mass articles cover preparation, entrance and greeting, Gloria and Collect, readings and Psalm, homily and Creed and intercessions, preparation of gifts, Eucharistic Prayer, Lord’s Prayer and peace and Lamb of God, Communion and thanksgiving, and final blessing. Sources include USCCB Order of Mass guides, GIRM chapters II and IV, Catechism 1348–1354 and 1384–1391, and relevant Scripture. Each article attaches source references to its explanation and includes parent guidance, three questions, practice, and an original prayer.
 
-1. Overview: the whole story
-2. Creation and God’s friendship (includes the Fall)
-3. Noah
-4. Abraham
-5. Moses and Sinai
-6. David
-7. Prophets and promises pointing to Jesus
-8. Jesus’ life (includes the Incarnation)
-9. The New Covenant in Jesus
-10. Jesus’ death, burial, and Resurrection
-11. New life in Christ
-
-Know the Mass:
-
-1. Holy water
-2. The tabernacle
-3. Genuflection
-4. The altar
-5. Vestments
-6. Liturgical colors
-7. The Sign of the Cross
-8. The Penitential Act
-9. Standing for the Gospel
-10. The Real Presence in the Eucharist
-11. The dismissal
-
-The first six Mass lessons are preparation and background, not a claim that vestments or colors are additional ritual actions. Introductory Rites, Word, Eucharist, Communion, and Concluding Rites remain distinct phases. The Communion phase is visible as planned rather than silently folded into the Real Presence article. The structural reference is [GIRM chapter II, especially 27–28, 46–90](https://www.usccb.org/prayer-and-worship/the-mass/general-instruction-of-the-roman-missal/girm-chapter-2).
-
-## Gaps and future development
-
-Faith priorities:
-
-- A dedicated Fall and need-for-a-Savior lesson; the existing creation article already introduces this.
-- A dedicated Incarnation lesson; the existing life-of-Jesus article introduces it.
-- Christ establishes his Church and entrusts the apostolic mission.
-- Pentecost and the Holy Spirit.
-- The Church as the Body of Christ, her sacramental life, and her mission: the intended conclusion and bridge to the Mass.
-
-Jesus’ Passion, burial, and Resurrection already have a combined published article; no placeholder duplicates it.
-
-Mass priorities:
-
-- Preparing our hearts for Mass.
-- Entrance, greeting, Gloria, and Collect.
-- Readings, Psalm, homily, Creed, and Universal Prayer.
-- Preparation of the gifts, Eucharistic Prayer, and Christ’s one sacrifice.
-- Communion Rite: Lord’s Prayer, peace, Lamb of God, preparation/reception of Holy Communion, and thanksgiving.
-- The final blessing.
-
-No new full theological lessons were generated for these gaps. The phases list them visibly on the main collection pages. Notices also appear when Next advances across a phase with missing lessons.
-
-## Temporary Faith-to-Mass transition
-
-The published Faith sequence ends at New Life in Christ. A notice there explicitly says that the Church and Pentecost material is still planned and that the published sequence does not complete the journey through the Church. Next currently opens Holy Water, the first available Mass lesson. A brief transition refers to the Word, the Holy Sacrifice of the Mass, and Christ’s real Eucharistic presence, citing GIRM 27–28.
-
-When the Church conclusion is written and reviewed, append it to the Faith sequence, remove the temporary gap notice, and retain the link to the first Mass lesson. The current transition is a transparent way to keep browsing published lessons, not a substitute for that missing Church lesson.
-
-## Navigation and printing
-
-Each primary article has a position indicator after its breadcrumb and a Next link after all article sources and resources. Each family view has the same position and a Next link after the entire family sheet, activities, prayer, and parent references. Family Next opens the next article’s family view; family views are not additional numbered steps. The final dismissal view offers an end-of-published-journey message and collection link, rather than an inactive Next button.
-
-All curriculum navigation is `screen-only` and additionally hidden by print rules targeting the reusable component hosts. The existing print handler, family sheet, Letter styling, and metadata are preserved. No accounts, databases, persistent tracking, or dependencies were added.
+Editorial checks distinguish Christ’s one sacrifice from a repeated death, Christ’s real humanity from a disguise, and family suggestions from Church obligations. Communion guidance refers families to their parish for personal circumstances rather than pressuring children to receive. No ecclesiastical review or approval is claimed. These drafts still need the owner’s theological and age-appropriateness review.
 
 ## Verification
 
-The production build prerenders 56 routes. All 51 automated checks pass, including every article/family Next destination and position, cross-collection transition, terminal state, link placement after references, explicit registry coverage, independence from source-file order, collection ordering, planned items without links, old collection redirect, and original shared explanations.
-
-Browser checks verified Start Learning, repeated Next navigation with live article/title/position updates, keyboard Enter, browser Back, family-mode continuity, the Faith-to-Mass transition, and dismissal completion. A 390-pixel mobile viewport showed no horizontal overflow and a readable Next control after parent references. Actual printer/PDF pagination was not reverified; the navigation’s print exclusion and unchanged print handler were checked in source.
+Production build prerenders 87 routes. Automated checks cover all 37 article and family pairs, source identifiers, discovery, sequence order, Next destinations, collection outlines, homepage notice, retained homepage search, and legacy redirects. Actual printed pagination still requires checking in a regular browser.
