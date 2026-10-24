@@ -18,8 +18,8 @@ export class CurriculumPosition {
     <nav class="curriculum-next screen-only" aria-label="Lesson navigation">
       @if(next(); as destination) {
         @if(destination.crossCollection) {
-          <p class="curriculum-gap">{{p.sequence.gap}}</p>
-          <p>{{p.sequence.transition}} <a href="https://www.usccb.org/prayer-and-worship/the-mass/general-instruction-of-the-roman-missal/girm-chapter-2">GIRM 27–28</a></p>
+          @if(p.sequence.gap) {<p class="curriculum-gap">{{p.sequence.gap}}</p>}
+          <p>{{p.sequence.transition}} @if(p.sequence.transitionSource; as source) {<a [href]="source.url">{{source.label}}</a> <a href="https://www.usccb.org/prayer-and-worship/the-mass/general-instruction-of-the-roman-missal/girm-chapter-2">GIRM 27–28</a>}</p>
         } @else if(gapBeforeNext()) {
           <p class="curriculum-gap">{{gapBeforeNext()}}</p>
         }
@@ -27,7 +27,7 @@ export class CurriculumPosition {
         <a class="button" [routerLink]="family() ? ['/articles',destination.slug,'family-lesson'] : ['/articles',destination.slug]" aria-describedby="next-lesson-title">Next →</a>
       } @else {
         <h2>You’ve reached the end of the published journey</h2>
-        <p>You have completed this introductory journey. Keep growing in faith by revisiting an article, learning as a family, and bringing what you have learned into daily life.</p>
+        <p>You have reached the last currently published lesson. More Faith chapters are planned. Revisit an article or learn as a family while the curriculum grows.</p>
         <a class="button secondary" [routerLink]="p.sequence.path">Explore the collection →</a>
       }
     </nav>

@@ -20,12 +20,14 @@ const collections = new Map([
   ['communion-rite','know-the-mass/communion-rite'],
   ['concluding-rites','know-the-mass/concluding-rites'],
   ['liturgical-signs','know-the-mass/liturgical-signs'],
+  ['living-the-faith','know-the-faith/living-the-faith'],
+  ['the-church','know-the-faith/the-church'],
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
 ]);
 test('complete Faith and Mass curricula', () => {
   assert.equal(articles.length, 37);
-  assert.equal(articles.filter(a => a.topicId === 'gods-plan-of-salvation').length, 16);
-  assert.equal(articles.filter(a => a.topicId !== 'gods-plan-of-salvation').length, 21);
+  assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 16);
+  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 21);
   assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 });
 for (const article of articles) {
@@ -68,7 +70,7 @@ for (const article of articles) {
     assert.ok(page.includes('Learn as a family →'));
     assert.ok(!page.includes('Print Family Lesson →'));
     assert.match(printable, /<button[^>]*>Print Family Lesson /);
-    for (const collection of [collections.get(article.topicId), article.topicId === 'gods-plan-of-salvation' ? 'know-the-faith' : 'know-the-mass', 'family-lessons']) {
+    for (const collection of [collections.get(article.topicId), ['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(article.topicId) ? 'know-the-faith' : 'know-the-mass', 'family-lessons']) {
       const listing = read(collection);
       assert.ok(listing.includes(`href="/${route}${collection === 'family-lessons' ? '/family-lesson' : ''}"`), collection);
       assert.ok(!listing.includes('id="collection-search"'));
@@ -154,7 +156,9 @@ test('complete outlines retain order and connect Faith to Mass', () => {
       assert.ok(index > last, slug);
       last = index;
     }
-    assert.equal(sequence.phases.flatMap(phase => phase.planned).length, 0);
+    const plannedRows = [...outline.matchAll(/<li class="curriculum-planned">([\s\S]*?)<\/li>/g)];
+    assert.equal(plannedRows.length, sequence.phases.flatMap(phase => phase.planned).length);
+    for (const row of plannedRows) assert.ok(!row[1].includes('href='));
     assert.ok(!html.includes('id="collection-search"'));
   }
   assert.ok(read('articles/church-body-of-christ').includes('href="/articles/preparing-for-mass"'));
@@ -166,4 +170,26 @@ test('homepage warns about construction and lack of Church approval', () => {
   assert.ok(home.includes('None of the articles has been approved by any authority of the Catholic Church.'));
   assert.ok(home.indexOf('construction-notice') < home.indexOf('<h1'));
   assert.match(home, /type="search"/);
+});
+
+test('Faith has three ordered parts with honest gaps and intact part boundaries', () => {
+  const faith = curricula.filter(sequence => sequence.areaId === 'faith');
+  assert.deepEqual(faith.map(sequence => sequence.id), ['salvation', 'living', 'church']);
+  assert.deepEqual(faith.map(sequence => publishedSlugs(sequence).length), [14, 1, 1]);
+  assert.equal(publishedSlugs(faith[0])[0], 'creation-and-gods-friendship');
+  assert.equal(nextLesson('gods-plan-of-salvation-overview').slug, 'new-life-in-christ');
+  assert.equal(nextLesson('new-life-in-christ').slug, 'church-body-of-christ');
+  const landing = read('know-the-faith');
+  let previous = -1;
+  for (const sequence of faith) {
+    const index = landing.indexOf(`Part ${sequence.part} — ${sequence.title}`);
+    assert.ok(index > previous);
+    previous = index;
+    assert.ok(read(sequence.path.slice(1)).includes(sequence.question));
+    for (const chapter of sequence.phases) assert.ok(landing.includes(chapter.title));
+  }
+  assert.ok(read('articles/new-life-in-christ').includes('Living the Faith currently has one published introduction'));
+  assert.ok(read('articles/church-body-of-christ').includes('source and summit'));
+  assert.ok(read('articles/church-body-of-christ').includes('one sacrifice is made sacramentally present'));
+  assert.ok(read('articles/dismissal').includes('More Faith chapters are planned'));
 });

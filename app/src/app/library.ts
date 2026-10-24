@@ -24,7 +24,7 @@ const massArea: LibraryArea = {
 };
 const faithArea: LibraryArea = {
   id: 'faith', title: 'Know the Faith', path: '/know-the-faith',
-  introduction: 'Follow the story of God’s saving love, from creation and the covenants to Jesus and the new life he offers us.'
+  introduction: 'Explore God’s saving work, our response in grace, and the life and worship of the Church.'
 };
 export const areas: readonly LibraryArea[] = [faithArea, massArea];
 export const topics: readonly LibraryTopic[] = [{
@@ -51,7 +51,14 @@ export const topics: readonly LibraryTopic[] = [{
   introduction: 'Explore the altar, vestments, and colors that help express the Church’s worship.'
 }, {
   id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
-  introduction: 'Start with the whole story in one short paragraph, then explore creation, the covenants, the prophets, Jesus’ life, his death and Resurrection, and our life in him. Read in order or begin with a question that interests you.'
+  introduction: 'Part 1: Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
+}, {
+  id: 'living-the-faith', areaId: 'faith', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
+  introduction: 'Part 2: Discover how God’s grace enables our response of faith, prayer, sacramental life, and love. One introduction is published; fuller chapters are planned.'
+}, {
+  id: 'the-church', areaId: 'faith', title: 'The Church', path: '/know-the-faith/the-church',
+  introduction: 'Part 3: Begin with the Church as Christ’s Body, then continue toward her worship in the Mass. Further chapters on apostolic succession, the four marks, and mission are planned.'
+
 }];
 
 export const collectionRoutes = [

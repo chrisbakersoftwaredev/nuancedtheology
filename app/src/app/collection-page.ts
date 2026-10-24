@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { ContentLibrary } from './library';
-import { curricula, publishedSlugs } from './curriculum';
+import { curricula, curriculumPosition } from './curriculum';
 
 @Component({
   imports: [RouterLink], templateUrl: './collection-page.html'
@@ -19,10 +19,9 @@ export class CollectionPage {
     : this.topic?.introduction ?? this.area?.introduction ?? '';
   readonly entries = () => this.familyMode ? this.library.articles() : this.topic ? this.library.inTopic(this.topic.id) : this.area ? this.library.inArea(this.area.id) : [];
   readonly visibleTopics = () => this.library.topics().filter(t => t.areaId === this.area?.id);
-  readonly curriculum = curricula.find(sequence => sequence.areaId === this.area?.id);
-  readonly sequences = () => (this.familyMode ? curricula : this.curriculum ? [this.curriculum] : []).map(sequence => ({...sequence, phases: sequence.phases.map(phase => ({...phase, published: phase.published.filter(slug => this.entries().some(article => article.slug === slug))})).filter(phase => phase.published.length)}));
+  readonly sequences = () => curricula.filter(sequence => this.familyMode || (sequence.areaId === this.area?.id && (!this.topic || sequence.areaId === 'mass' || sequence.path === this.topic.path))).map(sequence => ({...sequence, phases: sequence.phases.map(phase => ({...phase, published: phase.published.filter(slug => this.entries().some(article => article.slug === slug))})).filter(phase => (phase.published.length || (!this.topic || this.area?.id === 'faith') && phase.planned.length))}));
   readonly first = () => this.entries()[0];
-  readonly lessonNumber = (slug: string) => this.curriculum ? publishedSlugs(this.curriculum).indexOf(slug) + 1 : 0;
+  readonly lessonNumber = (slug: string) => curriculumPosition(slug)?.number ?? 0;
   constructor() {
     inject(Title).setTitle(this.title + ' | nuancedTheology');
     inject(Meta).updateTag({name: 'description', content: this.introduction});
