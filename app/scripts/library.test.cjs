@@ -103,7 +103,8 @@ test('Faith appears before Mass in navigation and homepage collections', () => {
 test('old Creed collection link redirects to God’s Plan of Salvation', () => {
   const legacy = read('know-the-faith/the-creed');
   assert.ok(legacy.includes('http-equiv="refresh"'));
-  assert.ok(legacy.includes('/know-the-faith/gods-plan-of-salvation'));
+  assert.ok(legacy.includes('content="0; url=/know-the-faith/gods-plan-of-salvation"'));
+  assert.ok(!legacy.includes('/know-the-faith/know-the-faith/'));
 });
 
 test('curriculum explicitly covers every published article exactly once', () => {
@@ -177,7 +178,8 @@ test('Faith has three ordered parts with honest gaps and intact part boundaries'
   assert.deepEqual(faith.map(sequence => sequence.id), ['salvation', 'living', 'church']);
   assert.deepEqual(faith.map(sequence => publishedSlugs(sequence).length), [14, 1, 1]);
   assert.equal(publishedSlugs(faith[0])[0], 'creation-and-gods-friendship');
-  assert.equal(nextLesson('gods-plan-of-salvation-overview').slug, 'new-life-in-christ');
+  assert.equal(nextLesson('pentecost-and-the-holy-spirit').slug, 'new-life-in-christ');
+  assert.equal(nextLesson('gods-plan-of-salvation-overview').slug, 'covenant-with-noah');
   assert.equal(nextLesson('new-life-in-christ').slug, 'church-body-of-christ');
   const landing = read('know-the-faith');
   let previous = -1;
@@ -192,4 +194,123 @@ test('Faith has three ordered parts with honest gaps and intact part boundaries'
   assert.ok(read('articles/church-body-of-christ').includes('source and summit'));
   assert.ok(read('articles/church-body-of-christ').includes('one sacrifice is made sacramentally present'));
   assert.ok(read('articles/dismissal').includes('More Faith chapters are planned'));
+});
+
+// Independent expected itinerary: catches a valid-looking but editorially wrong Next link.
+const expectedJourney = [
+  'creation-and-gods-friendship', 'the-fall-and-our-savior', 'gods-plan-of-salvation-overview',
+  'covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david',
+  'promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus', 'new-covenant-in-jesus',
+  'death-burial-and-resurrection', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit',
+  'new-life-in-christ', 'church-body-of-christ', 'preparing-for-mass', 'holy-water', 'tabernacle',
+  'genuflection', 'altar', 'vestments', 'liturgical-colors', 'entrance-and-greeting', 'sign-of-the-cross',
+  'penitential-act', 'gloria-and-collect', 'readings-and-psalm', 'standing-for-the-gospel',
+  'homily-creed-and-prayers', 'preparation-of-the-gifts', 'the-eucharistic-prayer',
+  'eucharist-real-presence', 'prayer-peace-and-lamb-of-god', 'holy-communion-and-thanksgiving',
+  'final-blessing', 'dismissal'
+];
+test('published Next destinations match the approved itinerary without loops', () => {
+  assert.deepEqual(curricula.flatMap(publishedSlugs), expectedJourney);
+  for (const family of [false, true]) {
+    const seen = new Set();
+    let slug = expectedJourney[0];
+    for (let index = 0; index < expectedJourney.length; index++) {
+      assert.equal(slug, expectedJourney[index]);
+      assert.ok(!seen.has(slug)); seen.add(slug);
+      const suffix = family ? '/family-lesson' : '';
+      const html = read(`articles/${slug}${suffix}`);
+      const nav = html.match(/<nav[^>]*class="curriculum-next screen-only"[\s\S]*?<\/nav>/)?.[0];
+      assert.ok(nav);
+      const nextAnchor = nav.match(/<a\b[^>]*>Next →<\/a>/)?.[0];
+      const destination = nextAnchor?.match(/href="([^"]+)"/)?.[1];
+      const next = expectedJourney[index + 1];
+      if (!next) { assert.equal(destination, undefined); break; }
+      assert.equal(destination, `/articles/${next}${suffix}`);
+      assert.ok(read(destination.slice(1)).includes('<h1'));
+      slug = destination.split('/')[2];
+    }
+    assert.equal(seen.size, articles.length);
+  }
+});
+test('shared primary menus show three Faith parts and no Mass categories', () => {
+  const home = read('');
+  const menus = [...home.matchAll(/<nav[^>]*aria-label="Learning library"[^>]*>([\s\S]*?)<\/nav>/g)];
+  assert.equal(menus.length, 2, 'desktop sidebar and mobile drawer');
+  for (const [,menu] of menus) {
+    for (const route of ['know-the-faith', 'know-the-faith/gods-plan-of-salvation', 'know-the-faith/living-the-faith', 'know-the-faith/the-church', 'know-the-mass']) assert.ok(menu.includes(`href="/${route}"`));
+    assert.ok(!menu.includes('href="/know-the-mass/'));
+  }
+  for (const route of collections.values()) assert.ok(read(route).includes('<h1'));
+});
+const {reviewStage, reviewStatusLabel} = require('../src/app/review-status.ts');
+test('all current articles are Drafted and reviews require version-specific evidence', () => {
+  for (const article of articles) {
+    assert.equal(article.revision.status, 'Drafted');
+    assert.equal(reviewStage(article), 'Drafted');
+    assert.ok(read(`articles/${article.slug}`).includes('Drafted · Awaiting theological review'));
+  }
+  const sample = {...articles[0], revision: {...articles[0].revision, status: 'Editorially Reviewed', reviewer: 'Test reviewer', reviewedOn: '2026-10-23', reviewedVersion: articles[0].revision.version, note: 'Test fixture only'}};
+  assert.equal(reviewStage(sample), 'Editorially Reviewed');
+  assert.ok(reviewStatusLabel(sample).includes('Awaiting theological review'));
+  assert.equal(reviewStage({...sample, revision: {...sample.revision, reviewedVersion: 0}}), 'Drafted');
+  assert.equal(reviewStage({...sample, revision: {...sample.revision, reviewer: ''}}), 'Drafted');
+});
+test('print rules exclude curriculum navigation and retain family sections', () => {
+  const styles = fs.readFileSync(path.resolve(__dirname, '../src/styles.css'),'utf8') + fs.readFileSync(path.resolve(__dirname, '../src/library.css'),'utf8');
+  assert.match(styles, /@media print\{nt-curriculum-position,nt-curriculum-navigation/);
+  assert.match(styles, /\.screen-only[^}]*display:none!important/);
+  assert.match(styles, /\.discussion-page\{break-before:page/);
+});
+
+test('all generated internal link destinations resolve over HTTP, including Next and fragments', async () => {
+  const http = require('node:http');
+  const pages = [];
+  function visit(directory) {
+    for (const entry of fs.readdirSync(directory, {withFileTypes:true})) {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(file);
+      else if (entry.name === 'index.html') pages.push(file);
+    }
+  }
+  visit(root);
+  const targets = new Set();
+  for (const page of pages) {
+    const route = '/' + path.relative(root, path.dirname(page)).split(path.sep).join('/');
+    const html = fs.readFileSync(page,'utf8');
+    for (const [,href] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
+      if (/^(https?:|mailto:|tel:)/.test(href)) continue;
+      assert.ok(!/^(javascript:|data:)/i.test(href));
+      const target = new URL(href, 'http://localhost' + route);
+      targets.add(target.pathname + target.hash);
+    }
+    const redirect = html.match(/http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"/i)?.[1];
+    if (redirect) targets.add(new URL(redirect,'http://localhost').pathname);
+  }
+  const server = http.createServer((request,response) => {
+    const pathname = decodeURIComponent(new URL(request.url,'http://localhost').pathname);
+    const file = path.join(root, pathname, 'index.html');
+    if (!fs.existsSync(file)) {response.writeHead(404);response.end('Missing');return;}
+    response.setHeader('Content-Type','text/html');response.end(fs.readFileSync(file));
+  });
+  await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  try {
+    const failures = [];
+    for (const target of targets) {
+      const url = new URL(target, base);
+      const result = await fetch(url);
+      if (result.status !== 200) { failures.push(target + ': HTTP ' + result.status); continue; }
+      const html = await result.text();
+      if (url.hash) {
+        const fragment = decodeURIComponent(url.hash.slice(1));
+        if (!html.includes(`id="${fragment}"`)) failures.push(target + ': missing fragment');
+      }
+    }
+    assert.deepEqual(failures, []);
+    assert.equal(pages.length, 89);
+    console.log(`Verified ${targets.size} internal link targets across ${pages.length} static pages.`);
+  } finally {
+    server.closeAllConnections();
+    await new Promise(resolve => server.close(resolve));
+  }
 });

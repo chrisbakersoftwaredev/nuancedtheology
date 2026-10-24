@@ -1,7 +1,7 @@
 import type { Article, Source } from './content';
 
 export const bible = (book: string, chapter: number, verses: string, note: string): Source => ({
-  id: `${book}-${chapter}`, label: `${book === '2samuel' ? '2 Samuel' : book === '1corinthians' ? '1 Corinthians' : book[0].toUpperCase() + book.slice(1)} ${chapter}:${verses}`,
+  id: `${book}-${chapter}`, label: `${book === '1timothy' ? '1 Timothy' : book === '2samuel' ? '2 Samuel' : book === '1corinthians' ? '1 Corinthians' : book[0].toUpperCase() + book.slice(1)} ${chapter}:${verses}`,
   url: `https://bible.usccb.org/bible/${book}/${chapter}`, note
 });
 export const catechism = (path: string, numbers: string, note: string): Source => ({
@@ -27,7 +27,7 @@ export function lesson(seed: LessonSeed): Article {
     sections: seed.sections.map(([title, paragraphs, sourceIds]) => ({title, paragraphs, sourceIds})),
     sources: seed.sources,
     deeperResources: seed.sources.slice(0, 2).map((source, index) => ({level: index === 0 ? 2 : 3, sourceId: source.id, description: `Read more: ${source.label}`})),
-    revision: {date: '2026-10-19', version: 1, status: 'Awaiting theological review'},
+    revision: {date: '2026-10-19', version: 1, status: 'Drafted'},
     lesson: {parentSourceIds: seed.sources.map(source => source.id), parentGuidance: seed.parentGuidance,
       questions: seed.questions.map(([question, guidance]) => ({question, guidance})),
       remember: seed.remember, practice: seed.practice, prayer: seed.prayer}

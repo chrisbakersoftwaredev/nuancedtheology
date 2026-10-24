@@ -16,7 +16,7 @@ export const faithArticles = [
  parentGuidance:'This is a short introduction to the whole collection, not a complete account of salvation or every biblical covenant. Welcome questions and use the longer articles to explore the details.'
  }),
  readMinutes:1,
- revision:{date:'2026-10-21',version:1,status:'Awaiting theological review' as const}
+ revision:{date:'2026-10-21',version:1,status:'Drafted' as const}
 },
 lesson({
  slug:'creation-and-gods-friendship',title:'What did God want for us from the beginning?',topicId:'gods-plan-of-salvation',summary:'Our story begins with a good creation, human dignity, and an invitation to friendship with God.',keywords:['creation','Adam','Eve','covenant','fall','dignity','Genesis'],

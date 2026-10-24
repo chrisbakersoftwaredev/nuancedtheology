@@ -2,9 +2,9 @@
 
 Updated October 23, 2026.
 
-Know the Faith now has three parts with numbered chapters and descriptions. Creation begins the sequence; the existing summary is the Part 1 recap. New life in Christ introduces Part 2, and the Body of Christ introduces Part 3. The Church-foundation introduction and Pentecost remain in salvation history.
+Know the Faith now has three parts with numbered chapters and descriptions. Creation begins the sequence; the existing summary follows Creation and the Fall as early orientation. New life in Christ introduces Part 2, and the Body of Christ introduces Part 3. The Church-foundation introduction and Pentecost remain in salvation history.
 
-All 37 article URLs and family variants are preserved. Article explanations, sources, family material, and print templates are unchanged. Only two article topic assignments changed. Living the Faith and The Church have new collection routes. No new full articles or dependencies were added.
+All 37 article URLs and family variants are preserved. Article explanations, source URLs, family material, and print templates are preserved. The display label for 1 Timothy is normalized. The three existing Faith collections remain available. Current article statuses are explicitly Drafted. No new full articles or dependencies were added.
 
 The centralized registry controls order, Start Learning, numbered positions, and reusable Next buttons in article and family views. Planned items have no URLs or numbers. Gap notices appear at part boundaries. The final dismissal lesson honestly identifies the end of currently published content. Navigation remains screen-only.
 
@@ -12,15 +12,15 @@ The centralized registry controls order, Start Learning, numbered positions, and
 
 A dedicated Ascension lesson is still needed. Living the Faith needs fuller lessons on grace and conversion, Baptism and sacramental life, prayer and theological virtues, and morality and the commandments. The Church needs apostolic succession, the four marks, and a fuller mission-and-worship conclusion. These are visibly planned rather than invented articles.
 
-For owner review: the whole-story overview is now a recap, and existing grace and Church articles serve as introductions to otherwise incomplete parts. The Church-to-Mass transition is supported by the published Body of Christ article and cites Catechism 1324 and GIRM 27–28. It identifies the Eucharist as source and summit and describes Christ’s one sacrifice as sacramentally present. All content remains awaiting theological review; no ecclesiastical approval is claimed.
+For owner review: the whole-story overview is now early orientation, and existing grace and Church articles serve as introductions to otherwise incomplete parts. The Church-to-Mass transition is supported by the published Body of Christ article and cites Catechism 1324 and GIRM 27–28. It identifies the Eucharist as source and summit and describes Christ’s one sacrifice as sacramentally present. All content remains awaiting theological review; no ecclesiastical approval is claimed.
 
 ## Verification
 
-Production build generates 89 routes. All 83 content/navigation checks pass, covering every article and family view, ordered outlines, unlinked planned entries, chapter and part boundaries, position indicators, preserved routes, homepage search and warning, and completion text. Browser checks cover Start Learning, keyboard Next, mobile layout without horizontal overflow, and family transitions through Parts 2 and 3 into Mass. Actual printed pagination still requires a regular-browser check; print templates and styles are unchanged.
+Production build generates 89 routes. All 88 content/navigation checks pass, covering every article and family view, ordered outlines, unlinked planned entries, chapter and part boundaries, position indicators, preserved routes, homepage search and warning, and completion text. Browser checks cover Start Learning, keyboard Next, mobile layout without horizontal overflow, and family transitions through Parts 2 and 3 into Mass. Actual printed pagination still requires a regular-browser check; print templates and styles are unchanged.
 
 ## Complete hierarchy and published order
 
-Numbers restart within each path. The following hierarchy is generated from the same curriculum registry used by the site.
+Numbers restart within each path.
 
 ### Part 1 — God’s Plan of Salvation
 
@@ -28,27 +28,27 @@ Numbers restart within each path. The following hierarchy is generated from the 
 
 1. What did God want for us from the beginning? (creation-and-gods-friendship)
 2. Why do we need a Savior? (the-fall-and-our-savior)
+3. God’s Plan of Salvation: the whole story (gods-plan-of-salvation-overview)
 
 #### 2. God’s Covenants and Israel
 
-3. What did God promise Noah? (covenant-with-noah)
-4. Why did God call Abraham? (covenant-with-abraham)
-5. What happened when God made a covenant at Sinai? (covenant-with-moses)
-6. What did God promise King David? (covenant-with-david)
+4. What did God promise Noah? (covenant-with-noah)
+5. Why did God call Abraham? (covenant-with-abraham)
+6. What happened when God made a covenant at Sinai? (covenant-with-moses)
+7. What did God promise King David? (covenant-with-david)
 
-#### 3. The Prophets and the Promised Messiah
+#### 3. The Prophets and Jesus Christ
 
-7. How do the prophets help us recognize Jesus? (promises-pointing-to-jesus)
+8. How do the prophets help us recognize Jesus? (promises-pointing-to-jesus)
+9. What does it mean that God became human? (the-incarnation)
+10. Who is Jesus, and how did he live? (life-of-jesus)
 
-#### 4. Jesus Christ and the New Covenant
+#### 4. Salvation Through Christ
 
-8. What does it mean that God became human? (the-incarnation)
-9. Who is Jesus, and how did he live? (life-of-jesus)
-10. What is the New Covenant in Jesus? (new-covenant-in-jesus)
-11. Why do Jesus’ death, burial, and Resurrection matter? (death-burial-and-resurrection)
-12. Why did Jesus establish his Church? (christ-establishes-his-church)
-13. What happened at Pentecost? (pentecost-and-the-holy-spirit)
-14. God’s Plan of Salvation: the whole story (gods-plan-of-salvation-overview)
+11. What is the New Covenant in Jesus? (new-covenant-in-jesus)
+12. Why do Jesus’ death, burial, and Resurrection matter? (death-burial-and-resurrection)
+13. Why did Jesus establish his Church? (christ-establishes-his-church)
+14. What happened at Pentecost? (pentecost-and-the-holy-spirit)
 - **Planned:** The Ascension of Jesus
 
 ### Part 2 — Living the Faith

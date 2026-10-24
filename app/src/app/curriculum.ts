@@ -14,11 +14,11 @@ export const curricula: Curriculum[] = [{
   description: 'Follow God’s saving work from creation and the Fall through his covenants to Jesus Christ and the gift of the Holy Spirit.',
   question: 'What has God done to save humanity?',
   phases: [
-    {title: 'Creation and the Fall', published: ['creation-and-gods-friendship', 'the-fall-and-our-savior'], planned: []},
+    {title: 'Creation and the Fall', published: ['creation-and-gods-friendship', 'the-fall-and-our-savior', 'gods-plan-of-salvation-overview'], planned: []},
     {title: 'God’s Covenants and Israel', published: ['covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david'], planned: []},
-    {title: 'The Prophets and the Promised Messiah', published: ['promises-pointing-to-jesus'], planned: []},
-    {title: 'Jesus Christ and the New Covenant', published: ['the-incarnation', 'life-of-jesus', 'new-covenant-in-jesus', 'death-burial-and-resurrection', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit', 'gods-plan-of-salvation-overview'], planned: [
-      {title: 'The Ascension of Jesus', note: 'Planned: a dedicated lesson connecting Christ’s Ascension, his reign, and the sending of the Spirit. The overview remains a recap of the whole story.'}
+    {title: 'The Prophets and Jesus Christ', published: ['promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus'], planned: []},
+    {title: 'Salvation Through Christ', published: ['new-covenant-in-jesus', 'death-burial-and-resurrection', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit'], planned: [
+      {title: 'The Ascension of Jesus', note: 'Planned: a dedicated lesson connecting Christ’s Ascension, his reign, and the sending of the Spirit. The whole-story overview near the beginning provides orientation before the detailed covenant lessons.'}
     ]}
   ], nextId: 'living',
   gap: 'A dedicated Ascension lesson is still planned. Next continues with the published introduction to living by God’s grace.',
@@ -65,7 +65,7 @@ export function curriculumPosition(slug: string) {
   for (const sequence of curricula) {
     const slugs = publishedSlugs(sequence);
     const index = slugs.indexOf(slug);
-    if (index !== -1) return {sequence, number: index + 1, total: slugs.length};
+    if (index !== -1) return {sequence, number: index + 1, total: slugs.length, chapter: sequence.phases.find(phase => phase.published.includes(slug))?.title};
   }
   return undefined;
 }

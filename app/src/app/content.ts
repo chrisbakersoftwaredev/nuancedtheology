@@ -5,12 +5,17 @@ import { faithArticles } from './faith-articles';
 
 export interface Section { title: string; paragraphs: string[]; sourceIds: string[]; }
 export interface Source { id: string; label: string; url: string; note: string; }
+export type ReviewStage = 'Drafted' | 'Editorially Reviewed' | 'Theologically Reviewed' | 'Externally Reviewed';
+export type ReviewRecord = {status: 'Drafted'} | {
+  status: Exclude<ReviewStage, 'Drafted'>; reviewer: string; reviewedOn: string;
+  reviewedVersion: number; note: string;
+};
 export interface Article {
   slug: string; title: string; summary: string; topicId: string; keywords: string[];
   readMinutes: number; sections: Section[]; sources: Source[];
   deeperResources: { level: 2 | 3; sourceId: string; description: string }[];
   level2?: Section[]; level3?: Section[];
-  revision: { date: string; version: number; status: 'Awaiting theological review' | 'Reviewed'; reviewer?: string };
+  revision: { date: string; version: number } & ReviewRecord;
   lesson: { parentSourceIds: string[]; parentGuidance: string; questions: { question: string; guidance: string }[]; remember: string; practice: string; prayer: string };
 }
 const vatican = 'https://www.vatican.va/content/catechism/en/';
@@ -18,7 +23,7 @@ export const articles: Article[] = [{
  slug: 'sign-of-the-cross', title: 'Why do Catholics make the Sign of the Cross?',
  summary: 'A little gesture with a big meaning: a prayer that reminds us who God is and how much Jesus loves us.',
  topicId: 'introductory-rites', keywords: ['prayer', 'Trinity', 'Baptism', 'cross', 'gesture', 'Jesus'], readMinutes: 4,
- revision: { date: '2026-10-18', version: 2, status: 'Awaiting theological review' },
+ revision: { date: '2026-10-18', version: 2, status: 'Drafted' },
  sections: [
   { title: 'A prayer you can see', sourceIds: ['daily'], paragraphs: [
    'Have you ever watched someone touch their forehead, chest, and shoulders before praying? They are making the Sign of the Cross. You may see people do it at Mass, before a meal, or at bedtime. It is a short prayer we say with both our words and our bodies.',
