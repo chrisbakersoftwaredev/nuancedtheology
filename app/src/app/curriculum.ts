@@ -4,21 +4,50 @@ export interface PlannedLesson { title: string; note: string; }
 export interface CurriculumPhase { title: string; published: string[]; planned: PlannedLesson[]; }
 export interface Curriculum {
   id: string; areaId: string; title: string; path: string;
+  part?: number; description?: string; question?: string; transitionSource?: {url: string; label: string};
   phases: CurriculumPhase[]; nextId?: string; transition?: string; gap?: string;
 }
 
 // The only source of teaching order. Planned lessons have no slug or live route.
 export const curricula: Curriculum[] = [{
-  id: 'salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
+  id: 'salvation', areaId: 'faith', part: 1, title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
+  description: 'Follow God’s saving work from creation and the Fall through his covenants to Jesus Christ and the gift of the Holy Spirit.',
+  question: 'What has God done to save humanity?',
   phases: [
-    {title: 'The beginning', published: ['gods-plan-of-salvation-overview', 'creation-and-gods-friendship', 'the-fall-and-our-savior'], planned: []},
-    {title: 'God’s covenants', published: ['covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david'], planned: []},
-    {title: 'The prophets and Jesus Christ', published: ['promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus'], planned: []},
-    {title: 'Salvation through Christ', published: ['new-covenant-in-jesus', 'death-burial-and-resurrection', 'new-life-in-christ'], planned: []},
-    {title: 'The Church and her mission', published: ['christ-establishes-his-church', 'pentecost-and-the-holy-spirit', 'church-body-of-christ'], planned: []}
-  ],
-  nextId: 'mass',
-  transition: 'The Church gathers to hear God’s Word and celebrate the Holy Sacrifice of the Mass, where Christ is truly present, most especially in the Eucharist.'
+    {title: 'Creation and the Fall', published: ['creation-and-gods-friendship', 'the-fall-and-our-savior'], planned: []},
+    {title: 'God’s Covenants and Israel', published: ['covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david'], planned: []},
+    {title: 'The Prophets and the Promised Messiah', published: ['promises-pointing-to-jesus'], planned: []},
+    {title: 'Jesus Christ and the New Covenant', published: ['the-incarnation', 'life-of-jesus', 'new-covenant-in-jesus', 'death-burial-and-resurrection', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit', 'gods-plan-of-salvation-overview'], planned: [
+      {title: 'The Ascension of Jesus', note: 'Planned: a dedicated lesson connecting Christ’s Ascension, his reign, and the sending of the Spirit. The overview remains a recap of the whole story.'}
+    ]}
+  ], nextId: 'living',
+  gap: 'A dedicated Ascension lesson is still planned. Next continues with the published introduction to living by God’s grace.',
+  transition: 'God’s saving love invites our response. Continue with the new life that his grace makes possible.'
+}, {
+  id: 'living', areaId: 'faith', part: 2, title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
+  description: 'Explore how God’s grace makes possible a life of faith, conversion, prayer, and love. This path is beginning with one published introduction.',
+  question: 'How do we respond to God’s grace and live as Christians?',
+  phases: [
+    {title: 'Faith, Grace, and Conversion', published: ['new-life-in-christ'], planned: [{title: 'Faith, works, and repentance', note: 'Planned: our response depends on God’s grace; salvation is not earned by unaided effort.'}]},
+    {title: 'The Sacraments and Christian Life', published: [], planned: [{title: 'Baptism and sanctifying grace', note: 'Planned: an introduction to sacramental life and God’s freely given gift.'}]},
+    {title: 'Prayer and Growing in Holiness', published: [], planned: [{title: 'Prayer and the theological virtues', note: 'Planned: growing in faith, hope, and charity.'}]},
+    {title: 'Morality, Virtue, and the Commandments', published: [], planned: [{title: 'Following Christ in daily choices', note: 'Planned: conscience, virtue, and the commandments in a life of grace.'}]}
+  ], nextId: 'church',
+  gap: 'Living the Faith currently has one published introduction. Its fuller chapters are planned; Next continues to the published Church lesson.',
+  transition: 'Christian life is lived in communion with Christ and his people. Continue by learning about the Church as his Body.'
+}, {
+  id: 'church', areaId: 'faith', part: 3, title: 'The Church', path: '/know-the-faith/the-church',
+  description: 'Discover the people Christ gathers, their apostolic foundation, and their mission of worship and service. A published introduction leads toward the Mass.',
+  question: 'What is the Church that Christ established, and what does it mean to belong to her?',
+  phases: [
+    {title: 'The Church as the Body of Christ', published: ['church-body-of-christ'], planned: []},
+    {title: 'The Apostles and Apostolic Succession', published: [], planned: [{title: 'The apostles and their successors', note: 'Planned: Christ’s entrusted authority and the continuing apostolic mission. Part 1 already introduces the Church’s foundation.'}]},
+    {title: 'The Four Marks of the Church', published: [], planned: [{title: 'One, holy, catholic, and apostolic', note: 'Planned: what the Creed teaches about the Church.'}]},
+    {title: 'The Church’s Mission and Worship', published: [], planned: [{title: 'Proclaiming the Gospel and celebrating the sacraments', note: 'Planned: a fuller conclusion about the Church’s mission and worship; the current Body of Christ lesson introduces this connection.'}]}
+  ], nextId: 'mass',
+  gap: 'The fuller Church chapters are still planned. The published introduction already connects the Church’s sacramental life to worship, so you can continue into Know the Mass.',
+  transition: 'The Eucharist is the source and summit of Christian life. The Church gathers to hear God’s Word and celebrate the Holy Sacrifice of the Mass, where Christ’s one sacrifice is made sacramentally present and he is truly present in the Eucharist.',
+  transitionSource: {url: 'https://www.vatican.va/content/catechism/en/part_two/section_two/chapter_one/article_3/i_the_eucharist_source_and_summit_of_ecclesial_life.index.html', label: 'Catechism 1324'}
 }, {
   id: 'mass', areaId: 'mass', title: 'Know the Mass', path: '/know-the-mass',
   phases: [

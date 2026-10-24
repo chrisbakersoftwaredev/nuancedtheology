@@ -1,19 +1,130 @@
 # Guided curriculum
 
-Updated October 21, 2026. The introductory curriculum now contains 37 articles and matching family lessons: 16 Faith and 21 Mass. All formerly planned entries are developed. Article review status remains Awaiting theological review.
+Updated October 23, 2026.
 
-`app/src/app/curriculum.ts` defines teaching order, phases, position indicators, Start Learning, and Next links. Faith concludes with the Church and continues into preparation for Mass. The Communion Rite now has its own topic and two articles. Preparation and liturgical signs are background lessons rather than additional rites.
+Know the Faith now has three parts with numbered chapters and descriptions. Creation begins the sequence; the existing summary is the Part 1 recap. New life in Christ introduces Part 2, and the Body of Christ introduces Part 3. The Church-foundation introduction and Pentecost remain in salvation history.
 
-Collection and topic pages show ordered outlines without duplicate article cards or search controls. The retained family directory links directly to family lessons. Search stays on the homepage, which now prominently states that the website is under construction and no articles have Church approval.
+All 37 article URLs and family variants are preserved. Article explanations, sources, family material, and print templates are unchanged. Only two article topic assignments changed. Living the Faith and The Church have new collection routes. No new full articles or dependencies were added.
 
-## New source review
+The centralized registry controls order, Start Learning, numbered positions, and reusable Next buttons in article and family views. Planned items have no URLs or numbers. Gap notices appear at part boundaries. The final dismissal lesson honestly identifies the end of currently published content. Navigation remains screen-only.
 
-Five Faith articles cover the Fall, Incarnation, Christ establishing the Church, Pentecost, and the Church as Christ’s Body with sacramental life. Sources include Genesis 3, John 1, Matthew 16 and 28, Acts 2, 1 Corinthians 12, and Catechism paragraphs 396–412, 456–469, 731–737, and 781–798.
+## Editorial questions and gaps
 
-Ten Mass articles cover preparation, entrance and greeting, Gloria and Collect, readings and Psalm, homily and Creed and intercessions, preparation of gifts, Eucharistic Prayer, Lord’s Prayer and peace and Lamb of God, Communion and thanksgiving, and final blessing. Sources include USCCB Order of Mass guides, GIRM chapters II and IV, Catechism 1348–1354 and 1384–1391, and relevant Scripture. Each article attaches source references to its explanation and includes parent guidance, three questions, practice, and an original prayer.
+A dedicated Ascension lesson is still needed. Living the Faith needs fuller lessons on grace and conversion, Baptism and sacramental life, prayer and theological virtues, and morality and the commandments. The Church needs apostolic succession, the four marks, and a fuller mission-and-worship conclusion. These are visibly planned rather than invented articles.
 
-Editorial checks distinguish Christ’s one sacrifice from a repeated death, Christ’s real humanity from a disguise, and family suggestions from Church obligations. Communion guidance refers families to their parish for personal circumstances rather than pressuring children to receive. No ecclesiastical review or approval is claimed. These drafts still need the owner’s theological and age-appropriateness review.
+For owner review: the whole-story overview is now a recap, and existing grace and Church articles serve as introductions to otherwise incomplete parts. The Church-to-Mass transition is supported by the published Body of Christ article and cites Catechism 1324 and GIRM 27–28. It identifies the Eucharist as source and summit and describes Christ’s one sacrifice as sacramentally present. All content remains awaiting theological review; no ecclesiastical approval is claimed.
 
 ## Verification
 
-Production build prerenders 87 routes. Automated checks cover all 37 article and family pairs, source identifiers, discovery, sequence order, Next destinations, collection outlines, homepage notice, retained homepage search, and legacy redirects. Actual printed pagination still requires checking in a regular browser.
+Production build generates 89 routes. All 83 content/navigation checks pass, covering every article and family view, ordered outlines, unlinked planned entries, chapter and part boundaries, position indicators, preserved routes, homepage search and warning, and completion text. Browser checks cover Start Learning, keyboard Next, mobile layout without horizontal overflow, and family transitions through Parts 2 and 3 into Mass. Actual printed pagination still requires a regular-browser check; print templates and styles are unchanged.
+
+## Complete hierarchy and published order
+
+Numbers restart within each path. The following hierarchy is generated from the same curriculum registry used by the site.
+
+### Part 1 — God’s Plan of Salvation
+
+#### 1. Creation and the Fall
+
+1. What did God want for us from the beginning? (creation-and-gods-friendship)
+2. Why do we need a Savior? (the-fall-and-our-savior)
+
+#### 2. God’s Covenants and Israel
+
+3. What did God promise Noah? (covenant-with-noah)
+4. Why did God call Abraham? (covenant-with-abraham)
+5. What happened when God made a covenant at Sinai? (covenant-with-moses)
+6. What did God promise King David? (covenant-with-david)
+
+#### 3. The Prophets and the Promised Messiah
+
+7. How do the prophets help us recognize Jesus? (promises-pointing-to-jesus)
+
+#### 4. Jesus Christ and the New Covenant
+
+8. What does it mean that God became human? (the-incarnation)
+9. Who is Jesus, and how did he live? (life-of-jesus)
+10. What is the New Covenant in Jesus? (new-covenant-in-jesus)
+11. Why do Jesus’ death, burial, and Resurrection matter? (death-burial-and-resurrection)
+12. Why did Jesus establish his Church? (christ-establishes-his-church)
+13. What happened at Pentecost? (pentecost-and-the-holy-spirit)
+14. God’s Plan of Salvation: the whole story (gods-plan-of-salvation-overview)
+- **Planned:** The Ascension of Jesus
+
+### Part 2 — Living the Faith
+
+#### 1. Faith, Grace, and Conversion
+
+1. What does Jesus’ saving love mean for us today? (new-life-in-christ)
+- **Planned:** Faith, works, and repentance
+
+#### 2. The Sacraments and Christian Life
+
+- **Planned:** Baptism and sanctifying grace
+
+#### 3. Prayer and Growing in Holiness
+
+- **Planned:** Prayer and the theological virtues
+
+#### 4. Morality, Virtue, and the Commandments
+
+- **Planned:** Following Christ in daily choices
+
+### Part 3 — The Church
+
+#### 1. The Church as the Body of Christ
+
+1. How does the Church share Christ’s life? (church-body-of-christ)
+
+#### 2. The Apostles and Apostolic Succession
+
+- **Planned:** The apostles and their successors
+
+#### 3. The Four Marks of the Church
+
+- **Planned:** One, holy, catholic, and apostolic
+
+#### 4. The Church’s Mission and Worship
+
+- **Planned:** Proclaiming the Gospel and celebrating the sacraments
+
+### Know the Mass
+
+#### 1. Preparing for Mass and entering church
+
+1. How can we prepare our hearts for Mass? (preparing-for-mass)
+2. Why do we use holy water? (holy-water)
+3. What is the tabernacle? (tabernacle)
+4. Why do Catholics genuflect? (genuflection)
+5. Why is the altar so important? (altar)
+6. Why does the priest wear special clothes? (vestments)
+7. Why do the colors at Mass change? (liturgical-colors)
+
+#### 2. The Introductory Rites
+
+8. Why does Mass begin with an entrance and greeting? (entrance-and-greeting)
+9. Why do Catholics make the Sign of the Cross? (sign-of-the-cross)
+10. Why do we ask for mercy at the start of Mass? (penitential-act)
+11. What are the Gloria and the Collect? (gloria-and-collect)
+
+#### 3. The Liturgy of the Word
+
+12. Why do we listen to readings and a Psalm? (readings-and-psalm)
+13. Why do we stand for the Gospel? (standing-for-the-gospel)
+14. How do we respond after the Gospel? (homily-creed-and-prayers)
+
+#### 4. The Liturgy of the Eucharist
+
+15. Why are bread and wine brought to the altar? (preparation-of-the-gifts)
+16. What happens during the Eucharistic Prayer? (the-eucharistic-prayer)
+17. Is Jesus really present in the Eucharist? (eucharist-real-presence)
+
+#### 5. The Communion Rite
+
+18. How do we prepare together for Holy Communion? (prayer-peace-and-lamb-of-god)
+19. How do we receive Holy Communion and give thanks? (holy-communion-and-thanksgiving)
+
+#### 6. The Concluding Rites
+
+20. Why do we receive a blessing before leaving Mass? (final-blessing)
+21. What does “Go in peace” ask us to do? (dismissal)
