@@ -13,7 +13,7 @@ import { curriculumPosition } from './curriculum';
       @for(area of library.areas(); track area.id) {
         <a class="nav-area" [routerLink]="area.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page" (click)="navigate.emit()">{{area.title}}</a>
         @for(topic of library.topics(); track topic.id) {
-          @if(area.id === 'faith' && topic.areaId === area.id) {
+          @if(topic.areaId === area.id) {
             <a class="nav-topic" [routerLink]="topic.path" routerLinkActive="is-active" ariaCurrentWhenActive="page" (click)="navigate.emit()">{{topic.title}}</a>
           }
         }
