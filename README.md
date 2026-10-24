@@ -43,3 +43,7 @@ The current organization is documented in docs/LIBRARY-MVP.md and the complete u
 Content access is centralized in app/src/app/library.ts. Register meaningful areas/topics there and use topicId in article content. The populated collection registry supplies both browser routes and server prerender entries. Only populated groups appear in navigation. Keep future OCIA sequences as article references, and personal reflections separate from instructional articles.
 
 After building, run `npm test` from `app/` to check the complete batch, prerendered pages, references, and article/lesson contracts. See [the batch review guide](docs/TWENTY-LESSON-BATCH.md) for the inventory and editorial review priorities. Actual printer pagination remains a manual check in a regular browser.
+
+## Quality and review
+
+Use `docs/QUALITY-ASSURANCE.md` before each merge. `docs/CURRICULUM.md` records the current hierarchy and lesson order. `docs/ARTICLE-REVIEW.md` contains the article queue and review checklist; all current articles are Drafted, awaiting theological review. `docs/FUTURE-READING-AND-PROGRESS.md` plans optional source panes and browser-local completion tracking without implementing them.

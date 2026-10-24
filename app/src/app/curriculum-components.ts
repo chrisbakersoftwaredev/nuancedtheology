@@ -5,7 +5,7 @@ import { curriculumPosition, nextLesson } from './curriculum';
 
 @Component({selector: 'nt-curriculum-position', template: `
   @if(position(); as p) {
-    <p class="curriculum-position screen-only">Lesson {{p.number}} of {{p.total}} — {{p.sequence.title}}<span>Read, reflect, and learn together</span></p>
+    <p class="curriculum-position screen-only">Lesson {{p.number}} of {{p.total}} — {{p.sequence.title}}<span>{{p.chapter}} · Published lessons</span></p>
   }
 `})
 export class CurriculumPosition {
