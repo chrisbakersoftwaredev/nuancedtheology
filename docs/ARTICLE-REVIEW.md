@@ -59,8 +59,13 @@ The following inventory records the current status only. Empty evidence means no
 | [What is the New Covenant in Jesus?](https://nuancedtheology.com/articles/new-covenant-in-jesus) | 1 | Drafted | None recorded |
 | [Why do Jesus’ death, burial, and Resurrection matter?](https://nuancedtheology.com/articles/death-burial-and-resurrection) | 1 | Drafted | None recorded |
 | [Why did Jesus establish his Church?](https://nuancedtheology.com/articles/christ-establishes-his-church) | 1 | Drafted | None recorded |
+| [What happened when Jesus ascended into heaven?](https://nuancedtheology.com/articles/the-ascension-of-jesus) | 1 | Drafted | None recorded |
 | [What happened at Pentecost?](https://nuancedtheology.com/articles/pentecost-and-the-holy-spirit) | 1 | Drafted | None recorded |
 | [What does Jesus’ saving love mean for us today?](https://nuancedtheology.com/articles/new-life-in-christ) | 1 | Drafted | None recorded |
+| [How do faith, good works, and repentance belong together?](https://nuancedtheology.com/articles/faith-works-and-repentance) | 1 | Drafted | None recorded |
+| [How does Baptism begin our life with Christ?](https://nuancedtheology.com/articles/baptism-and-sanctifying-grace) | 1 | Drafted | None recorded |
+| [How can prayer help us grow in faith, hope, and love?](https://nuancedtheology.com/articles/prayer-faith-hope-and-love) | 1 | Drafted | None recorded |
+| [How do we follow Jesus in our daily choices?](https://nuancedtheology.com/articles/following-christ-in-daily-choices) | 1 | Drafted | None recorded |
 | [How does the Church share Christ’s life?](https://nuancedtheology.com/articles/church-body-of-christ) | 1 | Drafted | None recorded |
 | [How can our family get ready for Mass?](https://nuancedtheology.com/articles/preparing-for-mass) | 2 | Drafted | None recorded |
 | [Why do we use holy water?](https://nuancedtheology.com/articles/holy-water) | 2 | Drafted | None recorded |

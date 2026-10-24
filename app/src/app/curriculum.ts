@@ -17,23 +17,19 @@ export const curricula: Curriculum[] = [{
     {title: 'Creation and the Fall', published: ['creation-and-gods-friendship', 'the-fall-and-our-savior', 'gods-plan-of-salvation-overview'], planned: []},
     {title: 'God’s Covenants and Israel', published: ['covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david'], planned: []},
     {title: 'The Prophets and Jesus Christ', published: ['promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus'], planned: []},
-    {title: 'Salvation Through Christ', published: ['new-covenant-in-jesus', 'death-burial-and-resurrection', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit'], planned: [
-      {title: 'The Ascension of Jesus', note: 'Planned: a dedicated lesson connecting Christ’s Ascension, his reign, and the sending of the Spirit. The whole-story overview near the beginning provides orientation before the detailed covenant lessons.'}
-    ]}
+    {title: 'Salvation Through Christ', published: ['new-covenant-in-jesus', 'death-burial-and-resurrection', 'christ-establishes-his-church', 'the-ascension-of-jesus', 'pentecost-and-the-holy-spirit'], planned: []}
   ], nextId: 'living',
-  gap: 'A dedicated Ascension lesson is still planned. Next continues with the published introduction to living by God’s grace.',
   transition: 'God’s saving love invites our response. Continue with the new life that his grace makes possible.'
 }, {
   id: 'living', areaId: 'faith', part: 2, title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
-  description: 'Explore how God’s grace makes possible a life of faith, conversion, prayer, and love. This path is beginning with one published introduction.',
+  description: 'Explore how God’s grace makes possible a life of faith, conversion, prayer, and love. Begin with an introduction, then explore faith in action, Baptism, prayer, and everyday choices.',
   question: 'How do we respond to God’s grace and live as Christians?',
   phases: [
-    {title: 'Faith, Grace, and Conversion', published: ['new-life-in-christ'], planned: [{title: 'Faith, works, and repentance', note: 'Planned: our response depends on God’s grace; salvation is not earned by unaided effort.'}]},
-    {title: 'The Sacraments and Christian Life', published: [], planned: [{title: 'Baptism and sanctifying grace', note: 'Planned: an introduction to sacramental life and God’s freely given gift.'}]},
-    {title: 'Prayer and Growing in Holiness', published: [], planned: [{title: 'Prayer and the theological virtues', note: 'Planned: growing in faith, hope, and charity.'}]},
-    {title: 'Morality, Virtue, and the Commandments', published: [], planned: [{title: 'Following Christ in daily choices', note: 'Planned: conscience, virtue, and the commandments in a life of grace.'}]}
+    {title: 'Faith, Grace, and Conversion', published: ['new-life-in-christ', 'faith-works-and-repentance'], planned: []},
+    {title: 'The Sacraments and Christian Life', published: ['baptism-and-sanctifying-grace'], planned: []},
+    {title: 'Prayer and Growing in Holiness', published: ['prayer-faith-hope-and-love'], planned: []},
+    {title: 'Morality, Virtue, and the Commandments', published: ['following-christ-in-daily-choices'], planned: []}
   ], nextId: 'church',
-  gap: 'Living the Faith currently has one published introduction. Its fuller chapters are planned; Next continues to the published Church lesson.',
   transition: 'Christian life is lived in communion with Christ and his people. Continue by learning about the Church as his Body.'
 }, {
   id: 'church', areaId: 'faith', part: 3, title: 'The Church', path: '/know-the-faith/the-church',
