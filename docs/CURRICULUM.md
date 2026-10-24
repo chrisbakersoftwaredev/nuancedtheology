@@ -4,23 +4,21 @@ Updated October 24, 2026.
 
 Know the Faith now has three parts with numbered chapters and descriptions. Creation begins the sequence; the existing summary follows Creation and the Fall as early orientation. New life in Christ introduces Part 2, and the Body of Christ introduces Part 3. The Church-foundation introduction and Pentecost remain in salvation history.
 
-All 37 article URLs and family variants are preserved. Article explanations, source URLs, family material, and print templates are preserved. The display label for 1 Timothy is normalized. The three existing Faith collections remain available. Current article statuses are explicitly Drafted. No new full articles or dependencies were added.
+All 37 existing article records and family variants are preserved. Five new sourced articles and matching family lessons bring the library to 42 articles. The existing Faith collection URLs remain available. All current articles are Drafted, awaiting theological review. No dependencies or print-template changes were introduced.
 
 The centralized registry controls order, Start Learning, numbered positions, and reusable Next buttons in article and family views. Planned items have no URLs or numbers. Gap notices appear at part boundaries. The final dismissal lesson honestly identifies the end of currently published content. Navigation remains screen-only.
 
-## Editorial questions and gaps
+## Editorial questions and remaining work
 
-A dedicated Ascension lesson is still needed. Living the Faith needs fuller lessons on grace and conversion, Baptism and sacramental life, prayer and theological virtues, and morality and the commandments. The Church needs apostolic succession, the four marks, and a fuller mission-and-worship conclusion. These are visibly planned rather than invented articles.
-
-For owner review: the whole-story overview is now early orientation, and existing grace and Church articles serve as introductions to otherwise incomplete parts. The Church-to-Mass transition is supported by the published Body of Christ article and cites Catechism 1324 and GIRM 27–28. It identifies the Eucharist as source and summit and describes Christ’s one sacrifice as sacramentally present. All content remains awaiting theological review; no ecclesiastical approval is claimed.
+The Ascension and the four planned Living the Faith introductions are now published as drafts. Part 3 remains for the next pass: apostolic succession, the four marks, and a fuller mission-and-worship conclusion. These introductory lessons do not claim to exhaust every sacrament, commandment, or aspect of prayer. All new content remains Drafted and awaiting theological review.
 
 ## Verification
 
-Production build generates 89 routes. All 91 content/navigation checks pass, covering every article and family view, ordered outlines, unlinked planned entries, chapter and part boundaries, position indicators, preserved routes, homepage search and warning, and completion text. Browser checks cover Start Learning, keyboard Next, mobile layout without horizontal overflow, and family transitions through Parts 2 and 3 into Mass. Actual printed pagination still requires a regular-browser check; print templates and styles are unchanged.
+Production build generates 99 routes; all 101 checks pass. Existing article records, Part 3, and the Mass sequence are unchanged. See LIVING-FAITH-UPDATE.md for sources and new lessons. Actual printed pagination remains to be checked in a regular browser.
 
 ## Complete hierarchy and published order
 
-Know the Mass now uses five family-friendly sections; see FAMILY-MASS-UPDATE.md for sources and title changes. Numbers restart within each path.
+Numbers restart within each path.
 
 ### Part 1 — God’s Plan of Salvation
 
@@ -48,27 +46,27 @@ Know the Mass now uses five family-friendly sections; see FAMILY-MASS-UPDATE.md 
 11. What is the New Covenant in Jesus? (new-covenant-in-jesus)
 12. Why do Jesus’ death, burial, and Resurrection matter? (death-burial-and-resurrection)
 13. Why did Jesus establish his Church? (christ-establishes-his-church)
-14. What happened at Pentecost? (pentecost-and-the-holy-spirit)
-- **Planned:** The Ascension of Jesus
+14. What happened when Jesus ascended into heaven? (the-ascension-of-jesus)
+15. What happened at Pentecost? (pentecost-and-the-holy-spirit)
 
 ### Part 2 — Living the Faith
 
 #### 1. Faith, Grace, and Conversion
 
 1. What does Jesus’ saving love mean for us today? (new-life-in-christ)
-- **Planned:** Faith, works, and repentance
+2. How do faith, good works, and repentance belong together? (faith-works-and-repentance)
 
 #### 2. The Sacraments and Christian Life
 
-- **Planned:** Baptism and sanctifying grace
+3. How does Baptism begin our life with Christ? (baptism-and-sanctifying-grace)
 
 #### 3. Prayer and Growing in Holiness
 
-- **Planned:** Prayer and the theological virtues
+4. How can prayer help us grow in faith, hope, and love? (prayer-faith-hope-and-love)
 
 #### 4. Morality, Virtue, and the Commandments
 
-- **Planned:** Following Christ in daily choices
+5. How do we follow Jesus in our daily choices? (following-christ-in-daily-choices)
 
 ### Part 3 — The Church
 

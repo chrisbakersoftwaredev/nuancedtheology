@@ -23,8 +23,8 @@ const collections = new Map([
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
 ]);
 test('complete Faith and Mass curricula', () => {
-  assert.equal(articles.length, 37);
-  assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 16);
+  assert.equal(articles.length, 42);
+  assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 21);
   assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 21);
   assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 });
@@ -174,11 +174,11 @@ test('homepage warns about construction and lack of Church approval', () => {
 test('Faith has three ordered parts with honest gaps and intact part boundaries', () => {
   const faith = curricula.filter(sequence => sequence.areaId === 'faith');
   assert.deepEqual(faith.map(sequence => sequence.id), ['salvation', 'living', 'church']);
-  assert.deepEqual(faith.map(sequence => publishedSlugs(sequence).length), [14, 1, 1]);
+  assert.deepEqual(faith.map(sequence => publishedSlugs(sequence).length), [15, 5, 1]);
   assert.equal(publishedSlugs(faith[0])[0], 'creation-and-gods-friendship');
   assert.equal(nextLesson('pentecost-and-the-holy-spirit').slug, 'new-life-in-christ');
   assert.equal(nextLesson('gods-plan-of-salvation-overview').slug, 'covenant-with-noah');
-  assert.equal(nextLesson('new-life-in-christ').slug, 'church-body-of-christ');
+  assert.equal(nextLesson('following-christ-in-daily-choices').slug, 'church-body-of-christ');
   const landing = read('know-the-faith');
   let previous = -1;
   for (const sequence of faith) {
@@ -188,7 +188,8 @@ test('Faith has three ordered parts with honest gaps and intact part boundaries'
     assert.ok(read(sequence.path.slice(1)).includes(sequence.question));
     for (const chapter of sequence.phases) assert.ok(landing.includes(chapter.title));
   }
-  assert.ok(read('articles/new-life-in-christ').includes('Living the Faith currently has one published introduction'));
+  assert.ok(!read('know-the-faith/living-the-faith').includes('class="curriculum-planned"'));
+  assert.ok(!read('know-the-faith/gods-plan-of-salvation').includes('class="curriculum-planned"'));
   assert.ok(read('articles/church-body-of-christ').includes('source and summit'));
   assert.ok(read('articles/church-body-of-christ').includes('one sacrifice is made sacramentally present'));
   assert.ok(read('articles/dismissal').includes('More Faith chapters are planned'));
@@ -199,8 +200,8 @@ const expectedJourney = [
   'creation-and-gods-friendship', 'the-fall-and-our-savior', 'gods-plan-of-salvation-overview',
   'covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david',
   'promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus', 'new-covenant-in-jesus',
-  'death-burial-and-resurrection', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit',
-  'new-life-in-christ', 'church-body-of-christ', 'preparing-for-mass', 'holy-water', 'tabernacle',
+  'death-burial-and-resurrection', 'christ-establishes-his-church', 'the-ascension-of-jesus', 'pentecost-and-the-holy-spirit',
+  'new-life-in-christ', 'faith-works-and-repentance', 'baptism-and-sanctifying-grace', 'prayer-faith-hope-and-love', 'following-christ-in-daily-choices', 'church-body-of-christ', 'preparing-for-mass', 'holy-water', 'tabernacle',
   'genuflection', 'altar', 'vestments', 'liturgical-colors', 'entrance-and-greeting', 'sign-of-the-cross',
   'penitential-act', 'gloria-and-collect', 'readings-and-psalm', 'standing-for-the-gospel',
   'homily-creed-and-prayers', 'preparation-of-the-gifts', 'the-eucharistic-prayer',
@@ -313,7 +314,7 @@ test('all generated internal link destinations resolve over HTTP, including Next
       }
     }
     assert.deepEqual(failures, []);
-    assert.equal(pages.length, 89);
+    assert.equal(pages.length, 99);
     console.log(`Verified ${targets.size} internal link targets across ${pages.length} static pages.`);
   } finally {
     server.closeAllConnections();
