@@ -17,9 +17,7 @@ const collections = new Map([
   ['entering-church','know-the-mass/entering-church'],
   ['liturgy-of-the-word','know-the-mass/liturgy-of-the-word'],
   ['liturgy-of-the-eucharist','know-the-mass/liturgy-of-the-eucharist'],
-  ['communion-rite','know-the-mass/communion-rite'],
   ['concluding-rites','know-the-mass/concluding-rites'],
-  ['liturgical-signs','know-the-mass/liturgical-signs'],
   ['living-the-faith','know-the-faith/living-the-faith'],
   ['the-church','know-the-faith/the-church'],
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
@@ -312,5 +310,48 @@ test('all generated internal link destinations resolve over HTTP, including Next
   } finally {
     server.closeAllConnections();
     await new Promise(resolve => server.close(resolve));
+  }
+});
+
+test('Mass has five family-friendly sections while preserving its lesson itinerary', () => {
+  const mass = curricula.find(sequence => sequence.id === 'mass');
+  assert.deepEqual(mass.phases.map(phase => phase.title), ['Before Mass Begins','The Beginning of Mass','Bible Readings','The Eucharist','The End of Mass']);
+  const landing = read('know-the-mass');
+  let previous = -1;
+  for (const phase of mass.phases) {
+    assert.ok(phase.introduction);
+    const index = landing.indexOf('. ' + phase.title + '</h3>');
+    assert.ok(index > previous, phase.title); previous = index;
+    assert.ok(text(landing).includes(phase.introduction));
+  }
+  assert.equal(publishedSlugs(mass).length, 21);
+  assert.ok(read('know-the-mass/liturgy-of-the-eucharist').includes('Eucharist means thanksgiving.'));
+  for (const slug of ['prayer-peace-and-lamb-of-god','holy-communion-and-thanksgiving']) assert.ok(read('know-the-mass/liturgy-of-the-eucharist').includes(`href="/articles/${slug}"`));
+});
+test('old Mass topic URLs redirect to the new grouping without breaking bookmarks', () => {
+  for (const [old,target] of [['liturgical-signs','entering-church'],['communion-rite','liturgy-of-the-eucharist']]) {
+    assert.ok(read('know-the-mass/'+old).includes(`content="0; url=/know-the-mass/${target}"`));
+    assert.ok(read('know-the-mass/'+target).includes('<h1'));
+  }
+});
+test('Mass articles teach essential terminology inline and qualify variable practices', () => {
+  const body = slug => articles.find(article => article.slug === slug).sections.flatMap(section => section.paragraphs).join(' ');
+  const checks = {
+    'entrance-and-greeting':['a procession is','Introductory Rites'],
+    'genuflection':['called a genuflection','depends on where the Blessed Sacrament is reserved'],
+    'penitential-act':['several approved forms','Kyrie means'],
+    'gloria-and-collect':['Gloria is Latin','called the Collect','Sundays outside Advent and Lent'],
+    'readings-and-psalm':['Bible is also called Scripture','This is the Responsorial Psalm','typical Sunday Mass'],
+    'homily-creed-and-prayers':['This explanation is the homily','recommended on other days','Creed, meaning a profession of faith','Universal Prayer','Intercession means'],
+    'the-eucharistic-prayer':['Eucharist means thanksgiving','This is the consecration'],
+    'prayer-peace-and-lamb-of-god':['Communion Rite','invitation to exchange a sign of peace may be omitted','Fraction Rite']
+  };
+  for (const [slug,phrases] of Object.entries(checks)) for (const phrase of phrases) assert.ok(body(slug).includes(phrase), `${slug}: ${phrase}`);
+  for (const article of articles.filter(article => article.topicId !== 'gods-plan-of-salvation' && !['living-the-faith','the-church'].includes(article.topicId))) {
+    assert.ok(article.discussionQuestion?.endsWith('?'), article.slug);
+    const page = read('articles/'+article.slug);
+    assert.ok(page.includes('Talk About It Together'));
+    assert.ok(text(page).includes(article.discussionQuestion));
+    assert.equal((read('articles/'+article.slug+'/family-lesson').match(/<li><h3>/g)||[]).length,3);
   }
 });

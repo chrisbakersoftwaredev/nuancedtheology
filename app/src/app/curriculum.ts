@@ -1,7 +1,7 @@
 import type { Article } from './content';
 
 export interface PlannedLesson { title: string; note: string; }
-export interface CurriculumPhase { title: string; published: string[]; planned: PlannedLesson[]; }
+export interface CurriculumPhase { title: string; introduction?: string; published: string[]; planned: PlannedLesson[]; }
 export interface Curriculum {
   id: string; areaId: string; title: string; path: string;
   part?: number; description?: string; question?: string; transitionSource?: {url: string; label: string};
@@ -51,12 +51,11 @@ export const curricula: Curriculum[] = [{
 }, {
   id: 'mass', areaId: 'mass', title: 'Know the Mass', path: '/know-the-mass',
   phases: [
-    {title: 'Preparing for Mass and entering church', published: ['preparing-for-mass', 'holy-water', 'tabernacle', 'genuflection', 'altar', 'vestments', 'liturgical-colors'], planned: []},
-    {title: 'The Introductory Rites', published: ['entrance-and-greeting', 'sign-of-the-cross', 'penitential-act', 'gloria-and-collect'], planned: []},
-    {title: 'The Liturgy of the Word', published: ['readings-and-psalm', 'standing-for-the-gospel', 'homily-creed-and-prayers'], planned: []},
-    {title: 'The Liturgy of the Eucharist', published: ['preparation-of-the-gifts', 'the-eucharistic-prayer', 'eucharist-real-presence'], planned: []},
-    {title: 'The Communion Rite', published: ['prayer-peace-and-lamb-of-god', 'holy-communion-and-thanksgiving'], planned: []},
-    {title: 'The Concluding Rites', published: ['final-blessing', 'dismissal'], planned: []}
+    {title: 'Before Mass Begins', introduction: 'Notice the church, its furnishings, and the gestures that help us prepare. These background lessons describe what we may see before Mass; they are not additional parts of the ceremony.', published: ['preparing-for-mass', 'holy-water', 'tabernacle', 'genuflection', 'altar', 'vestments', 'liturgical-colors'], planned: []},
+    {title: 'The Beginning of Mass', introduction: 'We gather, make the Sign of the Cross, ask for mercy, and pray. The Church calls these opening prayers and actions the Introductory Rites. A rite is an established action or ceremony of worship.', published: ['entrance-and-greeting', 'sign-of-the-cross', 'penitential-act', 'gloria-and-collect'], planned: []},
+    {title: 'Bible Readings', introduction: 'We listen to the Bible, hear its meaning explained, share our faith, and pray for others. This part is called the Liturgy of the Word. Liturgy means the Church’s public worship.', published: ['readings-and-psalm', 'standing-for-the-gospel', 'homily-creed-and-prayers'], planned: []},
+    {title: 'The Eucharist', introduction: 'Eucharist means thanksgiving. In this part of Mass, called the Liturgy of the Eucharist, we offer thanks as Christ’s one sacrifice is made present and bread and wine become his Body and Blood. It includes the Communion Rite: the prayers and actions leading to receiving Christ and giving thanks.', published: ['preparation-of-the-gifts', 'the-eucharistic-prayer', 'eucharist-real-presence', 'prayer-peace-and-lamb-of-god', 'holy-communion-and-thanksgiving'], planned: []},
+    {title: 'The End of Mass', introduction: 'We receive God’s blessing and are sent to love and serve. These final actions are called the Concluding Rites. Worship continues to shape our daily lives.', published: ['final-blessing', 'dismissal'], planned: []}
   ]
 }];
 

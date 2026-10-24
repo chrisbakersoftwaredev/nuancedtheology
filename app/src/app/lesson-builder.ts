@@ -13,7 +13,7 @@ export const girm = (chapter: number, numbers: string, note: string): Source => 
 });
 interface LessonSeed {
   slug: string; title: string; summary: string; topicId: string; keywords: string[];
-  sources: Source[];
+  sources: Source[]; discussionQuestion?: string;
   sections: [string, string[], string[]][];
   questions: [string, string][];
   remember: string; practice: string; prayer: string; parentGuidance: string;
@@ -26,6 +26,7 @@ export function lesson(seed: LessonSeed): Article {
     keywords: seed.keywords, readMinutes: Math.max(2, Math.ceil(words / 170)),
     sections: seed.sections.map(([title, paragraphs, sourceIds]) => ({title, paragraphs, sourceIds})),
     sources: seed.sources,
+    ...(seed.discussionQuestion ? {discussionQuestion: seed.discussionQuestion} : {}),
     deeperResources: seed.sources.slice(0, 2).map((source, index) => ({level: index === 0 ? 2 : 3, sourceId: source.id, description: `Read more: ${source.label}`})),
     revision: {date: '2026-10-19', version: 1, status: 'Drafted'},
     lesson: {parentSourceIds: seed.sources.map(source => source.id), parentGuidance: seed.parentGuidance,

@@ -28,27 +28,20 @@ const faithArea: LibraryArea = {
 };
 export const areas: readonly LibraryArea[] = [faithArea, massArea];
 export const topics: readonly LibraryTopic[] = [{
-  id: 'introductory-rites', areaId: 'mass', title: 'Introductory Rites',
-  path: '/know-the-mass/introductory-rites',
-  introduction: 'The opening of Mass gathers us to pray together, remembering who God is and asking for his mercy.'
+  id: 'entering-church', areaId: 'mass', title: 'Before Mass Begins', path: '/know-the-mass/entering-church',
+  introduction: 'Get ready for Mass and explore the church, its furnishings, and gestures of prayer. These lessons describe preparation and background, not extra parts of the ceremony.'
 }, {
-  id: 'entering-church', areaId: 'mass', title: 'Entering Church', path: '/know-the-mass/entering-church',
-  introduction: 'Holy water, genuflection, and the tabernacle help us arrive with attention and reverence.'
+  id: 'introductory-rites', areaId: 'mass', title: 'The Beginning of Mass', path: '/know-the-mass/introductory-rites',
+  introduction: 'Follow the opening prayers and actions that gather us to worship. Inside the lessons, learn why the Church calls them the Introductory Rites.'
 }, {
-  id: 'liturgy-of-the-word', areaId: 'mass', title: 'Liturgy of the Word', path: '/know-the-mass/liturgy-of-the-word',
-  introduction: 'Listen to God’s Word and discover why the Gospel has a special place in the celebration.'
+  id: 'liturgy-of-the-word', areaId: 'mass', title: 'Bible Readings', path: '/know-the-mass/liturgy-of-the-word',
+  introduction: 'Listen to the Bible, discover its meaning, and respond with faith and prayer. This part of Mass is called the Liturgy of the Word.'
 }, {
-  id: 'liturgy-of-the-eucharist', areaId: 'mass', title: 'Liturgy of the Eucharist', path: '/know-the-mass/liturgy-of-the-eucharist',
-  introduction: 'Begin to understand Christ’s gift of himself in the Eucharist.'
+  id: 'liturgy-of-the-eucharist', areaId: 'mass', title: 'The Eucharist', path: '/know-the-mass/liturgy-of-the-eucharist',
+  introduction: 'Eucharist means thanksgiving. Discover Christ’s gift of himself: the preparation of bread and wine, the Eucharistic Prayer, Holy Communion, and thanksgiving. The Church calls this the Liturgy of the Eucharist; it includes the Communion Rite.'
 }, {
-  id: 'communion-rite', areaId: 'mass', title: 'Communion Rite', path: '/know-the-mass/communion-rite',
-  introduction: 'Pray for unity, prepare to receive Christ, and give thanks for his gift in Holy Communion.'
-}, {
-  id: 'concluding-rites', areaId: 'mass', title: 'Concluding Rites', path: '/know-the-mass/concluding-rites',
-  introduction: 'Mass sends us into daily life to praise God by loving and serving our neighbors.'
-}, {
-  id: 'liturgical-signs', areaId: 'mass', title: 'Signs of Worship', path: '/know-the-mass/liturgical-signs',
-  introduction: 'Explore the altar, vestments, and colors that help express the Church’s worship.'
+  id: 'concluding-rites', areaId: 'mass', title: 'The End of Mass', path: '/know-the-mass/concluding-rites',
+  introduction: 'Receive the final blessing and discover how being sent out at Mass calls us to love and serve. The Church calls these final actions the Concluding Rites.'
 }, {
   id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
   introduction: 'Part 1: Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
@@ -61,6 +54,11 @@ export const topics: readonly LibraryTopic[] = [{
 
 }];
 
+// Preserve bookmarked topic URLs after grouping the curriculum into five sections.
+export const collectionRedirects = [
+  {path: 'know-the-mass/liturgical-signs', redirectTo: '/know-the-mass/entering-church', pathMatch: 'full' as const},
+  {path: 'know-the-mass/communion-rite', redirectTo: '/know-the-mass/liturgy-of-the-eucharist', pathMatch: 'full' as const}
+];
 export const collectionRoutes = [
   ...areas.filter(area => topics.some(topic => topic.areaId === area.id && articles.some(article => article.topicId === topic.id)))
     .map(area => ({path: area.path.slice(1), data: {area: area.id}})),

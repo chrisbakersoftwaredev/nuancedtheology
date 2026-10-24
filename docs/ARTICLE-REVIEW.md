@@ -62,24 +62,24 @@ The following inventory records the current status only. Empty evidence means no
 | [What happened at Pentecost?](https://nuancedtheology.com/articles/pentecost-and-the-holy-spirit) | 1 | Drafted | None recorded |
 | [What does Jesus’ saving love mean for us today?](https://nuancedtheology.com/articles/new-life-in-christ) | 1 | Drafted | None recorded |
 | [How does the Church share Christ’s life?](https://nuancedtheology.com/articles/church-body-of-christ) | 1 | Drafted | None recorded |
-| [How can we prepare our hearts for Mass?](https://nuancedtheology.com/articles/preparing-for-mass) | 1 | Drafted | None recorded |
-| [Why do we use holy water?](https://nuancedtheology.com/articles/holy-water) | 1 | Drafted | None recorded |
-| [What is the tabernacle?](https://nuancedtheology.com/articles/tabernacle) | 1 | Drafted | None recorded |
-| [Why do Catholics genuflect?](https://nuancedtheology.com/articles/genuflection) | 1 | Drafted | None recorded |
-| [Why is the altar so important?](https://nuancedtheology.com/articles/altar) | 1 | Drafted | None recorded |
-| [Why does the priest wear special clothes?](https://nuancedtheology.com/articles/vestments) | 1 | Drafted | None recorded |
-| [Why do the colors at Mass change?](https://nuancedtheology.com/articles/liturgical-colors) | 1 | Drafted | None recorded |
-| [Why does Mass begin with an entrance and greeting?](https://nuancedtheology.com/articles/entrance-and-greeting) | 1 | Drafted | None recorded |
-| [Why do Catholics make the Sign of the Cross?](https://nuancedtheology.com/articles/sign-of-the-cross) | 2 | Drafted | None recorded |
-| [Why do we ask for mercy at the start of Mass?](https://nuancedtheology.com/articles/penitential-act) | 1 | Drafted | None recorded |
-| [What are the Gloria and the Collect?](https://nuancedtheology.com/articles/gloria-and-collect) | 1 | Drafted | None recorded |
-| [Why do we listen to readings and a Psalm?](https://nuancedtheology.com/articles/readings-and-psalm) | 1 | Drafted | None recorded |
-| [Why do we stand for the Gospel?](https://nuancedtheology.com/articles/standing-for-the-gospel) | 1 | Drafted | None recorded |
-| [How do we respond after the Gospel?](https://nuancedtheology.com/articles/homily-creed-and-prayers) | 1 | Drafted | None recorded |
-| [Why are bread and wine brought to the altar?](https://nuancedtheology.com/articles/preparation-of-the-gifts) | 1 | Drafted | None recorded |
-| [What happens during the Eucharistic Prayer?](https://nuancedtheology.com/articles/the-eucharistic-prayer) | 1 | Drafted | None recorded |
-| [Is Jesus really present in the Eucharist?](https://nuancedtheology.com/articles/eucharist-real-presence) | 1 | Drafted | None recorded |
-| [How do we prepare together for Holy Communion?](https://nuancedtheology.com/articles/prayer-peace-and-lamb-of-god) | 1 | Drafted | None recorded |
-| [How do we receive Holy Communion and give thanks?](https://nuancedtheology.com/articles/holy-communion-and-thanksgiving) | 1 | Drafted | None recorded |
-| [Why do we receive a blessing before leaving Mass?](https://nuancedtheology.com/articles/final-blessing) | 1 | Drafted | None recorded |
-| [What does “Go in peace” ask us to do?](https://nuancedtheology.com/articles/dismissal) | 1 | Drafted | None recorded |
+| [How can our family get ready for Mass?](https://nuancedtheology.com/articles/preparing-for-mass) | 2 | Drafted | None recorded |
+| [Why do we use holy water?](https://nuancedtheology.com/articles/holy-water) | 2 | Drafted | None recorded |
+| [Why is there a special place for the Eucharist?](https://nuancedtheology.com/articles/tabernacle) | 2 | Drafted | None recorded |
+| [Why do Catholics kneel on one knee?](https://nuancedtheology.com/articles/genuflection) | 2 | Drafted | None recorded |
+| [Why is the altar so important?](https://nuancedtheology.com/articles/altar) | 2 | Drafted | None recorded |
+| [Why does the priest wear special clothes?](https://nuancedtheology.com/articles/vestments) | 2 | Drafted | None recorded |
+| [Why do the colors at Mass change?](https://nuancedtheology.com/articles/liturgical-colors) | 2 | Drafted | None recorded |
+| [Why does Mass begin with an entrance and greeting?](https://nuancedtheology.com/articles/entrance-and-greeting) | 2 | Drafted | None recorded |
+| [Why do Catholics make the Sign of the Cross?](https://nuancedtheology.com/articles/sign-of-the-cross) | 3 | Drafted | None recorded |
+| [Asking God for mercy at the start of Mass](https://nuancedtheology.com/articles/penitential-act) | 2 | Drafted | None recorded |
+| [Praising God and praying the opening prayer](https://nuancedtheology.com/articles/gloria-and-collect) | 2 | Drafted | None recorded |
+| [Listening to the Bible and praying with the Psalms](https://nuancedtheology.com/articles/readings-and-psalm) | 2 | Drafted | None recorded |
+| [Why do we stand for the Gospel?](https://nuancedtheology.com/articles/standing-for-the-gospel) | 2 | Drafted | None recorded |
+| [Understanding the readings and praying together](https://nuancedtheology.com/articles/homily-creed-and-prayers) | 2 | Drafted | None recorded |
+| [Bringing bread and wine to the altar](https://nuancedtheology.com/articles/preparation-of-the-gifts) | 2 | Drafted | None recorded |
+| [What happens during the Eucharistic Prayer?](https://nuancedtheology.com/articles/the-eucharistic-prayer) | 2 | Drafted | None recorded |
+| [Is Jesus really present in the Eucharist?](https://nuancedtheology.com/articles/eucharist-real-presence) | 2 | Drafted | None recorded |
+| [Preparing for Communion: prayer, peace, and mercy](https://nuancedtheology.com/articles/prayer-peace-and-lamb-of-god) | 2 | Drafted | None recorded |
+| [How do we receive Holy Communion and give thanks?](https://nuancedtheology.com/articles/holy-communion-and-thanksgiving) | 2 | Drafted | None recorded |
+| [Why do we receive a blessing before leaving Mass?](https://nuancedtheology.com/articles/final-blessing) | 2 | Drafted | None recorded |
+| [Being sent out to love and serve](https://nuancedtheology.com/articles/dismissal) | 2 | Drafted | None recorded |
