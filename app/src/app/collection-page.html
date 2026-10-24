@@ -1,6 +1,7 @@
 <div class="collection-page">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a routerLink="/">Library</a><span aria-hidden="true">/</span>@if(topic && area) {<a [routerLink]="area.path">{{area.title}}</a><span aria-hidden="true">/</span>}<span aria-current="page">{{title}}</span></nav>
   <header class="collection-header"><p class="eyebrow">{{familyMode ? 'For your table, at your pace' : 'Explore & understand'}}</p><h1>{{title}}</h1><p class="lede">{{introduction}}</p></header>
+  @if(topic?.summary; as summary) {<section class="curriculum-plan section-summary" aria-labelledby="section-summary-heading"><h2 id="section-summary-heading">A quick summary</h2><p>{{summary}}</p></section>}
   @if(!familyMode && first(); as firstLesson) {<div class="curriculum-start"><a class="button" [routerLink]="['/articles',firstLesson.slug]">Start Learning</a><p>Follow the published lessons in order, or choose an article below.</p></div>}
   @for(sequence of sequences(); track sequence.id) {
     <section class="curriculum-plan" [attr.aria-label]="sequence.title">
@@ -9,7 +10,7 @@
       @if(sequence.description) {<p>{{sequence.description}}</p>}
       <p>Read in order or choose any article. Each article includes a family version.</p>
       @for(phase of sequence.phases; track phase.title; let chapter = $index) {
-        <div class="curriculum-phase"><h3>{{chapter + 1}}. {{phase.title}}</h3>@if(phase.introduction) {<p>{{phase.introduction}}</p>}<ol class="curriculum-outline">
+        <div class="curriculum-phase"><h3>{{chapter + 1}}. {{phase.title}}</h3>@if(phase.introduction && !topic?.summary) {<p>{{phase.introduction}}</p>}<ol class="curriculum-outline">
           @for(slug of phase.published; track slug) {@if(library.find(slug); as article) {<li><span class="curriculum-step">{{familyMode ? "" : lessonNumber(slug) + "."}}</span><a [routerLink]="familyMode ? ['/articles',slug,'family-lesson'] : ['/articles',slug]">{{article.title}}</a></li>}}
           @for(planned of phase.planned; track planned.title) {<li class="curriculum-planned"><span class="planned-label">Planned</span><span>{{planned.title}}<small>{{planned.note}}</small></span></li>}
         </ol></div>

@@ -230,13 +230,21 @@ test('published Next destinations match the approved itinerary without loops', (
     assert.equal(seen.size, articles.length);
   }
 });
-test('shared primary menus show three Faith parts and no Mass categories', () => {
+test('shared primary menus show three Faith parts and five ordered Mass sections', () => {
   const home = read('');
   const menus = [...home.matchAll(/<nav[^>]*aria-label="Learning library"[^>]*>([\s\S]*?)<\/nav>/g)];
   assert.equal(menus.length, 2, 'desktop sidebar and mobile drawer');
   for (const [,menu] of menus) {
     for (const route of ['know-the-faith', 'know-the-faith/gods-plan-of-salvation', 'know-the-faith/living-the-faith', 'know-the-faith/the-church', 'know-the-mass']) assert.ok(menu.includes(`href="/${route}"`));
-    assert.ok(!menu.includes('href="/know-the-mass/'));
+    let previous = menu.indexOf('href="/know-the-mass"');
+    for (const route of ['entering-church','introductory-rites','liturgy-of-the-word','liturgy-of-the-eucharist','concluding-rites']) {
+      const index = menu.indexOf(`href="/know-the-mass/${route}"`);
+      assert.ok(index > previous, route); previous = index;
+      const section = read('know-the-mass/'+route);
+      assert.ok(section.includes('aria-labelledby="section-summary-heading"'));
+      assert.ok(section.includes('A quick summary'));
+      assert.ok(section.indexOf('section-summary-heading') < section.indexOf('>Start Learning</a>'));
+    }
   }
   for (const route of collections.values()) assert.ok(read(route).includes('<h1'));
 });
