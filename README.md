@@ -47,3 +47,5 @@ After building, run `npm test` from `app/` to check the complete batch, prerende
 ## Quality and review
 
 Use `docs/QUALITY-ASSURANCE.md` before each merge. `docs/CURRICULUM.md` records the current hierarchy and lesson order. `docs/ARTICLE-REVIEW.md` contains the article queue and review checklist; all current articles are Drafted, awaiting theological review. `docs/FUTURE-READING-AND-PROGRESS.md` plans optional source panes and browser-local completion tracking without implementing them.
+
+See `docs/FAMILY-MASS-UPDATE.md` for the five-section family-oriented Mass curriculum, retained routes, revised titles, and source checks.

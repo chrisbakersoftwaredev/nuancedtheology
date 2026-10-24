@@ -1,6 +1,6 @@
 # Guided curriculum
 
-Updated October 23, 2026.
+Updated October 24, 2026.
 
 Know the Faith now has three parts with numbered chapters and descriptions. Creation begins the sequence; the existing summary follows Creation and the Fall as early orientation. New life in Christ introduces Part 2, and the Body of Christ introduces Part 3. The Church-foundation introduction and Pentecost remain in salvation history.
 
@@ -16,11 +16,11 @@ For owner review: the whole-story overview is now early orientation, and existin
 
 ## Verification
 
-Production build generates 89 routes. All 88 content/navigation checks pass, covering every article and family view, ordered outlines, unlinked planned entries, chapter and part boundaries, position indicators, preserved routes, homepage search and warning, and completion text. Browser checks cover Start Learning, keyboard Next, mobile layout without horizontal overflow, and family transitions through Parts 2 and 3 into Mass. Actual printed pagination still requires a regular-browser check; print templates and styles are unchanged.
+Production build generates 89 routes. All 91 content/navigation checks pass, covering every article and family view, ordered outlines, unlinked planned entries, chapter and part boundaries, position indicators, preserved routes, homepage search and warning, and completion text. Browser checks cover Start Learning, keyboard Next, mobile layout without horizontal overflow, and family transitions through Parts 2 and 3 into Mass. Actual printed pagination still requires a regular-browser check; print templates and styles are unchanged.
 
 ## Complete hierarchy and published order
 
-Numbers restart within each path.
+Know the Mass now uses five family-friendly sections; see FAMILY-MASS-UPDATE.md for sources and title changes. Numbers restart within each path.
 
 ### Part 1 — God’s Plan of Salvation
 
@@ -90,41 +90,38 @@ Numbers restart within each path.
 
 ### Know the Mass
 
-#### 1. Preparing for Mass and entering church
+#### 1. Before Mass Begins
 
-1. How can we prepare our hearts for Mass? (preparing-for-mass)
+1. How can our family get ready for Mass? (preparing-for-mass)
 2. Why do we use holy water? (holy-water)
-3. What is the tabernacle? (tabernacle)
-4. Why do Catholics genuflect? (genuflection)
+3. Why is there a special place for the Eucharist? (tabernacle)
+4. Why do Catholics kneel on one knee? (genuflection)
 5. Why is the altar so important? (altar)
 6. Why does the priest wear special clothes? (vestments)
 7. Why do the colors at Mass change? (liturgical-colors)
 
-#### 2. The Introductory Rites
+#### 2. The Beginning of Mass
 
 8. Why does Mass begin with an entrance and greeting? (entrance-and-greeting)
 9. Why do Catholics make the Sign of the Cross? (sign-of-the-cross)
-10. Why do we ask for mercy at the start of Mass? (penitential-act)
-11. What are the Gloria and the Collect? (gloria-and-collect)
+10. Asking God for mercy at the start of Mass (penitential-act)
+11. Praising God and praying the opening prayer (gloria-and-collect)
 
-#### 3. The Liturgy of the Word
+#### 3. Bible Readings
 
-12. Why do we listen to readings and a Psalm? (readings-and-psalm)
+12. Listening to the Bible and praying with the Psalms (readings-and-psalm)
 13. Why do we stand for the Gospel? (standing-for-the-gospel)
-14. How do we respond after the Gospel? (homily-creed-and-prayers)
+14. Understanding the readings and praying together (homily-creed-and-prayers)
 
-#### 4. The Liturgy of the Eucharist
+#### 4. The Eucharist
 
-15. Why are bread and wine brought to the altar? (preparation-of-the-gifts)
+15. Bringing bread and wine to the altar (preparation-of-the-gifts)
 16. What happens during the Eucharistic Prayer? (the-eucharistic-prayer)
 17. Is Jesus really present in the Eucharist? (eucharist-real-presence)
-
-#### 5. The Communion Rite
-
-18. How do we prepare together for Holy Communion? (prayer-peace-and-lamb-of-god)
+18. Preparing for Communion: prayer, peace, and mercy (prayer-peace-and-lamb-of-god)
 19. How do we receive Holy Communion and give thanks? (holy-communion-and-thanksgiving)
 
-#### 6. The Concluding Rites
+#### 5. The End of Mass
 
 20. Why do we receive a blessing before leaving Mass? (final-blessing)
-21. What does “Go in peace” ask us to do? (dismissal)
+21. Being sent out to love and serve (dismissal)

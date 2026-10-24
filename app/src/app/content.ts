@@ -12,7 +12,7 @@ export type ReviewRecord = {status: 'Drafted'} | {
 };
 export interface Article {
   slug: string; title: string; summary: string; topicId: string; keywords: string[];
-  readMinutes: number; sections: Section[]; sources: Source[];
+  readMinutes: number; discussionQuestion?: string; sections: Section[]; sources: Source[];
   deeperResources: { level: 2 | 3; sourceId: string; description: string }[];
   level2?: Section[]; level3?: Section[];
   revision: { date: string; version: number } & ReviewRecord;
@@ -20,10 +20,10 @@ export interface Article {
 }
 const vatican = 'https://www.vatican.va/content/catechism/en/';
 export const articles: Article[] = [{
- slug: 'sign-of-the-cross', title: 'Why do Catholics make the Sign of the Cross?',
+ slug: 'sign-of-the-cross', discussionQuestion: 'When could making the Sign of the Cross help our family remember God’s love?', title: 'Why do Catholics make the Sign of the Cross?',
  summary: 'A little gesture with a big meaning: a prayer that reminds us who God is and how much Jesus loves us.',
  topicId: 'introductory-rites', keywords: ['prayer', 'Trinity', 'Baptism', 'cross', 'gesture', 'Jesus'], readMinutes: 4,
- revision: { date: '2026-10-18', version: 2, status: 'Drafted' },
+ revision: { date: '2026-10-24', version: 3, status: 'Drafted' },
  sections: [
   { title: 'A prayer you can see', sourceIds: ['daily'], paragraphs: [
    'Have you ever watched someone touch their forehead, chest, and shoulders before praying? They are making the Sign of the Cross. You may see people do it at Mass, before a meal, or at bedtime. It is a short prayer we say with both our words and our bodies.',

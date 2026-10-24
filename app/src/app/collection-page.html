@@ -9,7 +9,7 @@
       @if(sequence.description) {<p>{{sequence.description}}</p>}
       <p>Read in order or choose any article. Each article includes a family version.</p>
       @for(phase of sequence.phases; track phase.title; let chapter = $index) {
-        <div class="curriculum-phase"><h3>{{chapter + 1}}. {{phase.title}}</h3><ol class="curriculum-outline">
+        <div class="curriculum-phase"><h3>{{chapter + 1}}. {{phase.title}}</h3>@if(phase.introduction) {<p>{{phase.introduction}}</p>}<ol class="curriculum-outline">
           @for(slug of phase.published; track slug) {@if(library.find(slug); as article) {<li><span class="curriculum-step">{{familyMode ? "" : lessonNumber(slug) + "."}}</span><a [routerLink]="familyMode ? ['/articles',slug,'family-lesson'] : ['/articles',slug]">{{article.title}}</a></li>}}
           @for(planned of phase.planned; track planned.title) {<li class="curriculum-planned"><span class="planned-label">Planned</span><span>{{planned.title}}<small>{{planned.note}}</small></span></li>}
         </ol></div>
