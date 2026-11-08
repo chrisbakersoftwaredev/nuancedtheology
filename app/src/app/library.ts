@@ -25,9 +25,13 @@ const massArea: LibraryArea = {
 };
 const faithArea: LibraryArea = {
   id: 'faith', title: 'Know the Faith', path: '/know-the-faith',
-  introduction: 'Explore God’s saving work, our response in grace, and the life and worship of the Church.'
+  introduction: 'Follow God’s saving work and meet the Church that Jesus gathers. Then continue into Know the Mass.'
 };
-export const areas: readonly LibraryArea[] = [faithArea, massArea];
+const livingArea: LibraryArea = {
+  id: 'living', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
+  introduction: 'Carry what we receive at Mass into prayer, service, and everyday choices.'
+};
+export const areas: readonly LibraryArea[] = [faithArea, massArea, livingArea];
 export const topics: readonly LibraryTopic[] = [{
   summary: 'Before Mass, we can take a little time to turn our attention toward God. Holy water reminds us of Baptism, and a quiet visit helps us notice where the Eucharist is reserved. When we kneel on one knee before the Blessed Sacrament, we honor Jesus himself. The altar, the priest’s clothing, and the colors also help us understand the worship we are about to join. These lessons explain those signs and offer simple ways to prepare as a family.',
   id: 'entering-church', areaId: 'mass', title: 'Before Mass Begins', path: '/know-the-mass/entering-church',
@@ -52,21 +56,18 @@ export const topics: readonly LibraryTopic[] = [{
   id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
   introduction: 'Part 1: Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
 }, {
-  id: 'living-the-faith', areaId: 'faith', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
-  introduction: 'Part 2: Discover how God’s grace enables our response. Explore living faith, Baptism and sacramental life, prayer, and choices shaped by love.'
-}, {
-  id: 'the-church', areaId: 'faith', title: 'The Church', path: '/know-the-faith/the-church',
-  introduction: 'Part 3: Begin with the Church as Christ’s Body, then continue toward her worship in the Mass. Further chapters on apostolic succession, the four marks, and mission are planned.'
-
+  id: 'living-the-faith', areaId: 'living', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
+  introduction: 'Part 3: Discover how God’s grace enables our response. Explore living faith, Baptism and sacramental life, prayer, and choices shaped by love.'
 }];
 
 // Preserve bookmarked topic URLs after grouping the curriculum into five sections.
 export const collectionRedirects = [
+  {path: 'know-the-faith/the-church', redirectTo: '/know-the-faith/gods-plan-of-salvation', pathMatch: 'full' as const},
   {path: 'know-the-mass/liturgical-signs', redirectTo: '/know-the-mass/entering-church', pathMatch: 'full' as const},
   {path: 'know-the-mass/communion-rite', redirectTo: '/know-the-mass/liturgy-of-the-eucharist', pathMatch: 'full' as const}
 ];
 export const collectionRoutes = [
-  ...areas.filter(area => topics.some(topic => topic.areaId === area.id && articles.some(article => article.topicId === topic.id)))
+  ...areas.filter(area => !topics.some(topic => topic.path === area.path) && topics.some(topic => topic.areaId === area.id && articles.some(article => article.topicId === topic.id)))
     .map(area => ({path: area.path.slice(1), data: {area: area.id}})),
   ...topics.filter(topic => articles.some(article => article.topicId === topic.id))
     .map(topic => ({path: topic.path.slice(1), data: {topic: topic.id}}))

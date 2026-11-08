@@ -16,3 +16,32 @@
 .curriculum-position{font-size:13px;color:var(--green);line-height:1.6;margin:22px 0}.curriculum-position span{display:block;font-size:11px;color:var(--muted)}.curriculum-next{display:block;border-top:1px solid var(--line);margin:40px 0 0;padding:28px 0 10px;max-width:820px}.curriculum-next p{font-size:14px}.curriculum-next .button,.curriculum-start .button{min-height:48px;min-width:112px}.curriculum-next h2{font-size:26px}.curriculum-start{margin:28px 0}.curriculum-start p{font-size:13px;color:var(--muted)}.curriculum-card-number{font-size:12px;font-weight:600;color:var(--green);margin:0 0 12px}.curriculum-plan{border:1px solid var(--line);border-radius:5px;padding:26px;margin:30px 0;background:#f2f3eb}.curriculum-plan h2{font-size:27px;margin:0 0 15px}.curriculum-plan>p{font-size:14px}.curriculum-phase h3{font-size:21px;margin:24px 0 12px}.curriculum-outline{list-style:none;margin:0;padding:0}.curriculum-outline li{display:flex;align-items:baseline;gap:12px;margin:12px 0;font-size:14px;line-height:1.6}.curriculum-outline a{padding:7px 0;display:inline-block}.curriculum-step{font-variant-numeric:tabular-nums;min-width:24px;color:var(--green)}.curriculum-outline small{display:block;color:var(--muted);font-size:12px}.planned-label{font-size:10px;text-transform:uppercase;letter-spacing:.7px;border:1px solid var(--line);border-radius:3px;padding:2px 5px;flex-shrink:0}.curriculum-planned{color:var(--muted)}.curriculum-gap{border-left:3px solid #a57d41;padding:12px 16px;background:#f4f0e5;line-height:1.7}
 @media(max-width:760px){.curriculum-plan{padding:20px}.curriculum-outline li{gap:8px}.curriculum-next{margin-top:28px}}
 @media print{nt-curriculum-position,nt-curriculum-navigation,.curriculum-next,.curriculum-position,.curriculum-plan,.curriculum-start{display:none!important}}
+
+.library-navigation .nav-lesson-list {
+  list-style: none;
+  margin: 0 0 8px 20px;
+  padding: 0 0 0 8px;
+  border-left: 1px solid var(--line);
+}
+.library-navigation .nav-lesson-list a {
+  display: block;
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.library-navigation .nav-chapter-list {
+  list-style: none;
+  margin: 0 0 8px 20px;
+  padding: 0 0 0 8px;
+  border-left: 1px solid var(--line);
+}
+.library-navigation .nav-chapter-list > li > a {
+  display: block;
+  padding: 6px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.library-navigation .nav-chapter-list .nav-lesson-list {
+  margin-left: 10px;
+}

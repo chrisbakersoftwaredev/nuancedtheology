@@ -1,20 +1,8 @@
 # Guided curriculum
 
-Updated October 24, 2026.
+The guided path goes from God’s Plan of Salvation through Know the Mass and into Living the Faith. The Body of Christ lesson bridges into Preparing for Mass, and Dismissal leads into New Life in Christ. The former Church collection URL redirects to God’s Plan of Salvation.
 
-Know the Faith now has three parts with numbered chapters and descriptions. Creation begins the sequence; the existing summary follows Creation and the Fall as early orientation. New life in Christ introduces Part 2, and the Body of Christ introduces Part 3. The Church-foundation introduction and Pentecost remain in salvation history.
-
-All 37 existing article records and family variants are preserved. Five new sourced articles and matching family lessons bring the library to 42 articles. The existing Faith collection URLs remain available. All current articles are Drafted, awaiting theological review. No dependencies or print-template changes were introduced.
-
-The centralized registry controls order, Start Learning, numbered positions, and reusable Next buttons in article and family views. Planned items have no URLs or numbers. Gap notices appear at part boundaries. The final dismissal lesson honestly identifies the end of currently published content. Navigation remains screen-only.
-
-## Editorial questions and remaining work
-
-The Ascension and the four planned Living the Faith introductions are now published as drafts. Part 3 remains for the next pass: apostolic succession, the four marks, and a fuller mission-and-worship conclusion. These introductory lessons do not claim to exhaust every sacrament, commandment, or aspect of prayer. All new content remains Drafted and awaiting theological review.
-
-## Verification
-
-Production build generates 99 routes; all 101 checks pass. Existing article records, Part 3, and the Mass sequence are unchanged. See LIVING-FAITH-UPDATE.md for sources and new lessons. Actual printed pagination remains to be checked in a regular browser.
+A future Catechism section will explore the apostles and their successors, the four marks, and the Church’s mission and worship in more depth.
 
 ## Complete hierarchy and published order
 
@@ -45,48 +33,15 @@ Numbers restart within each path.
 
 11. What is the New Covenant in Jesus? (new-covenant-in-jesus)
 12. Why do Jesus’ death, burial, and Resurrection matter? (death-burial-and-resurrection)
-13. Why did Jesus establish his Church? (christ-establishes-his-church)
-14. What happened when Jesus ascended into heaven? (the-ascension-of-jesus)
+13. What happened when Jesus ascended into heaven? (the-ascension-of-jesus)
+
+#### 5. A First Look at the Church
+
+14. Why did Jesus establish his Church? (christ-establishes-his-church)
 15. What happened at Pentecost? (pentecost-and-the-holy-spirit)
+16. How does the Church share Christ’s life? (church-body-of-christ)
 
-### Part 2 — Living the Faith
-
-#### 1. Faith, Grace, and Conversion
-
-1. What does Jesus’ saving love mean for us today? (new-life-in-christ)
-2. How do faith, good works, and repentance belong together? (faith-works-and-repentance)
-
-#### 2. The Sacraments and Christian Life
-
-3. How does Baptism begin our life with Christ? (baptism-and-sanctifying-grace)
-
-#### 3. Prayer and Growing in Holiness
-
-4. How can prayer help us grow in faith, hope, and love? (prayer-faith-hope-and-love)
-
-#### 4. Morality, Virtue, and the Commandments
-
-5. How do we follow Jesus in our daily choices? (following-christ-in-daily-choices)
-
-### Part 3 — The Church
-
-#### 1. The Church as the Body of Christ
-
-1. How does the Church share Christ’s life? (church-body-of-christ)
-
-#### 2. The Apostles and Apostolic Succession
-
-- **Planned:** The apostles and their successors
-
-#### 3. The Four Marks of the Church
-
-- **Planned:** One, holy, catholic, and apostolic
-
-#### 4. The Church’s Mission and Worship
-
-- **Planned:** Proclaiming the Gospel and celebrating the sacraments
-
-### Know the Mass
+### Part 2 — Know the Mass
 
 #### 1. Before Mass Begins
 
@@ -123,3 +78,22 @@ Numbers restart within each path.
 
 20. Why do we receive a blessing before leaving Mass? (final-blessing)
 21. Being sent out to love and serve (dismissal)
+
+### Part 3 — Living the Faith
+
+#### 1. Faith, Grace, and Conversion
+
+1. What does Jesus’ saving love mean for us today? (new-life-in-christ)
+2. How do faith, good works, and repentance belong together? (faith-works-and-repentance)
+
+#### 2. The Sacraments and Christian Life
+
+3. How does Baptism begin our life with Christ? (baptism-and-sanctifying-grace)
+
+#### 3. Prayer and Growing in Holiness
+
+4. How can prayer help us grow in faith, hope, and love? (prayer-faith-hope-and-love)
+
+#### 4. Morality, Virtue, and the Commandments
+
+5. How do we follow Jesus in our daily choices? (following-christ-in-daily-choices)

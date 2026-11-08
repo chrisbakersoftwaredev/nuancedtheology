@@ -19,13 +19,12 @@ const collections = new Map([
   ['liturgy-of-the-eucharist','know-the-mass/liturgy-of-the-eucharist'],
   ['concluding-rites','know-the-mass/concluding-rites'],
   ['living-the-faith','know-the-faith/living-the-faith'],
-  ['the-church','know-the-faith/the-church'],
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
 ]);
 test('complete Faith and Mass curricula', () => {
   assert.equal(articles.length, 42);
-  assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 21);
-  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(a.topicId)).length, 21);
+  assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith'].includes(a.topicId)).length, 21);
+  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith'].includes(a.topicId)).length, 21);
   assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 });
 for (const article of articles) {
@@ -68,7 +67,7 @@ for (const article of articles) {
     assert.ok(page.includes('Learn as a family →'));
     assert.ok(!page.includes('Print Family Lesson →'));
     assert.match(printable, /<button[^>]*>Print Family Lesson /);
-    for (const collection of [collections.get(article.topicId), ['gods-plan-of-salvation', 'living-the-faith', 'the-church'].includes(article.topicId) ? 'know-the-faith' : 'know-the-mass', 'family-lessons']) {
+    for (const collection of new Set([collections.get(article.topicId), article.topicId === 'gods-plan-of-salvation' ? 'know-the-faith' : article.topicId === 'living-the-faith' ? 'know-the-faith/living-the-faith' : 'know-the-mass', 'family-lessons'])) {
       const listing = read(collection);
       assert.ok(listing.includes(`href="/${route}${collection === 'family-lessons' ? '/family-lesson' : ''}"`), collection);
       assert.ok(!listing.includes('id="collection-search"'));
@@ -115,7 +114,7 @@ test('curriculum explicitly covers every published article exactly once', () => 
   assert.ok(sequence.indexOf('holy-water') < sequence.indexOf('sign-of-the-cross'));
   assert.ok(sequence.indexOf('sign-of-the-cross') < sequence.indexOf('standing-for-the-gospel'));
   assert.ok(sequence.indexOf('standing-for-the-gospel') < sequence.indexOf('eucharist-real-presence'));
-  assert.equal(sequence.at(-1), 'dismissal');
+  assert.equal(sequence.at(-1), 'following-christ-in-daily-choices');
 });
 
 for (const article of articles) {
@@ -136,7 +135,7 @@ for (const article of articles) {
         assert.ok(navigation.includes('>Next →</a>'));
         assert.ok(navigation.includes('aria-describedby="next-lesson-title"'));
       } else {
-        assert.equal(article.slug, 'dismissal');
+        assert.equal(article.slug, 'following-christ-in-daily-choices');
         assert.ok(navigation.includes('end of the published journey'));
         assert.ok(!navigation.includes('>Next →</a>'));
       }
@@ -171,28 +170,17 @@ test('homepage warns about construction and lack of Church approval', () => {
   assert.match(home, /type="search"/);
 });
 
-test('Faith has three ordered parts with honest gaps and intact part boundaries', () => {
-  const faith = curricula.filter(sequence => sequence.areaId === 'faith');
-  assert.deepEqual(faith.map(sequence => sequence.id), ['salvation', 'living', 'church']);
-  assert.deepEqual(faith.map(sequence => publishedSlugs(sequence).length), [15, 5, 1]);
-  assert.equal(publishedSlugs(faith[0])[0], 'creation-and-gods-friendship');
-  assert.equal(nextLesson('pentecost-and-the-holy-spirit').slug, 'new-life-in-christ');
-  assert.equal(nextLesson('gods-plan-of-salvation-overview').slug, 'covenant-with-noah');
-  assert.equal(nextLesson('following-christ-in-daily-choices').slug, 'church-body-of-christ');
-  const landing = read('know-the-faith');
-  let previous = -1;
-  for (const sequence of faith) {
-    const index = landing.indexOf(`Part ${sequence.part} — ${sequence.title}`);
-    assert.ok(index > previous);
-    previous = index;
-    assert.ok(read(sequence.path.slice(1)).includes(sequence.question));
-    for (const chapter of sequence.phases) assert.ok(landing.includes(chapter.title));
-  }
-  assert.ok(!read('know-the-faith/living-the-faith').includes('class="curriculum-planned"'));
-  assert.ok(!read('know-the-faith/gods-plan-of-salvation').includes('class="curriculum-planned"'));
+test('the three-part journey moves from salvation through Mass into daily life', () => {
+  assert.deepEqual(curricula.map(sequence => sequence.id), ['salvation', 'mass', 'living']);
+  assert.deepEqual(curricula.map(sequence => publishedSlugs(sequence).length), [16, 21, 5]);
+  assert.equal(nextLesson('pentecost-and-the-holy-spirit').slug, 'church-body-of-christ');
+  assert.equal(nextLesson('church-body-of-christ').slug, 'preparing-for-mass');
+  assert.equal(nextLesson('dismissal').slug, 'new-life-in-christ');
+  assert.equal(nextLesson('following-christ-in-daily-choices'), undefined);
+  assert.ok(read('know-the-faith').includes('A First Look at the Church'));
+  assert.ok(read('know-the-faith/the-church').includes('/know-the-faith/gods-plan-of-salvation'));
   assert.ok(read('articles/church-body-of-christ').includes('source and summit'));
-  assert.ok(read('articles/church-body-of-christ').includes('one sacrifice is made sacramentally present'));
-  assert.ok(read('articles/dismissal').includes('More Faith chapters are planned'));
+  assert.ok(read('articles/following-christ-in-daily-choices').includes('future Catechism section'));
 });
 
 // Independent expected itinerary: catches a valid-looking but editorially wrong Next link.
@@ -200,13 +188,15 @@ const expectedJourney = [
   'creation-and-gods-friendship', 'the-fall-and-our-savior', 'gods-plan-of-salvation-overview',
   'covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david',
   'promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus', 'new-covenant-in-jesus',
-  'death-burial-and-resurrection', 'christ-establishes-his-church', 'the-ascension-of-jesus', 'pentecost-and-the-holy-spirit',
-  'new-life-in-christ', 'faith-works-and-repentance', 'baptism-and-sanctifying-grace', 'prayer-faith-hope-and-love', 'following-christ-in-daily-choices', 'church-body-of-christ', 'preparing-for-mass', 'holy-water', 'tabernacle',
+  'death-burial-and-resurrection', 'the-ascension-of-jesus', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit',
+  'church-body-of-christ', 'preparing-for-mass', 'holy-water', 'tabernacle',
   'genuflection', 'altar', 'vestments', 'liturgical-colors', 'entrance-and-greeting', 'sign-of-the-cross',
   'penitential-act', 'gloria-and-collect', 'readings-and-psalm', 'standing-for-the-gospel',
   'homily-creed-and-prayers', 'preparation-of-the-gifts', 'the-eucharistic-prayer',
   'eucharist-real-presence', 'prayer-peace-and-lamb-of-god', 'holy-communion-and-thanksgiving',
-  'final-blessing', 'dismissal'
+  'final-blessing', 'dismissal',
+  'new-life-in-christ', 'faith-works-and-repentance', 'baptism-and-sanctifying-grace',
+  'prayer-faith-hope-and-love', 'following-christ-in-daily-choices'
 ];
 test('published Next destinations match the approved itinerary without loops', () => {
   assert.deepEqual(curricula.flatMap(publishedSlugs), expectedJourney);
@@ -231,13 +221,15 @@ test('published Next destinations match the approved itinerary without loops', (
     assert.equal(seen.size, articles.length);
   }
 });
-test('shared primary menus show three Faith parts and five ordered Mass sections', () => {
+test('shared primary menus follow the journey and show five ordered Mass sections', () => {
   const home = read('');
   const menus = [...home.matchAll(/<nav[^>]*aria-label="Learning library"[^>]*>([\s\S]*?)<\/nav>/g)];
   assert.equal(menus.length, 2, 'desktop sidebar and mobile drawer');
   for (const [,menu] of menus) {
-    for (const route of ['know-the-faith', 'know-the-faith/gods-plan-of-salvation', 'know-the-faith/living-the-faith', 'know-the-faith/the-church', 'know-the-mass']) assert.ok(menu.includes(`href="/${route}"`));
+    for (const route of ['know-the-faith', 'know-the-faith/gods-plan-of-salvation', 'know-the-faith/living-the-faith', 'know-the-mass']) assert.ok(menu.includes(`href="/${route}"`));
     let previous = menu.indexOf('href="/know-the-mass"');
+    assert.ok(menu.indexOf('href="/know-the-faith/gods-plan-of-salvation"') < previous);
+    assert.ok(previous < menu.indexOf('href="/know-the-faith/living-the-faith"'));
     for (const route of ['entering-church','introductory-rites','liturgy-of-the-word','liturgy-of-the-eucharist','concluding-rites']) {
       const index = menu.indexOf(`href="/know-the-mass/${route}"`);
       assert.ok(index > previous, route); previous = index;
