@@ -1,3 +1,4 @@
+import { chapterSummaries } from './chapter-summaries';
 import { computed, Injectable, signal } from '@angular/core';
 import { Article, articles } from './content';
 import { orderArticles } from './curriculum';
@@ -31,11 +32,19 @@ const livingArea: LibraryArea = {
   id: 'living', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
   introduction: 'Carry what we receive at Mass into prayer, service, and everyday choices.'
 };
-export const areas: readonly LibraryArea[] = [faithArea, massArea, livingArea];
+const sacramentsArea: LibraryArea = {
+  id: 'sacraments', title: 'Sacraments', path: '/sacraments',
+  introduction: 'Discover the seven sacraments and the gifts Christ gives us through them.'
+};
+export const areas: readonly LibraryArea[] = [faithArea, massArea, sacramentsArea, livingArea];
 export const topics: readonly LibraryTopic[] = [{
   summary: 'Before Mass, we can take a little time to turn our attention toward God. Holy water reminds us of Baptism, and a quiet visit helps us notice where the Eucharist is reserved. When we kneel on one knee before the Blessed Sacrament, we honor Jesus himself. The altar, the priest’s clothing, and the colors also help us understand the worship we are about to join. These lessons explain those signs and offer simple ways to prepare as a family.',
   id: 'entering-church', areaId: 'mass', title: 'Before Mass Begins', path: '/know-the-mass/entering-church',
   introduction: 'Get ready for Mass and explore the church, its furnishings, and gestures of prayer. These lessons describe preparation and background, not extra parts of the ceremony.'
+}, {
+  id: 'gestures-and-postures', areaId: 'mass', title: 'Gestures and Postures at Mass', path: '/know-the-mass/gestures-and-postures',
+  introduction: 'Learn the gestures you will see and make as you pray at Mass.',
+  summary: 'We pray with our bodies as well as our voices. The Sign of the Cross recalls our Baptism and Christ’s love. Three small crosses prepare us to hear the Gospel. Raised hands, kneeling, genuflecting, and bowing help us express prayer, adoration, and reverence.'
 }, {
   summary: 'The beginning of Mass gathers us into one prayer. The ministers enter, we make the Sign of the Cross, and the priest greets us. We ask God for mercy, praise him in the Gloria when it is called for, and join the opening prayer. The Church calls these actions the Introductory Rites. They help us bring our real lives before God and become ready to listen to his Word.',
   id: 'introductory-rites', areaId: 'mass', title: 'The Beginning of Mass', path: '/know-the-mass/introductory-rites',
@@ -56,8 +65,10 @@ export const topics: readonly LibraryTopic[] = [{
   id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
   introduction: 'Part 1: Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
 }, {
+  ...sacramentsArea, areaId: 'sacraments'
+}, {
   id: 'living-the-faith', areaId: 'living', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
-  introduction: 'Part 3: Discover how God’s grace enables our response. Explore living faith, Baptism and sacramental life, prayer, and choices shaped by love.'
+  introduction: 'Part 4: Discover how God’s grace enables our response. Explore living faith, Baptism and sacramental life, prayer, and choices shaped by love.'
 }];
 
 // Preserve bookmarked topic URLs after grouping the curriculum into five sections.
@@ -83,7 +94,7 @@ export class ContentLibrary {
     .sort((a, b) => this.articles().findIndex(article => article.topicId === a.id) - this.articles().findIndex(article => article.topicId === b.id)));
   readonly areas = computed(() => areas.filter(area => this.topics().some(t => t.areaId === area.id)));
 
-  find(slug: string) { return this.articles().find(article => article.slug === slug); }
+  find(slug: string) { return this.articles().find(article => article.slug === slug) ?? chapterSummaries.find(chapter => chapter.slug === slug); }
   topic(id: string) { return topics.find(topic => topic.id === id); }
   area(id: string) { return areas.find(area => area.id === id); }
   inTopic(id: string) { return this.articles().filter(article => article.topicId === id); }

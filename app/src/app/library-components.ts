@@ -23,7 +23,7 @@ import { curricula, curriculumPosition } from './curriculum';
                 <ul class="nav-chapter-list">
                   @for(chapter of salvation.phases; track chapter.anchor) {
                     <li>
-                      <a [routerLink]="topic.path" [fragment]="chapter.anchor"
+                      <a [routerLink]="['/articles', chapter.anchor]"
                         [class.is-active]="activeChapter() === chapter.anchor"
                         [attr.aria-expanded]="activeChapter() === chapter.anchor"
                         (click)="navigate.emit()">{{chapter.title}}</a>
@@ -78,7 +78,7 @@ export class LibraryNav {
   readonly activeChapter = computed(() => {
     const article = this.activeArticle();
     return article
-      ? this.salvation.phases.find(chapter => chapter.published.includes(article.slug))?.anchor
+      ? this.salvation.phases.find(chapter => chapter.anchor === article.slug || chapter.published.includes(article.slug))?.anchor
       : this.location().fragment;
   });
 

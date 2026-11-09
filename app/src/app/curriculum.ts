@@ -25,15 +25,26 @@ export const curricula: Curriculum[] = [{
 }, {
   id: 'mass', areaId: 'mass', part: 2, title: 'Know the Mass', path: '/know-the-mass',
   phases: [
-    {title: 'Before Mass Begins', introduction: 'Notice the church, its furnishings, and the gestures that help us prepare. These background lessons describe what we may see before Mass; they are not additional parts of the ceremony.', published: ['preparing-for-mass', 'holy-water', 'tabernacle', 'genuflection', 'altar', 'vestments', 'liturgical-colors'], planned: []},
-    {title: 'The Beginning of Mass', introduction: 'We gather, make the Sign of the Cross, ask for mercy, and pray. The Church calls these opening prayers and actions the Introductory Rites. A rite is an established action or ceremony of worship.', published: ['entrance-and-greeting', 'sign-of-the-cross', 'penitential-act', 'gloria-and-collect'], planned: []},
-    {title: 'Bible Readings', introduction: 'We listen to the Bible, hear its meaning explained, share our faith, and pray for others. This part is called the Liturgy of the Word. Liturgy means the Church’s public worship.', published: ['readings-and-psalm', 'standing-for-the-gospel', 'homily-creed-and-prayers'], planned: []},
+    {title: 'Before Mass Begins', introduction: 'Notice the church, its furnishings, and the gestures that help us prepare. These background lessons describe what we may see before Mass; they are not additional parts of the ceremony.', published: ['preparing-for-mass', 'holy-water', 'tabernacle', 'altar', 'vestments', 'liturgical-colors'], planned: []},
+    {title: 'Gestures and Postures at Mass', introduction: 'Learn how Catholics pray with their bodies, from making the Sign of the Cross to kneeling and bowing in reverence.', published: ['sign-of-the-cross', 'small-crosses-before-the-gospel', 'raised-hands-in-prayer', 'genuflection', 'bowing-at-mass'], planned: []},
+    {title: 'The Beginning of Mass', introduction: 'We gather, make the Sign of the Cross, ask for mercy, and pray. The Church calls these opening prayers and actions the Introductory Rites. A rite is an established action or ceremony of worship.', published: ['entrance-and-greeting', 'penitential-act', 'gloria-and-collect'], planned: []},
+    {title: 'Bible Readings', introduction: 'We listen to the Bible, hear its meaning explained, share our faith, and pray for others. This part is called the Liturgy of the Word. Liturgy means the Church’s public worship.', published: ['readings-and-psalm', 'standing-for-the-gospel', 'homily-creed-and-prayers', 'nicene-creed'], planned: []},
     {title: 'The Eucharist', introduction: 'Eucharist means thanksgiving. In this part of Mass, called the Liturgy of the Eucharist, we offer thanks as Christ’s one sacrifice is made present and bread and wine become his Body and Blood. It includes the Communion Rite: the prayers and actions leading to receiving Christ and giving thanks.', published: ['preparation-of-the-gifts', 'the-eucharistic-prayer', 'eucharist-real-presence', 'prayer-peace-and-lamb-of-god', 'holy-communion-and-thanksgiving'], planned: []},
     {title: 'The End of Mass', introduction: 'We receive God’s blessing and are sent to love and serve. These final actions are called the Concluding Rites. Worship continues to shape our daily lives.', published: ['final-blessing', 'dismissal'], planned: []}
-  ], nextId: 'living',
-  transition: 'At the dismissal, we are sent to love and serve. Continue with the new life Christ calls us to live at home and in the world.'
+  ], nextId: 'sacraments',
+  transition: 'At Mass we celebrate the Eucharist, one of the seven sacraments. Next, explore how Christ gives us grace through all seven.'
 }, {
-  id: 'living', areaId: 'living', part: 3, title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
+  id: 'sacraments', areaId: 'sacraments', part: 3, title: 'Sacraments', path: '/sacraments',
+  question: 'How does Christ give us grace through the sacraments?',
+  phases: [
+    {title: 'What Is a Sacrament?', published: ['what-is-a-sacrament'], planned: []},
+    {title: 'Sacraments of Initiation', published: ['sacrament-of-baptism', 'sacrament-of-confirmation', 'sacrament-of-the-eucharist'], planned: []},
+    {title: 'Sacraments of Healing', published: ['sacrament-of-reconciliation', 'sacrament-of-anointing'], planned: []},
+    {title: 'Sacraments at the Service of Communion', published: ['sacrament-of-holy-orders', 'sacrament-of-matrimony'], planned: []}
+  ], nextId: 'living',
+  transition: 'The sacraments give us grace for daily life. Continue with prayer, service, and choices shaped by Christ.'
+}, {
+  id: 'living', areaId: 'living', part: 4, title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
   description: 'Explore how God’s grace makes possible a life of faith, conversion, prayer, and love.',
   question: 'How do we respond to God’s grace and live as Christians?',
   phases: [

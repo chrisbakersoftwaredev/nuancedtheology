@@ -1,10 +1,11 @@
+import { chapterSummaries } from './app/chapter-summaries';
 import { BootstrapContext, bootstrapApplication } from '@angular/platform-browser';
 import { mergeApplicationConfig } from '@angular/core';
 import { provideServerRendering, withRoutes, RenderMode, ServerRoute, PrerenderFallback } from '@angular/ssr';
 import { App, config } from './app/app';
 import { articles } from './app/content';
 import { collectionRoutes, collectionRedirects } from './app/library';
-const params = async () => articles.map(article => ({ slug: article.slug }));
+const params = async () => [...articles, ...chapterSummaries].map(article => ({ slug: article.slug }));
 const serverRoutes: ServerRoute[] = [
  { path: '', renderMode: RenderMode.Prerender },
  { path: 'know-the-faith/the-creed', renderMode: RenderMode.Prerender },
