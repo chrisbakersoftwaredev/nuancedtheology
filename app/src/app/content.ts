@@ -1,3 +1,5 @@
+import { massGestureArticles } from './mass-gesture-articles';
+import { sacramentArticles } from './sacrament-articles';
 import { livingFaithArticles } from './living-faith-articles';
 import { faithFoundations } from './faith-foundations';
 import { massFoundations } from './mass-foundations';
@@ -23,7 +25,7 @@ const vatican = 'https://www.vatican.va/content/catechism/en/';
 export const articles: Article[] = [{
  slug: 'sign-of-the-cross', discussionQuestion: 'When could making the Sign of the Cross help our family remember God’s love?', title: 'Why do Catholics make the Sign of the Cross?',
  summary: 'A little gesture with a big meaning: a prayer that reminds us who God is and how much Jesus loves us.',
- topicId: 'introductory-rites', keywords: ['prayer', 'Trinity', 'Baptism', 'cross', 'gesture', 'Jesus'], readMinutes: 4,
+ topicId: 'gestures-and-postures', keywords: ['prayer', 'Trinity', 'Baptism', 'cross', 'gesture', 'Jesus'], readMinutes: 4,
  revision: { date: '2026-10-24', version: 3, status: 'Drafted' },
  sections: [
   { title: 'A prayer you can see', sourceIds: ['daily'], paragraphs: [
@@ -75,4 +77,4 @@ export const articles: Article[] = [{
   practice: 'Make the Sign of the Cross slowly together. A parent can stand beside a child to demonstrate without reversing the movement like a mirror. Then choose one moment tomorrow to pray it as a family. If the movement is difficult for someone, help them participate in a way they can.',
   prayer: 'Loving God, Father, Son, and Holy Spirit, thank you for loving us. Help us remember Jesus’ Cross and Resurrection. Teach our family to pray with care and to show your love to others. Amen.'
  }
-}, ...massArticles, ...faithArticles, ...faithFoundations, ...massFoundations, ...livingFaithArticles];
+}, ...massArticles, ...faithArticles, ...faithFoundations, ...massFoundations, ...massGestureArticles, ...sacramentArticles, ...livingFaithArticles];

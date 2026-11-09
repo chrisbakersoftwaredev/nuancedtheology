@@ -47,6 +47,65 @@ lesson({
  ['Our prayer reaches beyond ourselves',['We then pray for people beyond ourselves. This is the Universal Prayer, also called the Prayer of the Faithful: universal reminds us to include the needs of the Church and the world. Intercession means asking God to help others. Scripture encourages intercession for all people, including those with public responsibility.', 'We can bring a personal intention while learning to pray for those far beyond our household. Someone we will never meet may need peace, food, healing, or justice. Hearing the Word should widen our love. Our response can continue after Mass through a concrete act of care.'],['1timothy-2','guide']]
  ],questions:[['What does the homily help us do?','Receive the meaning of Scripture and the liturgy for life with Christ.'],['Can we still ask questions while learning the Creed?','Yes. Honest questions can help us understand the faith we profess.'],['Who beyond our family needs prayer?','Name a community or group without sharing private information.']],remember:'We answer God’s Word with faith, prayer, and a love that reaches beyond ourselves.',practice:'Choose one unfamiliar word from the Creed to explore with a parent. Pray for one need mentioned in the Universal Prayer.',prayer:'God of all people, deepen our faith. Hear the needs of your Church and your world, and teach us to serve. Amen.',parentGuidance:'Do not imply that every weekday Mass includes the Creed. Welcome questions and explain that the homily serves Scripture and the liturgy, rather than replacing them.'
 }),
+{
+ ...lesson({
+  slug: 'nicene-creed',
+  discussionQuestion: 'Which part of the Creed would you like to understand better?',
+  title: 'What are we saying in the Nicene Creed?',
+  topicId: 'liturgy-of-the-word',
+  summary: 'Walk through the Creed in short sections, from God creating the world to our hope of life with him forever.',
+  keywords: ['Nicene Creed', 'Niceno-Constantinopolitan Creed', 'profession of faith', 'consubstantial', 'Trinity'],
+  sources: [
+   {id:'creed',label:'USCCB · Read the full Nicene Creed',url:'https://www.usccb.org/beliefs-and-teachings/what-we-believe',note:'The text of the Creed used in the Roman Missal.'},
+   {id:'councils',label:'Catechism 185–197',url:'https://www.vatican.va/content/catechism/en/part_one/section_two.index.html',note:'The purpose of a creed and the origins of the Nicene Creed.'},
+   {id:'son',label:'USCCB · Consubstantial with the Father',url:'https://www.usccb.org/prayer-and-worship/the-mass/order-of-mass/liturgy-of-the-word/consubstantial-with-the-father',note:'What it means for Jesus to share the same divine nature as the Father.'},
+   {id:'marks',label:'Catechism 811–870',url:'https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_three/article_9/paragraph_3_the_church_is_one%2C_holy%2C_catholic%2C_and_apostolic.index.html',note:'The four marks of the Church.'},
+   bible('john',1,'1–3, 14','The eternal Word is God, all things were made through him, and he became flesh.'),
+   bible('luke',1,'26–38','The angel tells Mary that she will bear Jesus through the Holy Spirit.'),
+   bible('1corinthians',15,'3–8, 20–28, 42–44','Christ died, was buried, and rose. His Resurrection gives us hope for our own.'),
+   bible('acts',2,'16–18, 32–38','Peter connects the prophets, Christ’s exaltation, the gift of the Spirit, and Baptism.')
+  ],
+  sections: [
+   ['One God, the Father and Creator',[
+    'A creed is a statement of what we believe. This one is also called the Niceno-Constantinopolitan Creed because it comes from the early councils of Nicaea and Constantinople. Open the full Creed in the references and follow along one part at a time.',
+    'We begin with one God, the almighty Father. Everything God created depends on him for its existence, including things we can see, like the stars, and things we cannot see, like angels.'
+   ],['creed','councils']],
+   ['Jesus Christ, the eternal Son',[
+    'Jesus is the Father’s Son from all eternity. When the Creed calls him begotten, it describes his eternal relationship to the Father. The Son has always existed, and all creation came into being through him.',
+    'Consubstantial means the Son shares the same divine nature as the Father. The Father and the Son are distinct Persons, and they are one God. The Creed repeats this truth in several ways so we hear clearly that Jesus is truly God.'
+   ],['creed','son','john-1']],
+   ['The Son became human to save us',[
+    'The eternal Son took on our human nature through the Holy Spirit and was born of Mary. This is the Incarnation. Jesus is truly God and truly human. He came for our salvation, to rescue us from sin and bring us into friendship with God.'
+   ],['creed','john-1','luke-1']],
+   ['Jesus died and rose',[
+    'The Creed names Pontius Pilate because Jesus’ suffering and death took place in real history. Jesus truly died and was buried. On the third day he rose, fulfilling what God had promised in Scripture. When we say these words, we remember what Jesus did for us.'
+   ],['creed','1corinthians-15']],
+   ['Jesus reigns and will come again',[
+    'Jesus ascended into heaven. To say that he sits at the Father’s right hand means that he shares the Father’s glory and reigns as Lord. We look forward to his return, when he will judge the living and the dead. His kingdom will last forever.'
+   ],['creed','acts-2','1corinthians-15']],
+   ['The Holy Spirit gives life',[
+    'The Holy Spirit is Lord and gives life. In the Creed we profess that he proceeds eternally from the Father and the Son. We worship him with the Father and the Son as the one God. The Spirit spoke through the prophets, helping them speak God’s word.'
+   ],['creed','acts-2']],
+   ['The Church and one Baptism',[
+    'The Church is one because Christ gathers us into one people. She is holy because Christ gives her his holiness and calls her members to grow in it. Catholic means universal: her mission is for all peoples. Apostolic means she is founded on the apostles and carries on their teaching and mission.',
+    'We profess one Baptism for the forgiveness of sins. In Baptism God gives us new life in Christ and brings us into his Church. A valid Baptism is received once.'
+   ],['creed','marks','acts-2']],
+   ['The resurrection and the life to come',[
+    'We look forward to the day God will raise the dead. Because Jesus rose, we can hope that God will raise our bodies too. The Creed ends with our hope of life with God forever. When we say Amen, we give our yes to the faith we have just professed.'
+   ],['creed','1corinthians-15']]
+  ],
+  questions: [
+   ['What does consubstantial tell us about Jesus?', 'Jesus is truly God. He shares the same divine nature as the Father.'],
+   ['What does the Creed tell us Jesus did for us?', 'Invite your child to name one part, such as becoming human, dying for us, or rising again.'],
+   ['What do we look forward to at the end of the Creed?', 'God will raise the dead, and we hope to live with him forever.']
+  ],
+  remember: 'The Creed tells the story of the God who made us, came to save us, and calls us to life with him forever.',
+  practice: 'Read one short part of the Creed together. At Mass, listen for that part and talk about one word you remember.',
+  prayer: 'Father, thank you for sending Jesus. Holy Spirit, help us understand the faith we share and live it with joy. Amen.',
+  parentGuidance: 'Keep the official Creed beside you and read one section at a time. Invite questions about unfamiliar words and return to the rest on another day.'
+ }),
+ revision: {date: '2026-11-07', version: 1, status: 'Drafted' as const}
+},
 lesson({
  slug:'preparation-of-the-gifts',discussionQuestion:'What joy, worry, or work could we offer to God with thanks?',title:'Bringing bread and wine to the altar',topicId:'liturgy-of-the-eucharist',summary:'The preparation of the gifts teaches us gratitude and invites us to offer our lives with Christ.',keywords:['Liturgy of the Eucharist','preparation of the gifts','offertory','bread','wine','gifts','offering'],
  sources:[guide('order-of-mass/liturgy-of-the-eucharist','Liturgy of the Eucharist','The preparation of the altar and gifts begins this part of Mass.'),bible('romans',12,'1–2','Paul invites believers to offer their lives to God.'),catechism('part_two/section_two/chapter_one/article_3/iv_the_liturgical_celebration_of_the_eucharist','1350–1351','Bread and wine are presented; the Church’s offering also expresses care for those in need.')],
