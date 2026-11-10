@@ -8,6 +8,7 @@ import { collectionRoutes, collectionRedirects } from './app/library';
 const params = async () => [...articles, ...chapterSummaries].map(article => ({ slug: article.slug }));
 const serverRoutes: ServerRoute[] = [
  { path: '', renderMode: RenderMode.Prerender },
+ { path: 'first-visit-to-mass', renderMode: RenderMode.Prerender },
  { path: 'know-the-faith/the-creed', renderMode: RenderMode.Prerender },
  ...collectionRedirects.map((route): ServerRoute => ({path: route.path, renderMode: RenderMode.Prerender})),
  ...collectionRoutes.map((route): ServerRoute => ({path: route.path, renderMode: RenderMode.Prerender})),

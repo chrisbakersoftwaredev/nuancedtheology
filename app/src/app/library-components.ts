@@ -12,6 +12,7 @@ import { curricula, curriculumPosition } from './curriculum';
   template: `
     <nav class="library-navigation" aria-label="Learning library">
       <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page" (click)="navigate.emit()">Library home</a>
+      <a class="nav-first-visit" routerLink="/first-visit-to-mass" routerLinkActive="is-active" ariaCurrentWhenActive="page" (click)="navigate.emit()">First time at Mass?</a>
       <p class="nav-section-label">Explore & understand</p>
       @for(area of library.areas(); track area.id) {
         @if(!hasMatchingTopic(area.path)) {<a class="nav-area" [routerLink]="area.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page" (click)="navigate.emit()">{{area.title}}</a>}
