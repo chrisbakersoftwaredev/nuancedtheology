@@ -45,3 +45,49 @@
 .library-navigation .nav-chapter-list .nav-lesson-list {
   margin-left: 10px;
 }
+
+.library-navigation .nav-first-visit {
+  font-weight: 700;
+  background: #e8eddf;
+  border-radius: 4px;
+}
+.scripture-reference {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.scripture-reader {
+  width: min(35rem, calc(100% - 2rem));
+  max-height: 75vh;
+  overflow: auto;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--paper);
+  font: 1rem Arial, sans-serif;
+  text-align: left;
+}
+.scripture-reader::backdrop { background: rgb(0 0 0 / 45%); }
+.scripture-reader-header { display: flex; justify-content: space-between; gap: 1rem; }
+.scripture-reader-header h2 { font-size: 1.5rem; margin: 0; }
+.scripture-reader-header p { font-size: .85rem; color: var(--muted); }
+.scripture-close {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--green);
+  background: #e8eddf;
+  font: 600 .875rem Arial, sans-serif;
+  white-space: nowrap;
+}
+.scripture-close span { font-size: 1.15rem; line-height: 1; }
+.scripture-close:hover { background: var(--green); color: white; }
+.verse-number { color: var(--green); margin-right: .3rem; }

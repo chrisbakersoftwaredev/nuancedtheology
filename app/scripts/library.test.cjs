@@ -267,8 +267,7 @@ test('print rules exclude curriculum navigation and retain family sections', () 
   assert.match(styles, /\.discussion-page\{break-before:page/);
 });
 
-test('all generated internal link destinations resolve over HTTP, including Next and fragments', async () => {
-  const http = require('node:http');
+test('generated pages contain every internal link destination, including Next and fragments', () => {
   const pages = [];
   function visit(directory) {
     for (const entry of fs.readdirSync(directory, {withFileTypes:true})) {
@@ -291,33 +290,23 @@ test('all generated internal link destinations resolve over HTTP, including Next
     const redirect = html.match(/http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"/i)?.[1];
     if (redirect) targets.add(new URL(redirect,'http://localhost').pathname);
   }
-  const server = http.createServer((request,response) => {
-    const pathname = decodeURIComponent(new URL(request.url,'http://localhost').pathname);
-    const file = path.join(root, pathname, 'index.html');
-    if (!fs.existsSync(file)) {response.writeHead(404);response.end('Missing');return;}
-    response.setHeader('Content-Type','text/html');response.end(fs.readFileSync(file));
-  });
-  await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
-  const base = `http://127.0.0.1:${server.address().port}`;
-  try {
-    const failures = [];
-    for (const target of targets) {
-      const url = new URL(target, base);
-      const result = await fetch(url);
-      if (result.status !== 200) { failures.push(target + ': HTTP ' + result.status); continue; }
-      const html = await result.text();
-      if (url.hash) {
-        const fragment = decodeURIComponent(url.hash.slice(1));
-        if (!html.includes(`id="${fragment}"`)) failures.push(target + ': missing fragment');
-      }
+  const failures = [];
+  for (const target of targets) {
+    const url = new URL(target, 'http://localhost');
+    const file = path.join(root, decodeURIComponent(url.pathname), 'index.html');
+    if (!fs.existsSync(file)) {
+      failures.push(target + ': missing page');
+      continue;
     }
-    assert.deepEqual(failures, []);
-    assert.equal(pages.length, 135);
-    console.log(`Verified ${targets.size} internal link targets across ${pages.length} static pages.`);
-  } finally {
-    server.closeAllConnections();
-    await new Promise(resolve => server.close(resolve));
+    if (url.hash) {
+      const fragment = decodeURIComponent(url.hash.slice(1));
+      const html = fs.readFileSync(file, 'utf8');
+      if (!html.includes('id="' + fragment + '"')) failures.push(target + ': missing fragment');
+    }
   }
+  assert.deepEqual(failures, []);
+  assert.equal(pages.length, 136);
+  console.log('Verified ' + targets.size + ' internal link targets across ' + pages.length + ' static pages.');
 });
 
 test('Mass has six family-friendly sections while preserving its lesson itinerary', () => {
