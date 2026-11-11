@@ -19,7 +19,18 @@ export class CollectionPage {
     : this.topic?.introduction ?? this.area?.introduction ?? '';
   readonly entries = () => this.familyMode ? this.library.articles() : this.topic ? this.library.inTopic(this.topic.id) : this.area ? this.library.inArea(this.area.id) : [];
   readonly visibleTopics = () => this.library.topics().filter(t => t.areaId === this.area?.id);
-  readonly sequences = () => curricula.filter(sequence => this.familyMode || (sequence.areaId === this.area?.id && (!this.topic || sequence.areaId === 'mass' || sequence.path === this.topic.path))).map(sequence => ({...sequence, phases: sequence.phases.map(phase => ({...phase, published: phase.published.filter(slug => this.entries().some(article => article.slug === slug))})).filter(phase => (phase.published.length || (!this.topic || this.area?.id === 'faith') && phase.planned.length))}));
+  readonly sequences = () => {
+    const slugs = new Set(this.entries().map(article => article.slug));
+    return curricula
+      .filter(sequence => this.familyMode || sequence.areaId === this.area?.id)
+      .map(sequence => ({
+        ...sequence,
+        phases: sequence.phases
+          .map(phase => ({...phase, published: phase.published.filter(slug => slugs.has(slug))}))
+          .filter(phase => phase.published.length || (!this.topic && phase.planned.length))
+      }))
+      .filter(sequence => sequence.phases.length);
+  };
   readonly first = () => this.entries()[0];
   readonly lessonNumber = (slug: string) => curriculumPosition(slug)?.number ?? 0;
   constructor() {

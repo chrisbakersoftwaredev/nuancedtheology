@@ -23,7 +23,7 @@ export const curricula: Curriculum[] = [{
   transition: 'The Eucharist is the source and summit of Christian life. The Church gathers to hear God’s Word and celebrate the Holy Sacrifice of the Mass, where Christ’s one sacrifice is made sacramentally present and he is truly present in the Eucharist.',
   transitionSource: {url: 'https://www.vatican.va/content/catechism/en/part_two/section_two/chapter_one/article_3/i_the_eucharist_source_and_summit_of_ecclesial_life.index.html', label: 'Catechism 1324'}
 }, {
-  id: 'mass', areaId: 'mass', part: 2, title: 'Know the Mass', path: '/know-the-mass',
+  id: 'mass', areaId: 'mass', part: 2, title: 'Understanding the Mass', path: '/know-the-mass',
   phases: [
     {title: 'Before Mass Begins', introduction: 'Notice the church, its furnishings, and the gestures that help us prepare. These background lessons describe what we may see before Mass; they are not additional parts of the ceremony.', published: ['preparing-for-mass', 'holy-water', 'tabernacle', 'altar', 'vestments', 'liturgical-colors'], planned: []},
     {title: 'Gestures and Postures at Mass', introduction: 'Learn how Catholics pray with their bodies, from making the Sign of the Cross to kneeling and bowing in reverence.', published: ['sign-of-the-cross', 'small-crosses-before-the-gospel', 'raised-hands-in-prayer', 'genuflection', 'bowing-at-mass'], planned: []},
@@ -45,13 +45,14 @@ export const curricula: Curriculum[] = [{
   transition: 'The sacraments give us grace for daily life. Continue with prayer, service, and choices shaped by Christ.'
 }, {
   id: 'living', areaId: 'living', part: 4, title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
-  description: 'Explore how God’s grace makes possible a life of faith, conversion, prayer, and love.',
+  description: 'Begin with the Beatitudes, which portray Christ’s love and promise the Kingdom. Continue with the foundations of daily Christian life. Every step depends on God’s grace.',
   question: 'How do we respond to God’s grace and live as Christians?',
   phases: [
-    {title: 'Faith, Grace, and Conversion', published: ['new-life-in-christ', 'faith-works-and-repentance'], planned: []},
-    {title: 'The Sacraments and Christian Life', published: ['baptism-and-sanctifying-grace'], planned: []},
-    {title: 'Prayer and Growing in Holiness', published: ['prayer-faith-hope-and-love'], planned: []},
-    {title: 'Morality, Virtue, and the Commandments', published: ['following-christ-in-daily-choices'], planned: []}
+    {title: 'The Beatitudes', published: ['beatitude-poor-in-spirit', 'beatitude-those-who-mourn', 'beatitude-the-meek', 'beatitude-hunger-for-righteousness', 'beatitude-the-merciful', 'beatitude-pure-in-heart', 'beatitude-peacemakers', 'beatitude-persecuted-for-righteousness'], planned: []},
+    {title: 'Everyday Christian Life', published: ['new-life-in-christ', 'faith-works-and-repentance', 'baptism-and-sanctifying-grace', 'prayer-faith-hope-and-love', 'following-christ-in-daily-choices'], planned: []},
+    {title: 'Works of Mercy', published: [], planned: [{title: 'Caring for our neighbors in body and spirit', note: 'Future series on the corporal and spiritual works of mercy.'}]},
+    {title: 'Theological Virtues', published: [], planned: [{title: 'Faith hope and charity', note: 'Future series on the gifts by which we live in relationship with God.'}]},
+    {title: 'Fruits of the Holy Spirit', published: [], planned: [{title: 'Growing in the life of the Spirit', note: 'Future series on the fruit of the Holy Spirit in Christian life.'}]}
   ]
 }];
 

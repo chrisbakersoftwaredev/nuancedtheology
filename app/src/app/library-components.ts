@@ -15,9 +15,9 @@ import { curricula, curriculumPosition } from './curriculum';
       <a class="nav-first-visit" routerLink="/first-visit-to-mass" routerLinkActive="is-active" ariaCurrentWhenActive="page" (click)="navigate.emit()">First time at Mass?</a>
       <p class="nav-section-label">Explore & understand</p>
       @for(area of library.areas(); track area.id) {
-        @if(!hasMatchingTopic(area.path)) {<a class="nav-area" [routerLink]="area.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page" (click)="navigate.emit()">{{area.title}}</a>}
+        @if(!hasMatchingTopic(area.path)) {<a class="nav-area" [attr.aria-expanded]="area.id !== 'sacraments' ? activeAreaId() === area.id : null" [routerLink]="area.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page" (click)="navigate.emit()">{{area.title}}</a>}
         @for(topic of library.topics(); track topic.id) {
-          @if(topic.areaId === area.id) {
+          @if(topic.areaId === area.id && (area.id === 'sacraments' || activeAreaId() === area.id)) {
             <a [class]="topic.path === area.path ? 'nav-area' : 'nav-topic'" [routerLink]="topic.path" routerLinkActive="is-active" ariaCurrentWhenActive="page" (click)="navigate.emit()">{{topic.title}}</a>
             @if(activeTopicId() === topic.id) {
               @if(topic.path === salvation.path) {
@@ -86,6 +86,13 @@ export class LibraryNav {
   readonly chapterLessons = computed(() => {
     const chapter = this.salvation.phases.find(item => item.anchor === this.activeChapter());
     return this.library.articles().filter(article => chapter?.published.includes(article.slug));
+  });
+
+  readonly activeAreaId = computed(() => {
+    const topic = this.activeTopicId();
+    if (topic) return this.library.topic(topic)?.areaId;
+    const path = '/' + this.segments().map(segment => segment.path).join('/');
+    return this.library.areas().find(area => area.path === path)?.id;
   });
 
   readonly activeTopicId = computed(() => {

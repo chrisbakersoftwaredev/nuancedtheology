@@ -1,9 +1,9 @@
 <section class="library-welcome">
   <aside class="construction-notice" aria-label="Website and article status"><strong>Under construction</strong><p>This website is still being developed. None of the articles has been approved by any authority of the Catholic Church. Please read them as educational drafts.</p></aside>
-  <p class="eyebrow">A Catholic learning library</p>
+  <p class="eyebrow">Catholic learning for families and curious minds</p>
   <h1>Understand your faith.<br><em>Share what you learn.</em></h1>
-  <p class="welcome-intro">A welcoming place to explore Catholic belief and practice. Read a simple explanation, follow its sources, and bring a lesson home to your family.</p>
-  <p class="welcome-note">For first questions, new beginnings, and a lifetime of growing in faith.</p>
+  <p class="welcome-intro">Helping Catholic families understand what we believe, why we worship, and how we live our faith together.</p>
+  <p class="welcome-note">For parents learning alongside their children, people exploring Catholicism, and anyone seeking deeper understanding.</p>
   <a class="button secondary" routerLink="/first-visit-to-mass">First time at Mass? →</a>
 </section>
 <section class="library-discovery" aria-labelledby="browse-heading">
@@ -15,10 +15,10 @@
     @if(results().length) {<nt-article-cards [entries]="results()"/>} @else {<div class="empty"><h3>No matching lessons yet</h3><p>Try “cross”, “Trinity”, or “prayer”. Our library is starting small and growing with care.</p><button class="button secondary" (click)="query.set('')">Clear search</button></div>}
   } @else {
     @for(area of library.areas(); track area.id) {
-      <article class="library-area-card"><div><p class="eyebrow">{{area.id === 'mass' ? 'Discover Catholic worship' : area.id === 'sacraments' ? 'Signs of Christ’s grace' : area.id === 'living' ? 'Faith in daily life' : 'Discover God’s saving love'}}</p><h3><a [routerLink]="area.path">{{area.title}}</a></h3><p>{{area.introduction}}</p></div><div class="area-topics">@for(topic of library.topics(); track topic.id) {@if(topic.areaId === area.id && topic.path !== area.path) {<a [routerLink]="topic.path"><span>{{topic.title}}</span><span>{{library.inTopic(topic.id).length}} {{library.inTopic(topic.id).length === 1 ? 'lesson' : 'lessons'}} →</span></a>}}</div></article>
+      <article class="library-area-card"><div><p class="eyebrow">{{area.id === 'mass' ? 'Discover Catholic worship' : area.id === 'sacraments' ? 'Signs of Christ’s grace' : area.id === 'living' ? 'Faith in daily life' : 'Explore Catholic teaching'}}</p><h3><a [routerLink]="area.path">{{area.title}}</a></h3><p>{{area.introduction}}</p></div><div class="area-topics">@for(topic of library.topics(); track topic.id) {@if(topic.areaId === area.id && topic.path !== area.path) {<a [routerLink]="topic.path"><span>{{topic.title}}</span><span>{{library.inTopic(topic.id).length}} {{library.inTopic(topic.id).length === 1 ? 'lesson' : 'lessons'}} →</span></a>}}</div></article>
     }
     <div class="section-top start-reading"><h2>Start reading</h2><p>{{library.articles().length}} complete lessons. Browse a collection to explore them all.</p></div>
-    <nt-article-cards [entries]="[library.inArea('faith')[0], library.inArea('mass')[0]]"/>
+    <nt-article-cards [entries]="[library.inArea('faith')[0], library.inArea('mass')[0], library.inArea('living')[0]]"/>
   }
 </section>
 <section id="mission" class="mission"><p class="eyebrow">The resource we wish we’d had</p><h2>Clear enough to begin.<br>Faithful enough to trust.</h2><p>nuancedTheology exists to make the Catholic faith understandable and accessible to individuals and families—whether they’re encountering it for the first time, preparing to enter the Church, or seeking to grow in a faith they’ve practiced their entire lives.</p><p>We offer warm, simple explanations grounded in Scripture and the Church’s teaching, with room for deeper learning. Nuance does not require complexity. It requires precision.</p><p class="muted">These lessons are ready for your feedback. Content is awaiting theological review; no ecclesiastical approval is claimed.</p></section>
