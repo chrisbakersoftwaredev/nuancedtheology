@@ -25,9 +25,9 @@ const collections = new Map([
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
 ]);
 test('complete Faith and Mass curricula', () => {
-  assert.equal(articles.length, 62);
+  assert.equal(articles.length, 61);
   assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith'].includes(a.topicId)).length, 21);
-  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'beatitudes', 'sacraments'].includes(a.topicId)).length, 25);
+  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'beatitudes', 'sacraments'].includes(a.topicId)).length, 24);
   assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 });
 for (const article of articles) {
@@ -58,9 +58,11 @@ for (const article of articles) {
       assert.ok(html.includes('Awaiting theological review'));
       assert.ok(!html.includes('href="/family-lessons"'), 'no separate family navigation');
     }
-    for (const section of article.sections) for (const paragraph of section.paragraphs) {
-      assert.ok(text(page).includes(paragraph), `article paragraph: ${section.title}`);
-      assert.ok(text(printable).includes(paragraph), `shared printable paragraph: ${section.title}`);
+    for (const section of article.sections) {
+      for (const paragraph of section.paragraphs) assert.ok(text(page).includes(paragraph), `article paragraph: ${section.title}`);
+      for (const paragraph of section.familyParagraphs ?? section.paragraphs) {
+        assert.ok(text(printable).includes(paragraph), `family lesson paragraph: ${section.title}`);
+      }
     }
     const anchors = new Set(Array.from(page.matchAll(/id="(source-[^"]+)"/g), m => m[1]));
     for (const match of page.matchAll(/href="[^"]*#(source-[^"]+)"/g)) assert.ok(anchors.has(match[1]), match[1]);
@@ -70,7 +72,7 @@ for (const article of articles) {
     assert.ok(page.includes('Learn as a family →'));
     assert.ok(!page.includes('Print Family Lesson →'));
     assert.match(printable, /Print selected pages/);
-    for (const collection of new Set([collections.get(article.topicId), article.topicId === 'gods-plan-of-salvation' ? 'know-the-faith' : ['living-the-faith','beatitudes'].includes(article.topicId) ? 'know-the-faith/living-the-faith' : article.topicId === 'sacraments' ? 'sacraments' : 'know-the-mass', 'family-lessons'])) {
+    for (const collection of new Set([collections.get(article.topicId), article.topicId === 'gods-plan-of-salvation' ? collections.get(article.topicId) : ['living-the-faith','beatitudes'].includes(article.topicId) ? 'know-the-faith/living-the-faith' : article.topicId === 'sacraments' ? 'sacraments' : 'know-the-mass', 'family-lessons'])) {
       const listing = read(collection);
       assert.ok(listing.includes(`href="/${route}${collection === 'family-lessons' ? '/family-lesson' : ''}"`), collection);
       assert.ok(!listing.includes('id="collection-search"'));
@@ -81,10 +83,10 @@ for (const article of articles) {
   });
 }
 test('collections prerender and expose only published navigation', () => {
-  for (const route of ['', 'know-the-mass', 'know-the-faith', 'family-lessons', ...collections.values()]) {
+  for (const route of ['', 'know-the-mass', 'family-lessons', ...collections.values()]) {
     const html = read(route);
     assert.equal((html.match(/<h1(?:\s[^>]*)?>/g)||[]).length, 1);
-    assert.ok(html.includes('href="/know-the-faith"'));
+    assert.ok(html.includes('href="/know-the-faith/gods-plan-of-salvation"'));
     for (const unpublished of ['/apologetics','/ocia','/reflections']) assert.ok(!html.includes(`href="${unpublished}"`));
   }
 });
@@ -94,13 +96,14 @@ test('original parent guidance is preserved', () => {
 
 test('Faith appears before Mass in navigation and homepage collections', () => {
   const home = read('');
-  assert.ok(home.indexOf('href="/know-the-faith"') < home.indexOf('href="/know-the-mass"'));
+  assert.ok(home.indexOf('href="/know-the-faith/gods-plan-of-salvation"') < home.indexOf('href="/know-the-mass"'));
   const cards = home.slice(home.indexOf('class="library-area-card"'));
-  assert.ok(cards.indexOf('href="/know-the-faith"') < cards.indexOf('href="/know-the-mass"'));
+  assert.ok(cards.indexOf('href="/know-the-faith/gods-plan-of-salvation"') < cards.indexOf('href="/know-the-mass"'));
   assert.ok(read('know-the-faith/gods-plan-of-salvation').includes('God’s Plan of Salvation'));
 });
 
-test('old Creed collection link redirects to God’s Plan of Salvation', () => {
+test('old Know the Faith and Creed links redirect to God’s Plan of Salvation', () => {
+  assert.ok(read('know-the-faith').includes('content="0; url=/know-the-faith/gods-plan-of-salvation"'));
   const legacy = read('know-the-faith/the-creed');
   assert.ok(legacy.includes('http-equiv="refresh"'));
   assert.ok(legacy.includes('content="0; url=/know-the-faith/gods-plan-of-salvation"'));
@@ -162,7 +165,7 @@ test('complete outlines retain order and connect Faith to Mass', () => {
     for (const row of plannedRows) assert.ok(!row[1].includes('href='));
     assert.ok(!html.includes('id="collection-search"'));
   }
-  assert.ok(read('articles/church-body-of-christ').includes('href="/articles/preparing-for-mass"'));
+  assert.ok(read('articles/church-body-of-christ').includes('href="/articles/holy-water"'));
   assert.ok(read('articles/eucharist-real-presence').includes('href="/articles/prayer-peace-and-lamb-of-god"'));
 });
 test('homepage warns about construction and lack of Church approval', () => {
@@ -175,13 +178,13 @@ test('homepage warns about construction and lack of Church approval', () => {
 
 test('the journey moves from salvation through Mass and the sacraments into daily life', () => {
   assert.deepEqual(curricula.map(sequence => sequence.id), ['salvation', 'mass', 'sacraments', 'living']);
-  assert.deepEqual(curricula.map(sequence => publishedSlugs(sequence).length), [16, 25, 8, 13]);
+  assert.deepEqual(curricula.map(sequence => publishedSlugs(sequence).length), [16, 24, 8, 13]);
   assert.equal(nextLesson('pentecost-and-the-holy-spirit').slug, 'church-body-of-christ');
-  assert.equal(nextLesson('church-body-of-christ').slug, 'preparing-for-mass');
+  assert.equal(nextLesson('church-body-of-christ').slug, 'holy-water');
   assert.equal(nextLesson('dismissal').slug, 'what-is-a-sacrament');
   assert.equal(nextLesson('sacrament-of-matrimony').slug, 'beatitude-poor-in-spirit');
   assert.equal(nextLesson('following-christ-in-daily-choices'), undefined);
-  assert.ok(read('know-the-faith').includes('A First Look at the Church'));
+  assert.ok(read('know-the-faith/gods-plan-of-salvation').includes('A First Look at the Church'));
   assert.ok(read('know-the-faith/the-church').includes('/know-the-faith/gods-plan-of-salvation'));
   assert.ok(read('articles/church-body-of-christ').includes('source and summit'));
   assert.ok(read('articles/following-christ-in-daily-choices').includes('future Catechism section'));
@@ -193,7 +196,7 @@ const expectedJourney = [
   'covenant-with-noah', 'covenant-with-abraham', 'covenant-with-moses', 'covenant-with-david',
   'promises-pointing-to-jesus', 'the-incarnation', 'life-of-jesus', 'new-covenant-in-jesus',
   'death-burial-and-resurrection', 'the-ascension-of-jesus', 'christ-establishes-his-church', 'pentecost-and-the-holy-spirit',
-  'church-body-of-christ', 'preparing-for-mass', 'holy-water', 'tabernacle',
+  'church-body-of-christ', 'holy-water', 'tabernacle',
   'altar', 'vestments', 'liturgical-colors',
   'sign-of-the-cross', 'small-crosses-before-the-gospel', 'raised-hands-in-prayer', 'genuflection', 'bowing-at-mass', 'entrance-and-greeting',
   'penitential-act', 'gloria-and-collect', 'readings-and-psalm', 'standing-for-the-gospel',
@@ -233,9 +236,9 @@ test('shared primary menus follow the journey and show six ordered Mass sections
   const menus = [...home.matchAll(/<nav[^>]*aria-label="Learning library"[^>]*>([\s\S]*?)<\/nav>/g)];
   assert.equal(menus.length, 2, 'desktop sidebar and mobile drawer');
   for (const [,menu] of menus) {
-    for (const route of ['know-the-faith', 'know-the-faith/living-the-faith', 'know-the-mass']) assert.ok(menu.includes(`href="/${route}"`));
+    for (const route of ['know-the-faith/gods-plan-of-salvation', 'know-the-faith/living-the-faith', 'know-the-mass']) assert.ok(menu.includes(`href="/${route}"`));
     const massIndex = menu.indexOf('href="/know-the-mass"');
-    assert.ok(!menu.includes('href="/know-the-faith/gods-plan-of-salvation"'));
+    assert.ok(!menu.includes('href="/know-the-faith"'));
     const sacraments = menu.indexOf('href="/sacraments"');
     assert.ok(massIndex < sacraments && sacraments < menu.indexOf('href="/know-the-faith/living-the-faith"'));
     assert.ok(!menu.includes('href="/know-the-mass/entering-church"'));
@@ -328,11 +331,14 @@ test('Mass has six family-friendly sections while preserving its lesson itinerar
     assert.ok(index > previous, phase.title); previous = index;
     assert.ok(text(landing).includes(phase.introduction));
   }
-  assert.equal(publishedSlugs(mass).length, 25);
+  assert.equal(publishedSlugs(mass).length, 24);
   assert.ok(read('know-the-mass/liturgy-of-the-eucharist').includes('Eucharist means thanksgiving.'));
   for (const slug of ['prayer-peace-and-lamb-of-god','holy-communion-and-thanksgiving']) assert.ok(read('know-the-mass/liturgy-of-the-eucharist').includes(`href="/articles/${slug}"`));
 });
-test('old Mass topic URLs redirect to the new grouping without breaking bookmarks', () => {
+test('old Mass URLs redirect without breaking bookmarks', () => {
+  for (const route of ['articles/preparing-for-mass', 'articles/preparing-for-mass/family-lesson']) {
+    assert.ok(read(route).includes('content="0; url=/know-the-mass/entering-church"'));
+  }
   for (const [old,target] of [['liturgical-signs','entering-church'],['communion-rite','liturgy-of-the-eucharist']]) {
     assert.ok(read('know-the-mass/'+old).includes(`content="0; url=/know-the-mass/${target}"`));
     assert.ok(read('know-the-mass/'+target).includes('<h1'));
@@ -371,7 +377,12 @@ test('every family lesson has a contextual Scripture reading before its explanat
     assert.ok(reading.introduction.trim().length > 30, article.slug);
     assert.ok(reading.question.endsWith('?'), article.slug);
     const passage = scripturePassages[reading.reference];
-    assert.ok(passage && passage.verses.length >= 3 && passage.verses.length <= 10, article.slug);
+    assert.ok(passage, article.slug);
+    if (article.slug === 'liturgical-colors') {
+      assert.deepEqual(passage.verses.map(([number]) => number), [24, 25]);
+    } else {
+      assert.ok(passage.verses.length >= 3 && passage.verses.length <= 10, article.slug);
+    }
     assert.equal(new Set(passage.verses.map(([number]) => number)).size, passage.verses.length);
     const page = read('articles/' + article.slug + '/family-lesson');
     const start = page.indexOf('class="family-scripture"');
@@ -413,7 +424,7 @@ test('Beatitudes lead Living the Faith and preserve the three educational areas'
   assert.ok(home.includes('Helping Catholic families understand what we believe, why we worship, and how we live our faith together.'));
   const menu = home.match(/<nav[^>]*aria-label="Learning library"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(menu);
-  for (const title of ['Know the Faith','Understanding the Mass','Living the Faith']) assert.ok(menu.includes('>' + title + '</a>'));
+  for (const title of ['God’s Plan of Salvation','Understanding the Mass','Living the Faith']) assert.ok(menu.includes('>' + title + '</a>'));
   assert.ok(read('sacraments').includes('href="/articles/sacrament-of-baptism"'));
 });
 

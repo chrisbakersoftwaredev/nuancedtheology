@@ -12,8 +12,10 @@ export const massGestureArticles = [
     discussionQuestion: 'What is one word from the Gospel you would like to remember this week?',
     sources: [girm(4, '134, 175', 'The three small signs of the cross at the Gospel announcement.'), bible('luke', 8, '4–15', 'Jesus speaks about hearing the word and holding it in a good heart.')],
     sections: [
-      ['Three small crosses', ['When the priest or deacon announces the Gospel, the minister makes a small cross on the book and then on the forehead, mouth, and breast. The people make the three crosses on themselves. You can use your thumb to trace them gently on your forehead, lips, and chest. This happens before we listen to the Gospel.'], ['missal']],
-      ['Mind, lips, and heart', ['A simple way to pray with this gesture is to ask that Jesus’ words take root in our minds, be spoken with our lips, and stay in our hearts. The forehead reminds us to pay attention and understand. The lips remind us that the good news is worth sharing. The heart reminds us to hold on to what we hear and let it shape how we act.'], ['missal','luke-8']],
+      ['Three small crosses', [
+        'When the priest or deacon announces the Gospel, he traces a small cross on the book, then on his forehead, lips, and chest. We make the same three crosses on ourselves. You can use your thumb to trace them gently as you get ready to hear the Gospel.'
+      ], ['missal']],
+      ['Mind, lips, and heart', ['We make these three crosses as a prayer before hearing the Gospel. We ask Jesus to help us understand his words, share them with others, and live them. The cross on our forehead reminds us to listen carefully and think about what he says. The cross on our lips reminds us to share the good news. The cross over our heart reminds us to hold on to his words and let them shape what we do.'], ['missal','luke-8']],
       ['Carry one word home', ['Even when the reading is difficult, a child can listen for one word, action, or person in the story. After Mass, ask what they noticed. If Jesus welcomed someone, think of one person your family could welcome. This gives the small gesture a connection to the rest of the week.'], ['luke-8']]
     ],
     questions: [['When do we make the three crosses?', 'As the Gospel is announced.'], ['What can the cross on our lips remind us to do?', 'Speak the good news and use our words with love.'], ['How can we keep the Gospel in our hearts?', 'Remember something Jesus said or did and let it guide a choice.']],
@@ -63,7 +65,6 @@ export const massGestureArticles = [
 ].map(article => ({...article, revision: {...article.revision, date: '2026-11-08'}}));
 
 export const massGestureLinks: Partial<Record<string, readonly string[]>> = {
-  'preparing-for-mass': ['genuflection'],
   'tabernacle': ['genuflection'],
   'entrance-and-greeting': ['sign-of-the-cross', 'bowing-at-mass'],
   'standing-for-the-gospel': ['small-crosses-before-the-gospel'],

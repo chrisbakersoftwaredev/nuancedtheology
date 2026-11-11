@@ -20,6 +20,7 @@ import { scripturePassages } from './scripture-passages';
               <p><sup>{{verse[0]}}</sup> {{verse[1]}}</p>
             }
           </blockquote>
+          @if (selection.scriptureNote; as note) { <p class="read-note">{{note}}</p> }
           <p class="family-scripture-question"><strong>Wonder together</strong> {{selection.question}}</p>
           @if (selection.longer; as longer) {
             <p class="read-note">

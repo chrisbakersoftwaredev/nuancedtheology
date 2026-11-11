@@ -45,46 +45,45 @@ Numbers restart within each path.
 
 #### 1. Before Mass Begins
 
-1. How can our family get ready for Mass? (preparing-for-mass)
-2. Why do we use holy water? (holy-water)
-3. Why is there a special place for the Eucharist? (tabernacle)
-4. Why is the altar so important? (altar)
-5. Why does the priest wear special clothes? (vestments)
-6. Why do the colors at Mass change? (liturgical-colors)
+1. Why do we use holy water? (holy-water)
+2. Why is there a special place for the Eucharist? (tabernacle)
+3. Why is the altar so important? (altar)
+4. Why does the priest wear special clothes? (vestments)
+5. Why do the colors at Mass change? (liturgical-colors)
 
 #### 2. Gestures and Postures at Mass
 
-7. Why do Catholics make the Sign of the Cross? (sign-of-the-cross)
-8. Why do Catholics cross their forehead, lips, and heart? (small-crosses-before-the-gospel)
-9. Why do Catholics raise their hands during prayer? (raised-hands-in-prayer)
-10. Why do Catholics kneel and genuflect? (genuflection)
-11. Why do Catholics bow during Mass? (bowing-at-mass)
+6. Why do Catholics make the Sign of the Cross? (sign-of-the-cross)
+7. Why do Catholics cross their forehead, lips, and heart? (small-crosses-before-the-gospel)
+8. Why do Catholics raise their hands during prayer? (raised-hands-in-prayer)
+9. Why do Catholics kneel and genuflect? (genuflection)
+10. Why do Catholics bow during Mass? (bowing-at-mass)
 
 #### 3. The Beginning of Mass
 
-12. Why does Mass begin with an entrance and greeting? (entrance-and-greeting)
-13. Asking God for mercy at the start of Mass (penitential-act)
-14. Praising God and praying the opening prayer (gloria-and-collect)
+11. Why does Mass begin with an entrance and greeting? (entrance-and-greeting)
+12. Asking God for mercy at the start of Mass (penitential-act)
+13. Praising God and praying the opening prayer (gloria-and-collect)
 
 #### 4. Bible Readings
 
-15. Listening to the Bible and praying with the Psalms (readings-and-psalm)
-16. Why do we stand for the Gospel? (standing-for-the-gospel)
-17. Understanding the readings and praying together (homily-creed-and-prayers)
-18. What are we saying in the Nicene Creed? (nicene-creed)
+14. Listening to the Bible and praying with the Psalms (readings-and-psalm)
+15. Why do we stand for the Gospel? (standing-for-the-gospel)
+16. Understanding the readings and praying together (homily-creed-and-prayers)
+17. What are we saying in the Nicene Creed? (nicene-creed)
 
 #### 5. The Eucharist
 
-19. Bringing bread and wine to the altar (preparation-of-the-gifts)
-20. What happens during the Eucharistic Prayer? (the-eucharistic-prayer)
-21. Is Jesus really present in the Eucharist? (eucharist-real-presence)
-22. Preparing for Communion: prayer, peace, and mercy (prayer-peace-and-lamb-of-god)
-23. How do we receive Holy Communion and give thanks? (holy-communion-and-thanksgiving)
+18. Bringing bread and wine to the altar (preparation-of-the-gifts)
+19. What happens during the Eucharistic Prayer? (the-eucharistic-prayer)
+20. Is Jesus really present in the Eucharist? (eucharist-real-presence)
+21. Preparing for Communion: prayer, peace, and mercy (prayer-peace-and-lamb-of-god)
+22. How do we receive Holy Communion and give thanks? (holy-communion-and-thanksgiving)
 
 #### 6. The End of Mass
 
-24. Why do we receive a blessing before leaving Mass? (final-blessing)
-25. Being sent out to love and serve (dismissal)
+23. Why do we receive a blessing before leaving Mass? (final-blessing)
+24. Being sent out to love and serve (dismissal)
 
 ### Part 3 — Sacraments
 

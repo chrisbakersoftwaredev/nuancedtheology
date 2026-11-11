@@ -4,6 +4,7 @@ export interface FamilyReading {
   reference: string;
   introduction: string;
   question: string;
+  scriptureNote?: string;
   longer?: Source;
 }
 
@@ -216,11 +217,6 @@ export const familyReadings: Readonly<Partial<Record<string, FamilyReading>>> = 
       "note": "Selected family reading from the Douay-Rheims Bible."
     }
   },
-  "preparing-for-mass": {
-    "reference": "Luke 10:38–42",
-    "introduction": "Jesus visits Martha and Mary. Both welcome him, and Jesus invites Martha to notice what matters most in this moment.",
-    "question": "What might help us make room to listen to Jesus?"
-  },
   "holy-water": {
     "reference": "Romans 6:3–6",
     "introduction": "Paul reminds baptized Christians that their lives are joined to Jesus. Listen for the new life he describes.",
@@ -233,12 +229,12 @@ export const familyReadings: Readonly<Partial<Record<string, FamilyReading>>> = 
     }
   },
   "tabernacle": {
-    "reference": "John 6:51–56",
+    "reference": "John 6:51–58",
     "introduction": "Jesus is teaching a crowd about the bread of life. Listen for his promise to those who receive him. The lesson will help us connect this promise with reverence for the Eucharist.",
     "question": "What does Jesus promise to share with us?",
     "longer": {
       "id": "family-reading",
-      "label": "John 6:48–58",
+      "label": "John 6:25–70",
       "url": "https://bible.usccb.org/bible/john/6",
       "note": "Selected family reading from the Douay-Rheims Bible."
     }
@@ -255,19 +251,26 @@ export const familyReadings: Readonly<Partial<Record<string, FamilyReading>>> = 
     }
   },
   "vestments": {
-    "reference": "Colossians 3:12–17",
-    "introduction": "Paul uses the picture of putting on clothes to describe a loving Christian life. He is talking about how we live. As we later learn about vestments, remember that service and love matter in worship too.",
-    "question": "Which loving action could we practice today?"
+    "reference": "Galatians 3:26–28",
+    "introduction": "Paul says that when we are baptized, we put on Christ like a garment. Listen for what he says about who we become together in Jesus.",
+    "question": "What does Paul say we put on when we are baptized?",
+    "longer": {
+      "id": "family-reading",
+      "label": "Colossians 3:12–17",
+      "url": "https://bible.usccb.org/bible/colossians/3",
+      "note": "Selected family reading from the Douay-Rheims Bible."
+    }
   },
   "liturgical-colors": {
-    "reference": "Romans 8:18–25",
-    "introduction": "Paul writes about waiting with hope for God to complete his work. The passage gives us words for hope and waiting, which we meet in the Church’s seasons.",
+    "reference": "Romans 8:24–25",
+    "introduction": "When we see violet in Advent, it can remind us that we’re waiting with hope for Jesus.",
     "question": "What helps you wait with hope?"
   },
   "sign-of-the-cross": {
     "reference": "Matthew 28:16–20",
     "introduction": "The risen Jesus meets his disciples and sends them out. Listen for whose name is spoken when people are baptized.",
-    "question": "Whose names do we say when we make the Sign of the Cross?"
+    "question": "Whom do we name when we make the Sign of the Cross?",
+    "scriptureNote": "In the Douay-Rheims Bible, Holy Ghost means Holy Spirit."
   },
   "small-crosses-before-the-gospel": {
     "reference": "Luke 8:11–15",
@@ -281,15 +284,9 @@ export const familyReadings: Readonly<Partial<Record<string, FamilyReading>>> = 
     }
   },
   "raised-hands-in-prayer": {
-    "reference": "1 Timothy 2:1–4",
-    "introduction": "Paul encourages the Christian community to pray. Before learning about the gesture of raised hands, notice how wide he wants their prayers to reach.",
-    "question": "Who outside our family could we pray for today?",
-    "longer": {
-      "id": "family-reading",
-      "label": "1 Timothy 2:1–8",
-      "url": "https://bible.usccb.org/bible/1 timothy/2",
-      "note": "Selected family reading from the Douay-Rheims Bible."
-    }
+    "reference": "1 Timothy 2:1–8",
+    "introduction": "Paul asks us to pray for everyone. Listen for what he says about lifting up our hands and how he wants us to pray.",
+    "question": "What does Paul say about our hands and our hearts when we pray?"
   },
   "genuflection": {
     "reference": "Philippians 2:9–11",

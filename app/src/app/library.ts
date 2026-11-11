@@ -26,7 +26,7 @@ const massArea: LibraryArea = {
   introduction: 'What happens during Mass, and why? Learn the words, gestures, and prayers of Catholic worship together.'
 };
 const faithArea: LibraryArea = {
-  id: 'faith', title: 'Know the Faith', path: '/know-the-faith',
+  id: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
   introduction: 'What does the Church teach, and why? Follow God’s saving work and meet the Church that Jesus gathers.'
 };
 const livingArea: LibraryArea = {
@@ -67,7 +67,7 @@ export const topics: readonly LibraryTopic[] = [{
   summaryTitle: 'The Gospel in a few words',
   summary: 'Gospel means good news. It is the good news of Jesus Christ and the salvation he brings. God made us for friendship with him, but sin wounded that friendship. He did not abandon us. He prepared his people through promises and covenants, then sent his Son, Jesus, who became human, died for our sins, and rose from the dead. Through Jesus, God offers forgiveness, freedom from sin, and new life with him. This is salvation, God rescuing us and drawing us into his life. It is a gift of grace that we are invited to receive through faith, Baptism, and a life of love. The lessons below follow this story, from creation to the Church Jesus gathers to share his good news.',
 
-  introduction: 'Part 1: Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
+  introduction: 'Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
 }, {
   ...sacramentsArea, areaId: 'sacraments'
 }, {
@@ -81,6 +81,9 @@ export const topics: readonly LibraryTopic[] = [{
 
 // Preserve bookmarked topic URLs after grouping the curriculum into five sections.
 export const collectionRedirects = [
+  {path: 'articles/preparing-for-mass', redirectTo: '/know-the-mass/entering-church', pathMatch: 'full' as const},
+  {path: 'articles/preparing-for-mass/family-lesson', redirectTo: '/know-the-mass/entering-church', pathMatch: 'full' as const},
+  {path: 'know-the-faith', redirectTo: faithArea.path, pathMatch: 'full' as const},
   {path: 'know-the-faith/the-church', redirectTo: '/know-the-faith/gods-plan-of-salvation', pathMatch: 'full' as const},
   {path: 'know-the-mass/liturgical-signs', redirectTo: '/know-the-mass/entering-church', pathMatch: 'full' as const},
   {path: 'know-the-mass/communion-rite', redirectTo: '/know-the-mass/liturgy-of-the-eucharist', pathMatch: 'full' as const}
