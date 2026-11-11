@@ -41,7 +41,7 @@ Numbers restart within each path.
 15. What happened at Pentecost? (pentecost-and-the-holy-spirit)
 16. How does the Church share Christ’s life? (church-body-of-christ)
 
-### Part 2 — Know the Mass
+### Part 2 — Understanding the Mass
 
 #### 1. Before Mass Begins
 
@@ -109,6 +109,19 @@ Numbers restart within each path.
 - sacrament-of-matrimony
 
 ### Part 4 — Living the Faith
+
+The Beatitudes are the foundational series. The existing introductions remain available in Everyday Christian Life. Future series on the Works of Mercy, theological virtues, and fruits of the Holy Spirit are planned.
+
+1. Blessed are the poor in spirit (beatitude-poor-in-spirit)
+2. Blessed are those who mourn (beatitude-those-who-mourn)
+3. Blessed are the meek (beatitude-the-meek)
+4. Blessed are those who hunger and thirst for righteousness (beatitude-hunger-for-righteousness)
+5. Blessed are the merciful (beatitude-the-merciful)
+6. Blessed are the pure in heart (beatitude-pure-in-heart)
+7. Blessed are the peacemakers (beatitude-peacemakers)
+8. Blessed are those persecuted for righteousness (beatitude-persecuted-for-righteousness)
+
+#### Everyday Christian Life
 
 #### 1. Faith, Grace, and Conversion
 

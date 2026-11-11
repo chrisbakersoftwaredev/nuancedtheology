@@ -1,13 +1,16 @@
 <a class="skip-link" [href]="skipTarget()">Skip to content</a>
 <aside class="library-sidebar screen-only" aria-label="Library sidebar">
   <a class="brand" routerLink="/" aria-label="nuancedTheology home"><span class="brand-mark" aria-hidden="true">✝</span><span>nuanced<span class="brand-serif">Theology</span></span></a>
-  <p class="sidebar-tagline">A Catholic learning library</p>
+  <div class="sidebar-header">
+    <p class="sidebar-tagline">A Catholic learning library</p>
+    <nt-theme-toggle/>
+  </div>
   <nt-library-nav/>
   <p class="sidebar-footnote">Simple explanations.<br>Thoughtful sources.<br>A faith to share.</p>
 </aside>
 <header class="mobile-header screen-only">
   <a class="brand" routerLink="/" aria-label="nuancedTheology home"><span class="brand-mark" aria-hidden="true">✝</span><span>nuanced<span class="brand-serif">Theology</span></span></a>
-  <button #menuButton type="button" class="menu-button" aria-controls="library-drawer" [attr.aria-expanded]="drawerOpen()" aria-label="Open library navigation" (click)="openDrawer()"><span aria-hidden="true">☰</span> Library</button>
+  <div class="mobile-header-actions"><nt-theme-toggle/><button #menuButton type="button" class="menu-button" aria-controls="library-drawer" [attr.aria-expanded]="drawerOpen()" aria-label="Open library navigation" (click)="openDrawer()"><span aria-hidden="true">☰</span> Library</button></div>
 </header>
 <dialog #drawer id="library-drawer" class="library-drawer screen-only" aria-labelledby="drawer-title" (close)="drawerOpen.set(false)" (click)="closeOnBackdrop($event)">
   <div class="drawer-heading"><h2 id="drawer-title">Learning library</h2><button type="button" class="drawer-close" aria-label="Close library navigation" (click)="closeDrawer()">✕</button></div>
@@ -16,4 +19,17 @@
 <div class="site-frame">
   <main id="main" tabindex="-1"><router-outlet/></main>
   <footer class="site-footer"><a class="brand" routerLink="/">nuanced<span class="brand-serif">Theology</span></a><p>Faithful explanations. Shared freely.</p><span>Scripture · Catechism · Everyday life</span></footer>
+</div>
+
+<div class="theme-caution-region screen-only">
+  <div class="theme-caution" [class.is-visible]="theme.showCaution()" (keydown.escape)="theme.dismissCaution()">
+    <div role="status" aria-atomic="true">
+      @if (theme.showCaution()) {
+        <p class="theme-caution-title">A word of caution... <span aria-hidden="true">👀</span></p>
+        <blockquote>“If we say we have fellowship with him while we walk in darkness...”</blockquote>
+        <p class="theme-caution-reference">1 John 1:6 (RSV-CE)</p>
+      }
+    </div>
+    @if (theme.showCaution()) { <button type="button" class="button secondary" (click)="theme.dismissCaution()">I'll take my chances</button> }
+  </div>
 </div>

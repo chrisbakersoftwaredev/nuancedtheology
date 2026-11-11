@@ -1,1 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>nuancedTheology | Catholic faith, made understandable</title><base href="/"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Simple Catholic explanations and ready-to-print family lessons. Free, welcoming, and grounded in Scripture and the Catechism."><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body><app-root></app-root></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>nuancedTheology | Catholic faith, made understandable</title><base href="/"><script>
+(function () {
+  var theme;
+  try { theme = localStorage.getItem('nt-theme'); } catch {}
+  if (theme !== 'light' && theme !== 'dark') {
+    theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.dataset.theme = theme;
+})();
+</script><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Simple Catholic explanations and ready-to-print family lessons. Free, welcoming, and grounded in Scripture and the Catechism."><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body><app-root></app-root></body></html>

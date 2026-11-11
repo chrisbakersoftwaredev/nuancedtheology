@@ -1,3 +1,4 @@
+import { beatitudeArticles } from './beatitude-articles';
 import { massGestureArticles } from './mass-gesture-articles';
 import { sacramentArticles } from './sacrament-articles';
 import { livingFaithArticles } from './living-faith-articles';
@@ -77,4 +78,4 @@ export const articles: Article[] = [{
   practice: 'Make the Sign of the Cross slowly together. A parent can stand beside a child to demonstrate without reversing the movement like a mirror. Then choose one moment tomorrow to pray it as a family. If the movement is difficult for someone, help them participate in a way they can.',
   prayer: 'Loving God, Father, Son, and Holy Spirit, thank you for loving us. Help us remember Jesus’ Cross and Resurrection. Teach our family to pray with care and to show your love to others. Amen.'
  }
-}, ...massArticles, ...faithArticles, ...faithFoundations, ...massFoundations, ...massGestureArticles, ...sacramentArticles, ...livingFaithArticles];
+}, ...massArticles, ...faithArticles, ...faithFoundations, ...massFoundations, ...massGestureArticles, ...sacramentArticles, ...beatitudeArticles, ...livingFaithArticles];

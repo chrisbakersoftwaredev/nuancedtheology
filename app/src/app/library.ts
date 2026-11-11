@@ -12,6 +12,7 @@ export interface LibraryArea {
 
 export interface LibraryTopic {
   summary?: string;
+  summaryTitle?: string;
   id: string;
   areaId: string;
   title: string;
@@ -21,16 +22,16 @@ export interface LibraryTopic {
 
 // Register topics as useful articles are published. Empty areas stay out of navigation.
 const massArea: LibraryArea = {
-  id: 'mass', title: 'Know the Mass', path: '/know-the-mass',
-  introduction: 'Discover the meaning behind the words, gestures, and prayers of Catholic worship. Begin with one practice, and learn at your own pace.'
+  id: 'mass', title: 'Understanding the Mass', path: '/know-the-mass',
+  introduction: 'What happens during Mass, and why? Learn the words, gestures, and prayers of Catholic worship together.'
 };
 const faithArea: LibraryArea = {
   id: 'faith', title: 'Know the Faith', path: '/know-the-faith',
-  introduction: 'Follow God’s saving work and meet the Church that Jesus gathers. Then continue into Know the Mass.'
+  introduction: 'What does the Church teach, and why? Follow God’s saving work and meet the Church that Jesus gathers.'
 };
 const livingArea: LibraryArea = {
   id: 'living', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
-  introduction: 'Carry what we receive at Mass into prayer, service, and everyday choices.'
+  introduction: 'How does Christ call us to live? Begin with the Beatitudes, then grow in prayer, mercy, and everyday choices through his grace.'
 };
 const sacramentsArea: LibraryArea = {
   id: 'sacraments', title: 'Sacraments', path: '/sacraments',
@@ -63,12 +64,19 @@ export const topics: readonly LibraryTopic[] = [{
   introduction: 'Receive the final blessing and discover how being sent out at Mass calls us to love and serve. The Church calls these final actions the Concluding Rites.'
 }, {
   id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
+  summaryTitle: 'The Gospel in a few words',
+  summary: 'Gospel means good news. It is the good news of Jesus Christ and the salvation he brings. God made us for friendship with him, but sin wounded that friendship. He did not abandon us. He prepared his people through promises and covenants, then sent his Son, Jesus, who became human, died for our sins, and rose from the dead. Through Jesus, God offers forgiveness, freedom from sin, and new life with him. This is salvation, God rescuing us and drawing us into his life. It is a gift of grace that we are invited to receive through faith, Baptism, and a life of love. The lessons below follow this story, from creation to the Church Jesus gathers to share his good news.',
+
   introduction: 'Part 1: Follow God’s saving work from creation and the Fall, through the covenants and prophets, to Jesus Christ and the sending of the Holy Spirit.'
 }, {
   ...sacramentsArea, areaId: 'sacraments'
 }, {
-  id: 'living-the-faith', areaId: 'living', title: 'Living the Faith', path: '/know-the-faith/living-the-faith',
-  introduction: 'Part 4: Discover how God’s grace enables our response. Explore living faith, Baptism and sacramental life, prayer, and choices shaped by love.'
+  id: 'beatitudes', areaId: 'living', title: 'The Beatitudes', path: '/know-the-faith/living-the-faith/beatitudes',
+  introduction: 'Eight promises of the Kingdom and eight ways Jesus invites us to share his life.',
+  summary: 'The Beatitudes in Matthew 5:3–12 show us the heart of Jesus. He is humble, merciful, pure of heart, and the giver of peace. He calls us to follow him, sustained by grace, and promises the happiness of his Kingdom. Each lesson helps parents and children listen to Scripture, understand the Church’s teaching, and practice one step of love together.'
+}, {
+  id: 'living-the-faith', areaId: 'living', title: 'Everyday Christian Life', path: '/know-the-faith/living-the-faith/everyday-life',
+  introduction: 'Explore how God’s grace enables our response through faith, Baptism, prayer, and choices shaped by love.'
 }];
 
 // Preserve bookmarked topic URLs after grouping the curriculum into five sections.

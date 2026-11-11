@@ -32,7 +32,7 @@ import { bible } from './lesson-builder';
           <a href="https://www.usccb.org/offices/public-affairs/structure-and-meaning-mass" target="_blank" rel="noopener">The structure and meaning of the Mass</a> ·
           <a href="https://www.usccb.org/prayer-and-worship/the-mass/order-of-mass/liturgy-of-the-eucharist/guidelines-for-the-reception-of-communion" target="_blank" rel="noopener">Guidelines for receiving Communion</a>
         </p>
-        <a class="button secondary" routerLink="/know-the-mass">Explore Know the Mass →</a>
+        <a class="button secondary" routerLink="/know-the-mass">Explore Understanding the Mass →</a>
       </div>
     </article>
   `
