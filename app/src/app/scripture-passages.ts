@@ -2832,6 +2832,230 @@ export const scripturePassages: Readonly<Partial<Record<string, ScripturePassage
       ]
     ]
   },
+  "John 6:51–58": {
+    "verses": [
+      [
+        51,
+        "I am the living bread which came down from heaven."
+      ],
+      [
+        52,
+        "If any man eat of this bread, he shall live for ever: and the bread that I will give is my flesh, for the life of the world."
+      ],
+      [
+        53,
+        "The Jews therefore strove among themselves, saying: How can this man give us his flesh to eat?"
+      ],
+      [
+        54,
+        "Then Jesus said to them: Amen, amen, I say unto you: except you eat the flesh of the Son of man and drink his blood, you shall not have life in you."
+      ],
+      [
+        55,
+        "He that eateth my flesh and drinketh my blood hath everlasting life: and I will raise him up in the last day."
+      ],
+      [
+        56,
+        "For my flesh is meat indeed: and my blood is drink indeed."
+      ],
+      [
+        57,
+        "He that eateth my flesh and drinketh my blood abideth in me: and I in him."
+      ],
+      [
+        58,
+        "As the living Father hath sent me and I live by the Father: so he that eateth me, the same also shall live by me."
+      ]
+    ]
+  },
+  "John 6:25–70": {
+    "verses": [
+      [
+        25,
+        "And when they had found him on the other side of the sea, they said to him: Rabbi, when camest thou hither?"
+      ],
+      [
+        26,
+        "Jesus answered them and said: Amen, amen, I say to you, you seek me, not because you have seen miracles, but because you did eat of the loaves and were filled."
+      ],
+      [
+        27,
+        "Labour not for the meat which perisheth, but for that which endureth unto life everlasting, which the Son of man will give you. For him hath God, the Father, sealed."
+      ],
+      [
+        28,
+        "They said therefore unto him: What shall we do, that we may work the works of God?"
+      ],
+      [
+        29,
+        "Jesus answered and said to them: This is the work of God, that you believe in him whom he hath sent."
+      ],
+      [
+        30,
+        "They said therefore to him: What sign therefore dost thou shew that we may see and may believe thee? What dost thou work?"
+      ],
+      [
+        31,
+        "Our fathers did eat manna in the desert, as it is written: He gave them bread from heaven to eat."
+      ],
+      [
+        32,
+        "Then Jesus said to them: Amen, amen, I say to you; Moses gave you not bread from heaven, but my Father giveth you the true bread from heaven."
+      ],
+      [
+        33,
+        "For the bread of God is that which cometh down from heaven and giveth life to the world."
+      ],
+      [
+        34,
+        "They said therefore unto him: Lord, give us always this bread."
+      ],
+      [
+        35,
+        "And Jesus said to them: I am the bread of life. He that cometh to me shall not hunger: and he that believeth in me shall never thirst."
+      ],
+      [
+        36,
+        "But I said unto you that you also have seen me, and you believe not."
+      ],
+      [
+        37,
+        "All that the Father giveth to me shall come to me: and him that cometh to me, I will not cast out."
+      ],
+      [
+        38,
+        "Because I came down from heaven, not to do my own will but the will of him that sent me."
+      ],
+      [
+        39,
+        "Now this is the will of the Father who sent me: that of all that he hath given me, I should lose nothing; but should raise it up again in the last day."
+      ],
+      [
+        40,
+        "And this is the will of my Father that sent me: that every one who seeth the Son and believeth in him may have life everlasting. And I will raise him up in the last day."
+      ],
+      [
+        41,
+        "The Jews therefore murmured at him, because he had said: I am the living bread which came down from heaven."
+      ],
+      [
+        42,
+        "And they said: Is not this Jesus, the son of Joseph, whose father and mother we know? How then saith he: I came down from heaven?"
+      ],
+      [
+        43,
+        "Jesus therefore answered and said to them: Murmur not among yourselves."
+      ],
+      [
+        44,
+        "No man can come to me, except the Father, who hath sent me, draw him. And I will raise him up in the last day."
+      ],
+      [
+        45,
+        "It is written in the prophets: And they shall all be taught of God. Every one that hath heard of the Father and hath learned cometh to me."
+      ],
+      [
+        46,
+        "Not that any man hath seen the Father: but he who is of God, he hath seen the Father."
+      ],
+      [
+        47,
+        "Amen, amen, I say unto you: He that believeth in me hath everlasting life."
+      ],
+      [
+        48,
+        "I am the bread of life."
+      ],
+      [
+        49,
+        "Your fathers did eat manna in the desert: and are dead."
+      ],
+      [
+        50,
+        "This is the bread which cometh down from heaven: that if any man eat of it, he may not die."
+      ],
+      [
+        51,
+        "I am the living bread which came down from heaven."
+      ],
+      [
+        52,
+        "If any man eat of this bread, he shall live for ever: and the bread that I will give is my flesh, for the life of the world."
+      ],
+      [
+        53,
+        "The Jews therefore strove among themselves, saying: How can this man give us his flesh to eat?"
+      ],
+      [
+        54,
+        "Then Jesus said to them: Amen, amen, I say unto you: except you eat the flesh of the Son of man and drink his blood, you shall not have life in you."
+      ],
+      [
+        55,
+        "He that eateth my flesh and drinketh my blood hath everlasting life: and I will raise him up in the last day."
+      ],
+      [
+        56,
+        "For my flesh is meat indeed: and my blood is drink indeed."
+      ],
+      [
+        57,
+        "He that eateth my flesh and drinketh my blood abideth in me: and I in him."
+      ],
+      [
+        58,
+        "As the living Father hath sent me and I live by the Father: so he that eateth me, the same also shall live by me."
+      ],
+      [
+        59,
+        "This is the bread that came down from heaven. Not as your fathers did eat manna and are dead. He that eateth this bread shall live for ever."
+      ],
+      [
+        60,
+        "These things he said, teaching in the synagogue, in Capharnaum."
+      ],
+      [
+        61,
+        "Many therefore of his disciples, hearing it, said: This saying is hard; and who can hear it?"
+      ],
+      [
+        62,
+        "But Jesus, knowing in himself that his disciples murmured at this, said to them: Doth this scandalize you?"
+      ],
+      [
+        63,
+        "If then you shall see the Son of man ascend up where he was before?"
+      ],
+      [
+        64,
+        "It is the spirit that quickeneth: the flesh profiteth nothing. The words that I have spoken to you are spirit and life."
+      ],
+      [
+        65,
+        "But there are some of you that believe not. For Jesus knew from the beginning who they were that did not believe and who he was that would betray him."
+      ],
+      [
+        66,
+        "And he said: Therefore did I say to you that no man can come to me, unless it be given him by my Father."
+      ],
+      [
+        67,
+        "After this, many of his disciples went back and walked no more with him."
+      ],
+      [
+        68,
+        "Then Jesus said to the twelve: Will you also go away?"
+      ],
+      [
+        69,
+        "And Simon Peter answered him: Lord, to whom shall we go? Thou hast the words of eternal life."
+      ],
+      [
+        70,
+        "And we have believed and have known that thou art the Christ, the Son of God."
+      ]
+    ]
+  },
   "John 6:48–58": {
     "verses": [
       [
@@ -3827,6 +4051,18 @@ export const scripturePassages: Readonly<Partial<Record<string, ScripturePassage
       [
         17,
         "All whatsoever you do in word or in work, do all in the name of the Lord Jesus Christ, giving thanks to God and the Father by him."
+      ]
+    ]
+  },
+  "Romans 8:24–25": {
+    "verses": [
+      [
+        24,
+        "For we are saved by hope. But hope that is seen is not hope. For what a man seeth, why doth he hope for?"
+      ],
+      [
+        25,
+        "But if we hope for that which we see not, we wait for it with patience."
       ]
     ]
   },

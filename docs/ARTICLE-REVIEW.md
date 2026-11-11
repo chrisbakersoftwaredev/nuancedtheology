@@ -67,7 +67,6 @@ The following inventory records the current status only. Empty evidence means no
 | [How can prayer help us grow in faith, hope, and love?](https://nuancedtheology.com/articles/prayer-faith-hope-and-love) | 1 | Drafted | None recorded |
 | [How do we follow Jesus in our daily choices?](https://nuancedtheology.com/articles/following-christ-in-daily-choices) | 1 | Drafted | None recorded |
 | [How does the Church share Christ’s life?](https://nuancedtheology.com/articles/church-body-of-christ) | 1 | Drafted | None recorded |
-| [How can our family get ready for Mass?](https://nuancedtheology.com/articles/preparing-for-mass) | 2 | Drafted | None recorded |
 | [Why do we use holy water?](https://nuancedtheology.com/articles/holy-water) | 2 | Drafted | None recorded |
 | [Why is there a special place for the Eucharist?](https://nuancedtheology.com/articles/tabernacle) | 2 | Drafted | None recorded |
 | [Why do Catholics kneel on one knee?](https://nuancedtheology.com/articles/genuflection) | 2 | Drafted | None recorded |

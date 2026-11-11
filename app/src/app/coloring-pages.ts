@@ -113,13 +113,6 @@ export const coloringPages: Readonly<Partial<Record<string, ColoringIllustration
     width: 1122,
     height: 1402
   },
-  'preparing-for-mass': {
-    filename: 'preparing-for-mass.png',
-    caption: "We make time to listen and bring our lives to God.",
-    alt: "A parent and child read a Bible together at home before Mass.",
-    width: 1122,
-    height: 1402
-  },
   'entrance-and-greeting': {
     filename: 'entrance-and-greeting.png',
     caption: "The Church gathers as one family to worship God.",
