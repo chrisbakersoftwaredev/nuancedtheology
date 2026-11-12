@@ -6,8 +6,9 @@
       @for (prayer of prayers; track prayer.title) {
         <li>
           <h2><a [routerLink]="['/articles', prayer.slug]" [queryParams]="prayerQuery">{{prayer.title}}</a></h2>
-          <nt-mass-prayer-words [prayer]="prayer"/>
-          <p><a [routerLink]="['/articles', prayer.slug, 'family-lesson']" [queryParams]="prayerQuery">Learn as a family</a>
+          <p><a [href]="prayer.wordsUrl" target="_blank" rel="noopener">{{prayer.wordsLabel ?? 'Read the complete words'}}</a>
+            @if (prayer.alternate; as other) { · <a [href]="other.url" target="_blank" rel="noopener">{{other.label}}</a> }
+            · <a [routerLink]="['/articles', prayer.slug, 'family-lesson']" [queryParams]="prayerQuery">Learn as a family</a>
           </p>
         </li>
       }

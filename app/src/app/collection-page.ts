@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { MassPrayerWords } from './mass-prayer-words';
 import { massPrayerQuery, massPrayers } from './mass-prayers';
 import { ContentLibrary } from './library';
 import { curricula, curriculumPosition } from './curriculum';
 
 @Component({
-  imports: [RouterLink, MassPrayerWords], templateUrl: './collection-page.html'
+  imports: [RouterLink], templateUrl: './collection-page.html'
 })
 export class CollectionPage {
   readonly library = inject(ContentLibrary);
