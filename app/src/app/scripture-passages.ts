@@ -4822,5 +4822,89 @@ export const scripturePassages: Readonly<Partial<Record<string, ScripturePassage
         "Be glad and rejoice for your reward is very great in heaven. For so they persecuted the prophets that were before you."
       ]
     ]
+  },
+  "Mark 11:7–10": {
+    "verses": [
+      [
+        7,
+        "And they brought the colt to Jesus. And they lay their garments on him: and he sat upon him."
+      ],
+      [
+        8,
+        "And many spread their garments in the way: and others cut down boughs from the trees and strewed them in the way."
+      ],
+      [
+        9,
+        "And they that went before and they that followed cried, saying: Hosanna: Blessed is he that cometh in the name of the Lord."
+      ],
+      [
+        10,
+        "Blessed be the kingdom of our father David that cometh: Hosanna in the highest."
+      ]
+    ]
+  },
+  "Matthew 8:5–13": {
+    "verses": [
+      [
+        5,
+        "And when he had entered into Capharnaum, there came to him a centurion, beseeching him,"
+      ],
+      [
+        6,
+        "And saying, Lord, my servant lieth at home sick of the palsy, and is grievously tormented."
+      ],
+      [
+        7,
+        "And Jesus saith to him: I will come and heal him."
+      ],
+      [
+        8,
+        "And the centurion, making answer, said: Lord, I am not worthy that thou shouldst enter under my roof; but only say the word, and my servant shall be healed."
+      ],
+      [
+        9,
+        "For I also am a man subject to authority, having under me soldiers; and I say to this, Go, and he goeth, and to another Come, and he cometh, and to my servant, Do this, and he doeth it."
+      ],
+      [
+        10,
+        "And Jesus hearing this, marvelled; and said to them that followed him. Amen I say to you, I have not found so great faith in Israel."
+      ],
+      [
+        11,
+        "And I say to you that many shall come from the east and the west, and shall sit down with Abraham, and Isaac and Jacob in the kingdom of heaven:"
+      ],
+      [
+        12,
+        "But the children of the kingdom shall be cast out into the exterior darkness: there shall be weeping and gnashing of teeth."
+      ],
+      [
+        13,
+        "And Jesus said to the centurion: Go, and as thou hast believed, so be it done to thee. And the servant was healed at the same hour."
+      ]
+    ]
+  },
+  "2 Corinthians 1:18–22": {
+    "verses": [
+      [
+        18,
+        "But God is faithful: for our preaching which was to you, was not, It is, and It is not."
+      ],
+      [
+        19,
+        "For the Son of God, Jesus Christ, who was preached among you by us, by me and Sylvanus and Timothy, was not: It is and It is not. But, It is, was in him."
+      ],
+      [
+        20,
+        "For all the promises of God are in him, It is. Therefore also by him, amen to God, unto our glory."
+      ],
+      [
+        21,
+        "Now he that confirmeth us with you in Christ and that hath anointed us, is God:"
+      ],
+      [
+        22,
+        "Who also hath sealed us and given the pledge of the Spirit in our hearts."
+      ]
+    ]
   }
 };

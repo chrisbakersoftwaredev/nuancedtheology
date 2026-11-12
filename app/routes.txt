@@ -152,3 +152,15 @@
 /articles/beatitude-peacemakers/family-lesson
 /articles/beatitude-persecuted-for-righteousness
 /articles/beatitude-persecuted-for-righteousness/family-lesson
+
+/know-the-mass/prayers-at-mass
+/articles/lift-up-your-hearts
+/articles/lift-up-your-hearts/family-lesson
+/articles/sanctus
+/articles/sanctus/family-lesson
+/articles/mystery-of-faith
+/articles/mystery-of-faith/family-lesson
+/articles/great-amen
+/articles/great-amen/family-lesson
+/articles/lord-i-am-not-worthy
+/articles/lord-i-am-not-worthy/family-lesson

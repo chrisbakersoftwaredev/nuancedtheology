@@ -314,3 +314,23 @@
 @media print {
   :root { color-scheme: light; }
 }
+
+.search-wrap:focus-within {
+  border-color: var(--green);
+  box-shadow: inset 0 0 0 1px var(--green);
+}
+.search-wrap input:focus-visible { outline: none; }
+@media (forced-colors: active) {
+  .search-wrap:focus-within { border-color: Highlight; }
+  .search-wrap input:focus-visible { outline: 2px solid Highlight; outline-offset: -2px; }
+}
+
+.mass-prayer-directory { max-width: 48rem; padding-left: 1.75rem; }
+.mass-prayer-directory li { padding: .8rem 0; border-bottom: 1px solid var(--line); }
+.mass-prayer-directory h2 { margin: 0; font-size: 1.4rem; }
+.mass-prayer-directory p { margin: .3rem 0 0; font-size: .9rem; }
+.mass-prayer-note { margin: 1rem 0; }
+.mass-prayer-words { white-space: pre-line; }
+@media print {
+  .mass-prayer-note { break-inside: avoid; }
+}
