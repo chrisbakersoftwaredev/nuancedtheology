@@ -22,12 +22,13 @@ const collections = new Map([
   ['concluding-rites','know-the-mass/concluding-rites'],
   ['living-the-faith','know-the-faith/living-the-faith/everyday-life'],
   ['beatitudes','know-the-faith/living-the-faith/beatitudes'],
+  ['prayers-at-mass','know-the-mass/prayers-at-mass'],
   ['gods-plan-of-salvation','know-the-faith/gods-plan-of-salvation']
 ]);
 test('complete Faith and Mass curricula', () => {
-  assert.equal(articles.length, 61);
+  assert.equal(articles.length, 66);
   assert.equal(articles.filter(a => ['gods-plan-of-salvation', 'living-the-faith'].includes(a.topicId)).length, 21);
-  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'beatitudes', 'sacraments'].includes(a.topicId)).length, 24);
+  assert.equal(articles.filter(a => !['gods-plan-of-salvation', 'living-the-faith', 'beatitudes', 'sacraments'].includes(a.topicId)).length, 29);
   assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 });
 for (const article of articles) {
@@ -37,7 +38,7 @@ for (const article of articles) {
     const overview = article.slug === 'gods-plan-of-salvation-overview';
     assert.ok(overview ? article.sections.length === 1 && article.sections[0].paragraphs.length === 1 : article.sections.length >= 3);
     const words = article.sections.flatMap(s => s.paragraphs).join(' ').split(/\s+/).length;
-    assert.ok(overview ? words >= 100 && words <= 180 : words >= (article.topicId === 'sacraments' ? 110 : article.topicId === 'gestures-and-postures' ? 160 : 200));
+    assert.ok(overview ? words >= 100 && words <= 180 : words >= (['sacraments','prayers-at-mass'].includes(article.topicId) ? 110 : article.topicId === 'gestures-and-postures' ? 160 : 200));
     assert.equal(article.lesson.questions.length, 3);
     for (const key of ['remember','practice','prayer','parentGuidance']) assert.ok(article.lesson[key]?.trim());
     const sourceIds = new Set(article.sources.map(s => s.id));
@@ -74,7 +75,8 @@ for (const article of articles) {
     assert.match(printable, /Print selected pages/);
     for (const collection of new Set([collections.get(article.topicId), article.topicId === 'gods-plan-of-salvation' ? collections.get(article.topicId) : ['living-the-faith','beatitudes'].includes(article.topicId) ? 'know-the-faith/living-the-faith' : article.topicId === 'sacraments' ? 'sacraments' : 'know-the-mass', 'family-lessons'])) {
       const listing = read(collection);
-      assert.ok(listing.includes(`href="/${route}${collection === 'family-lessons' ? '/family-lesson' : ''}"`), collection);
+      const suffix = collection === 'family-lessons' ? '/family-lesson' : collection === 'know-the-mass/prayers-at-mass' ? '?from=prayers-at-mass' : '';
+      assert.ok(listing.includes(`href="/${route}${suffix}"`), collection);
       assert.ok(!listing.includes('id="collection-search"'));
       assert.ok(!listing.includes('Lessons in this collection'));
       assert.ok(!listing.includes('Read the lesson →'));
@@ -178,7 +180,7 @@ test('homepage warns about construction and lack of Church approval', () => {
 
 test('the journey moves from salvation through Mass and the sacraments into daily life', () => {
   assert.deepEqual(curricula.map(sequence => sequence.id), ['salvation', 'mass', 'sacraments', 'living']);
-  assert.deepEqual(curricula.map(sequence => publishedSlugs(sequence).length), [16, 24, 8, 13]);
+  assert.deepEqual(curricula.map(sequence => publishedSlugs(sequence).length), [16, 29, 8, 13]);
   assert.equal(nextLesson('pentecost-and-the-holy-spirit').slug, 'church-body-of-christ');
   assert.equal(nextLesson('church-body-of-christ').slug, 'holy-water');
   assert.equal(nextLesson('dismissal').slug, 'what-is-a-sacrament');
@@ -201,7 +203,8 @@ const expectedJourney = [
   'sign-of-the-cross', 'small-crosses-before-the-gospel', 'raised-hands-in-prayer', 'genuflection', 'bowing-at-mass', 'entrance-and-greeting',
   'penitential-act', 'gloria-and-collect', 'readings-and-psalm', 'standing-for-the-gospel',
   'homily-creed-and-prayers', 'nicene-creed', 'preparation-of-the-gifts', 'the-eucharistic-prayer',
-  'eucharist-real-presence', 'prayer-peace-and-lamb-of-god', 'holy-communion-and-thanksgiving',
+  'lift-up-your-hearts', 'sanctus', 'mystery-of-faith', 'great-amen',
+  'eucharist-real-presence', 'prayer-peace-and-lamb-of-god', 'lord-i-am-not-worthy', 'holy-communion-and-thanksgiving',
   'final-blessing', 'dismissal',
   'what-is-a-sacrament', 'sacrament-of-baptism', 'sacrament-of-confirmation', 'sacrament-of-the-eucharist', 'sacrament-of-reconciliation', 'sacrament-of-anointing', 'sacrament-of-holy-orders', 'sacrament-of-matrimony',
   'beatitude-poor-in-spirit', 'beatitude-those-who-mourn', 'beatitude-the-meek', 'beatitude-hunger-for-righteousness', 'beatitude-the-merciful', 'beatitude-pure-in-heart', 'beatitude-peacemakers', 'beatitude-persecuted-for-righteousness',
@@ -316,7 +319,7 @@ test('generated pages contain every internal link destination, including Next an
     }
   }
   assert.deepEqual(failures, []);
-  assert.equal(pages.length, 154);
+  assert.equal(pages.length, 165);
   console.log('Verified ' + targets.size + ' internal link targets across ' + pages.length + ' static pages.');
 });
 
@@ -331,7 +334,7 @@ test('Mass has six family-friendly sections while preserving its lesson itinerar
     assert.ok(index > previous, phase.title); previous = index;
     assert.ok(text(landing).includes(phase.introduction));
   }
-  assert.equal(publishedSlugs(mass).length, 24);
+  assert.equal(publishedSlugs(mass).length, 29);
   assert.ok(read('know-the-mass/liturgy-of-the-eucharist').includes('Eucharist means thanksgiving.'));
   for (const slug of ['prayer-peace-and-lamb-of-god','holy-communion-and-thanksgiving']) assert.ok(read('know-the-mass/liturgy-of-the-eucharist').includes(`href="/articles/${slug}"`));
 });
@@ -470,5 +473,24 @@ test('the document applies a saved theme or system preference before styles load
       matchMedia: () => ({ matches: systemDark })
     });
     assert.equal(document.documentElement.dataset.theme, expected);
+  }
+});
+
+test('Prayers at Mass lists the eleven entries in order and prints the Sunday prompts', () => {
+  const {massPrayers} = require('../src/app/mass-prayers.ts');
+  const html = read('know-the-mass/prayers-at-mass');
+  const list = html.match(/<ol class="mass-prayer-directory">([\s\S]*?)<\/ol>/)?.[1];
+  assert.ok(list);
+  const titles = [...list.matchAll(/<h2><a[^>]*>([^<]+)<\/a><\/h2>/g)].map(match => text(match[1]));
+  assert.deepEqual(titles, ['Penitential Act','Gloria','Gospel Acclamation','Nicene Creed','Lift up your hearts',
+    'Sanctus (Holy, Holy, Holy)','The Mystery of Faith','The Great Amen','The Our Father','Agnus Dei (Lamb of God)','Lord, I am not worthy']);
+  assert.ok(read('know-the-mass').includes('href="/know-the-mass/prayers-at-mass"'));
+  for (const prayer of massPrayers) {
+    assert.ok(list.includes('href="' + prayer.wordsUrl + '"'), prayer.title);
+    assert.ok(list.includes('href="/articles/' + prayer.slug + '?from=prayers-at-mass"'), prayer.title);
+    assert.ok(list.includes('href="/articles/' + prayer.slug + '/family-lesson?from=prayers-at-mass"'), prayer.title);
+    const printable = read('articles/' + prayer.slug + '/family-lesson');
+    assert.ok(text(printable).includes(prayer.listen), prayer.title);
+    assert.ok(text(printable).includes(prayer.question), prayer.title);
   }
 });

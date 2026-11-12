@@ -634,5 +634,30 @@ export const familyReadings: Readonly<Partial<Record<string, FamilyReading>>> = 
       "url": "https://bible.usccb.org/bible/matthew/5",
       "note": "Optional reading for the family."
     }
+  },
+  "lift-up-your-hearts": {
+    "reference": "Luke 22:14–20",
+    "introduction": "Listen for what Jesus does before he shares the cup and the bread at the Last Supper.",
+    "question": "What does Jesus do before he gives the bread to his friends?"
+  },
+  "sanctus": {
+    "reference": "Mark 11:7–10",
+    "introduction": "Picture Jesus riding into Jerusalem. Listen for what the crowd does and calls out to welcome him.",
+    "question": "What did people do to welcome Jesus on the road?"
+  },
+  "mystery-of-faith": {
+    "reference": "1 Corinthians 11:23–26",
+    "introduction": "Paul tells the Church what he received about the Last Supper. Listen for what he says we proclaim when we share in the Eucharist.",
+    "question": "What does Paul say we proclaim until Jesus comes?"
+  },
+  "great-amen": {
+    "reference": "2 Corinthians 1:18–22",
+    "introduction": "Paul says that God keeps his promises in Jesus. Listen for the word we say to God through Jesus.",
+    "question": "What word does Paul say we can say through Jesus?"
+  },
+  "lord-i-am-not-worthy": {
+    "reference": "Matthew 8:5–13",
+    "introduction": "A Roman officer asks Jesus to help his servant. Listen for what he trusts Jesus can do without coming into his home.",
+    "question": "What did the centurion trust Jesus could do just by speaking?"
   }
 };

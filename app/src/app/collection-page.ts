@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { massPrayerQuery, massPrayers } from './mass-prayers';
 import { ContentLibrary } from './library';
 import { curricula, curriculumPosition } from './curriculum';
 
@@ -12,6 +13,8 @@ export class CollectionPage {
   private readonly route = inject(ActivatedRoute);
   readonly familyMode = this.route.snapshot.data['collection'] === 'family';
   readonly topic = this.library.topic(this.route.snapshot.data['topic']);
+  readonly prayerQuery = massPrayerQuery;
+  readonly prayerEntries = this.topic?.id === 'prayers-at-mass' ? massPrayers : undefined;
   readonly area = this.library.area(this.topic?.areaId ?? this.route.snapshot.data['area']);
   readonly title = this.familyMode ? 'Family Lessons' : this.topic?.title ?? this.area?.title ?? 'Learning library';
   readonly introduction = this.familyMode

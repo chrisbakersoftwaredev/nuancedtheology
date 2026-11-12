@@ -5,6 +5,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { filter, map } from 'rxjs';
 import { Article } from './content';
 import { ContentLibrary } from './library';
+import { massPrayerQuery, massPrayers } from './mass-prayers';
 import { curricula, curriculumPosition } from './curriculum';
 
 @Component({
@@ -33,6 +34,12 @@ import { curricula, curriculumPosition } from './curriculum';
                           [ngTemplateOutletContext]="{$implicit: chapterLessons()}"/>
                       }
                     </li>
+                  }
+                </ul>
+              } @else if (topic.id === 'prayers-at-mass') {
+                <ul class="nav-lesson-list">
+                  @for (prayer of prayers; track prayer.title) {
+                    <li><a [routerLink]="['/articles', prayer.slug]" [queryParams]="prayerQuery" (click)="navigate.emit()">{{prayer.title}}</a></li>
                   }
                 </ul>
               } @else {
@@ -68,6 +75,8 @@ export class LibraryNav {
   ), {initialValue: this.router.url});
 
   readonly salvation = curricula[0];
+  readonly prayers = massPrayers;
+  readonly prayerQuery = massPrayerQuery;
   private readonly location = computed(() => this.router.parseUrl(this.url()));
   private readonly segments = computed(() => this.location().root.children['primary']?.segments ?? []);
   private readonly activeArticle = computed(() => {
@@ -96,7 +105,13 @@ export class LibraryNav {
 
   readonly activeTopicId = computed(() => {
     const article = this.activeArticle();
-    if (article) return article.topicId;
+    if (article) {
+      if (this.location().queryParamMap.get('from') === massPrayerQuery.from &&
+          this.prayers.some(prayer => prayer.slug === article.slug)) {
+        return massPrayerQuery.from;
+      }
+      return article.topicId;
+    }
     const segments = this.segments();
     const path = '/' + segments.map(segment => segment.path).join('/');
     return this.library.topics().find(topic => topic.path === path)?.id;

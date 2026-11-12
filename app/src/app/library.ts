@@ -1,6 +1,7 @@
 import { chapterSummaries } from './chapter-summaries';
 import { computed, Injectable, signal } from '@angular/core';
 import { Article, articles } from './content';
+import { massPrayersPath } from './mass-prayers';
 import { orderArticles } from './curriculum';
 
 export interface LibraryArea {
@@ -62,6 +63,9 @@ export const topics: readonly LibraryTopic[] = [{
   summary: 'At the end of Mass, we receive God’s blessing and are sent out to live what we have received. The dismissal is more than permission to leave: it calls us to carry Christ’s love into our homes, schools, work, and friendships. A simple act of patience, mercy, or service can be part of that response. The Church calls these final actions the Concluding Rites.',
   id: 'concluding-rites', areaId: 'mass', title: 'The End of Mass', path: '/know-the-mass/concluding-rites',
   introduction: 'Receive the final blessing and discover how being sent out at Mass calls us to love and serve. The Church calls these final actions the Concluding Rites.'
+}, {
+  id: 'prayers-at-mass', areaId: 'mass', title: 'Prayers at Mass', path: massPrayersPath,
+  introduction: 'Look up the prayers, chants, and responses you hear on Sunday. The entries follow the order of Mass, with links to the complete words and family lessons.'
 }, {
   id: 'gods-plan-of-salvation', areaId: 'faith', title: 'God’s Plan of Salvation', path: '/know-the-faith/gods-plan-of-salvation',
   summaryTitle: 'The Gospel in a few words',
